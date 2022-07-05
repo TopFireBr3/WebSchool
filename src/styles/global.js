@@ -22,6 +22,7 @@ export default createGlobalStyle`
         --blue-1: #68DAD8;
         --pink-0: #E08692;
         --pink-1: #E26786;
+        --pink-2: #FF6C80;
         --grey-0: #F4F4F4;
         --grey-1: #6B6B6B;
     }
