@@ -10,30 +10,30 @@ import { FiMail } from "react-icons/fi";
 const HeaderModal = ({ closeModal }) => {
   return (
     <>
-      <ThemeHeader f="row" w="50%" h="100px" bc="#68DAD8" j="space-around" a="center">
+      <ThemeHeader f="row" w="50%" h="100px" bc="var(--blue-1)" j="space-around" a="center">
         <img src={Logo2} alt="Logo" />
         <FiMenu onClick={()=>closeModal()}/>
       </ThemeHeader>
 
-      <ThemeDiv f="column" bc="#fff">
+      <ThemeDiv f="column" bc="var(--white)">
 
-        <ThemeDiv a="center" g="20px" p="20px 0px  20px 20px" b="1px solid #E08692" bt="2px solid #E08692">
+        <ThemeDiv a="center" g="20px" p="20px 0px  20px 20px" b="1px solid var(--blue-1)" bt="2px solid var(--blue-1)">
           <FiHome className="icon"/> <h2>Home</h2>
         </ThemeDiv>
 
-        <ThemeDiv a="center" g="20px" p="20px 0px  20px 20px" b="1px solid #E08692">
+        <ThemeDiv a="center" g="20px" p="20px 0px  20px 20px" b="1px solid var(--blue-1)">
           <BiUserCircle className="icon"/> <h2>Login</h2>
         </ThemeDiv>
 
-        <ThemeDiv a="center" g="20px" p="20px 0px 20px 20px" b="1px solid #E08692">
+        <ThemeDiv a="center" g="20px" p="20px 0px 20px 20px" b="1px solid var(--blue-1)">
           <VscBook className="icon"/> <h2>Cadastrar escola</h2>
         </ThemeDiv>
 
-        <ThemeDiv a="center" g="20px" p="20px 0px 20px 20px" b="1px solid #E08692">
+        <ThemeDiv a="center" g="20px" p="20px 0px 20px 20px" b="1px solid var(--blue-1)">
           <MdInsertInvitation className="icon"/> <h2>Eventos</h2>
         </ThemeDiv>
 
-        <ThemeDiv a="center" g="20px" p="20px 0px 20px 20px" b="1px solid #E08692" bb="2px solid #E08692">
+        <ThemeDiv a="center" g="20px" p="20px 0px 20px 20px" b="1px solid var(--blue-1)" bb="2px solid var(--blue-1)">
           <FiMail className="icon"/> <h2>Email para contato</h2>
         </ThemeDiv>
 

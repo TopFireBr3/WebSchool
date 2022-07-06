@@ -59,7 +59,14 @@ export const ThemeTextDiv = styled.div`
   }
   @media (min-width: 768px){
     flex-direction: row;
+
+    h2{
+      font-size:25px;
+    }
     
+    p{
+      font-size:18px;
+    }
   }
 `;
 
@@ -87,14 +94,14 @@ export const ThemeSection = styled.section`
   background-color: ${(props) => props.bc};
 
   img{
-    width:40%;
-    height:40%;
+    width:200px;
+    height:200px;
   }
   .img2{
     display:none;
   }
   span {
-    font-size: 17px;
+    font-size:18px;
     margin: 0;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -119,6 +126,10 @@ export const ThemeSection = styled.section`
   }
   .img2{
     display:flex;
+  }
+  img{
+    width:40%;
+    height:40%;
   }
   }
 `;

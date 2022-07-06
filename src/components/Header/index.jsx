@@ -5,7 +5,7 @@ import { useState } from "react";
 import Modal from "react-modal";
 import TextModal from "../TextModal";
 const Header = () => {
-  let subtitle;
+
 
   const [modal, setModal] = useState(false);
 
@@ -13,24 +13,21 @@ const Header = () => {
     setModal(true);
   }
 
-  function afterOpenModal() {
-    subtitle.style.color = "#000";
-  }
+
 
   function closeModal() {
     setModal(false);
   }
 
   return (
-    <ThemeHeader w="100%" h="100px" bc="#68DAD8" j="space-between" a="center">
+    <ThemeHeader w="100%" h="100px" bc="var(--blue-1)" j="space-between" a="center">
       <img src={Logo2} alt="Logo" />
-      {window.screen.width < 768 ? (
-        <>
+
+        
         <FiMenu onClick={() => openModal()} className="button1" />
           <Modal
             isOpen={modal}
             className="modal-content"
-            onAfterOpen={afterOpenModal}
             onRequestClose={closeModal}
             style={{
               overlay: {
@@ -46,9 +43,9 @@ const Header = () => {
           >
             <TextModal closeModal={closeModal} />
           </Modal>
-        </>
-      ) : (
-        <ThemeDiv className="nav" f="row" w="340px" a="center" g="10px">
+        
+
+        <ThemeDiv className="nav" f="row" w="340px" a="center" g="20px" m="0px 20px 0px 0px">
           <button>Home</button>
 
           <button>Login</button>
@@ -57,7 +54,7 @@ const Header = () => {
 
           <button>Eventos</button>
         </ThemeDiv>
-      )}
+
     </ThemeHeader>
   );
 };

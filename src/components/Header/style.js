@@ -29,26 +29,37 @@ export const ThemeHeader = styled.header`
   img {
     width: 200px;
     height: 40px;
-    
+
     margin-left: 5%;
   }
-  .button1{
-    margin-right:30px;
+  .button1 {
+    margin-right: 30px;
+    display:flex;
   }
-  .react-modal{
-    background-color:black;
+  .react-modal {
+    background-color: black;
 
-    width:100%;
-    height:100%;
+    width: 100%;
+    height: 100%;
 
     display: flex;
     align-items: center;
     justify-content: center;
   }
-  .ReactModal__Overlay{
-    background-color:#cecece 0.8
+  .ReactModal__Overlay {
+    background-color: var(--grey-1);
   }
-  
+  .nav{
+      display:none;
+  }
+  @media (min-width: 768px){
+    .button1{
+      display:none;
+    }
+    .nav{
+      display:flex;
+    }
+  }
 `;
 
 export const ThemeDiv = styled.div`
@@ -77,6 +88,10 @@ export const ThemeDiv = styled.div`
   button {
     background: none;
     border: none;
+    font-size: 17px;
+  }
+  button:hover {
+    text-decoration: underline;
+    color: var(--pink-2);
   }
 `;
-

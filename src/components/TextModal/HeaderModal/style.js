@@ -36,7 +36,6 @@ export const ThemeHeader = styled.header`
     margin-right: 30px;
   }
   .react-modal {
-    background-color: #e0e;
     position:fixed;
     top: 0;
     bottom: 0;
@@ -78,12 +77,12 @@ export const ThemeDiv = styled.div`
   .icon{
     width:40px;
     height:40px;
-    color: #E08692;
+    color: var(--pink-0);
   }
   h2{
-    color: #E08692;
+    color: var(--pink-0);
   }
   hr{
-    background-color:#E08692;
+    background-color: var(--pink-0);
   }
 `;
