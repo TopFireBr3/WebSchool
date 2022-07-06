@@ -1,15 +1,18 @@
 import React from "react";
+
 import Header from "../../components/Header";
+import Footer from "../../components/Footer";
+
 import { ThemeDiv, ThemeSection, ThemeTextDiv } from "./style";
+
 import imgHome1 from "../../assets/Teaching.gif";
 import imgHome2 from "../../assets/Happy student-pana.svg";
-import Footer from "../../components/Footer";
 
 const Home = () => {
   return (
     <>
-      <Header/>
-      <ThemeSection f="column" a="center" g="10%" w="100%" >
+      <Header />
+      <ThemeSection f="column" a="center" g="10%" w="100%">
         <ThemeTextDiv f="column" g="10%" w="80%" a="center" m="30px">
           <ThemeDiv f="column" a="center" w="100%" h="300px" g="30px">
             <h2>Quem somos ?</h2>
@@ -47,7 +50,7 @@ const Home = () => {
           </ThemeDiv>
         </ThemeTextDiv>
       </ThemeSection>
-      <Footer/>
+      <Footer />
     </>
   );
 };
