@@ -5,10 +5,10 @@ import imgHome1 from "../../assets/Teaching.gif";
 import imgHome2 from "../../assets/Happy student-pana.svg";
 import Footer from "../../components/Footer";
 
-const Home = () => {
+const Home = ({modal, setModal}) => {
   return (
     <>
-      <Header/>
+      <Header modal={modal} setModal={setModal}/>
       <ThemeSection f="column" a="center" g="10%" w="100%" >
         <ThemeTextDiv f="column" g="10%" w="80%" a="center" m="30px">
           <ThemeDiv f="column" a="center" w="100%" h="300px" g="30px">
