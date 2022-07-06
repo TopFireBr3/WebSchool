@@ -10,8 +10,8 @@ const Home = () => {
     <>
       <Header/>
       <ThemeSection f="column" a="center" g="10%" w="100%" >
-        <ThemeTextDiv f="column" g="10%" w="80%" a="center">
-          <ThemeDiv f="column" a="center" w="700px">
+        <ThemeTextDiv f="column" g="10%" w="98%" a="center" m="30px">
+          <ThemeDiv f="column" a="center" w="100%" h="300px" g="30px">
             <h2>Quem somos ?</h2>
             <p>
               It is a long established fact that a reader will be distracted by
@@ -28,9 +28,9 @@ const Home = () => {
           </ThemeDiv>
           <img src={imgHome1} alt="Menina escrevendo no quadro" />
         </ThemeTextDiv>
-        <ThemeTextDiv f="column" g="10%" w="80%">
+        <ThemeTextDiv f="column" g="10%" w="80%" m="30px">
           <img className="img2" src={imgHome2} alt="Estudantes felizes" />
-          <ThemeDiv f="column" a="center" m="0px 0px 40px 0px">
+          <ThemeDiv f="column" a="center" m="0px 0px 40px 0px" g="30px">
             <h2>Oque oferecemos ?</h2>
             <span>
               It is a long established fact that a reader will be distracted by

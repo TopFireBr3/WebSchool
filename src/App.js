@@ -1,13 +1,15 @@
 import Home from "./pages/Home";
-import "./styles/style.css"
-import { ThemeGlobalStyle } from "./styles/global";
+import Modal from "react-modal"
+import GlobalStyle from "./styles/global"
 
+Modal.setAppElement("#root")
 function App() {
   return (
-    <ThemeGlobalStyle>
+    
+    <>
+      <GlobalStyle/>
       <Home />
-    </ThemeGlobalStyle>
+    </>
   );
 }
-
 export default App;

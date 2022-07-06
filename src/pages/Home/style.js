@@ -48,8 +48,18 @@ export const ThemeTextDiv = styled.div`
 
   background-color: ${(props) => props.bc};
 
+  p{
+    width:95%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 12;
+    -webkit-box-orient: vertical;
+    text-align:center;
+  }
   @media (min-width: 768px){
     flex-direction: row;
+    
   }
 `;
 
@@ -95,9 +105,18 @@ export const ThemeSection = styled.section`
   }
   p{
     text-align:center;
-    width:80%;
+
   }
   @media (min-width: 768px){
+    span{
+    width:95%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 12;
+    -webkit-box-orient: vertical;
+    text-align:center;
+  }
   .img2{
     display:flex;
   }

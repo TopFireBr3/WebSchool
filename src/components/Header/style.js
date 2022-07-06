@@ -23,15 +23,32 @@ export const ThemeHeader = styled.header`
 
   background-color: ${(props) => props.bc};
 
-  *{
-    margin:none;
+  * {
+    margin: none;
   }
-  img{
-    width:200px;
-    height:40px;
+  img {
+    width: 200px;
+    height: 40px;
+    
+    margin-left: 5%;
+  }
+  .button1{
+    margin-right:30px;
+  }
+  .react-modal{
+    background-color:black;
 
-    margin-left:5%;
+    width:100%;
+    height:100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
+  .ReactModal__Overlay{
+    background-color:#cecece 0.8
+  }
+  
 `;
 
 export const ThemeDiv = styled.div`
@@ -57,9 +74,9 @@ export const ThemeDiv = styled.div`
 
   background-color: ${(props) => props.bc};
 
-  button{
-    background:none;
-    border:none;
-
+  button {
+    background: none;
+    border: none;
   }
 `;
+
