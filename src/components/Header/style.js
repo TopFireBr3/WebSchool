@@ -141,7 +141,6 @@ export const Container = styled.div`
 
   padding: ${(props) => props.p};
   border: ${(props) => props.b};
-
   margin: ${(props) => props.m};
 
   background-color: ${(props) => props.bc};

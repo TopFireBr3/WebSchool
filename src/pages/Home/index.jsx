@@ -5,7 +5,7 @@ import Footer from "../../components/Footer";
 
 import { ThemeDiv, ThemeSection, ThemeTextDiv } from "./style";
 
-import imgHome1 from "../../assets/Teaching.gif";
+import imgHome1 from "../../assets/Teaching-bro.svg";
 import imgHome2 from "../../assets/Happy student-pana.svg";
 
 const Home = () => {

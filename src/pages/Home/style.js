@@ -67,17 +67,10 @@ export const ThemeTextDiv = styled.div`
 
     p {
       overflow: hidden;
-<<<<<<< HEAD
-    text-overflow: ellipsis;
-    display: -webkit-box;
-    -webkit-line-clamp: 17;
-    -webkit-box-orient: vertical;
-=======
       text-overflow: ellipsis;
       display: -webkit-box;
       -webkit-line-clamp: 17;
       -webkit-box-orient: vertical;
->>>>>>> developer
       text-align: start;
     }
   }
