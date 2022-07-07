@@ -82,7 +82,6 @@ export const ThemeDiv = styled.div`
   margin: ${(props) => props.m};
 
   background-color: ${(props) => props.bc};
-  color: var(--pink-1);
 
   &:hover {
     background-color: ${(props) => props.bch};
@@ -99,6 +98,7 @@ export const ThemeDiv = styled.div`
     color: var(--pink-2);
   }
 `;
+
 export const ThemeTitle = styled.div`
   display: flex;
   flex-direction: ${(props) => props.fd};
@@ -153,7 +153,7 @@ export const Container = styled.div`
   left: 0;
 
   .icon {
-    color: var(--pink-1);
+    color: var(--black);
     width: 30px;
     height: 30px;
   }
