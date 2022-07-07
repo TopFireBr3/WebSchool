@@ -27,6 +27,10 @@ header{
 
 export const SliderContainer = styled.div`
 width:80%
+img{
+    width: 400px;
+    height: 300px;
+}
 `
 
 

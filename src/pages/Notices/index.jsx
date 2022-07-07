@@ -46,7 +46,7 @@ const Notices = () => {
     return (
         <Container>
 
-            <Header/>
+            <header>header</header>
             <SliderContainer>
                 
                 <ImageGallery items={dataImg} showFullscreenButton={false} showPlayButton={false} originalWidth={'200px'}  onSlide={slide}/>
