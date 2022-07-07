@@ -45,12 +45,9 @@ const Login = ()=> {
             })
     })
 
-    console.log(loading, error, sucess)
-
     const { register, handleSubmit, formState: {errors} } = useForm({
         resolver: yupResolver(schemaForm)
     })
-
     
     return (
 

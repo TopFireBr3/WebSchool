@@ -18,7 +18,7 @@ export const LoginProvider = ({ children }) => {
 
         } catch (error) {
             setError(error); 
-            toast.error(error.response.data)
+            toast.error('Senha ou E-mail incorretos')
             setTimeout(() => {
                 setError(false);
             }, 3000);
