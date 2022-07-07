@@ -1,12 +1,12 @@
 import { Route, Switch } from "react-router-dom"
 import Home from "../pages/Home"
 
-export const Router = ({modal, setModal})=> {
+export const Router = ()=> {
 
     return(
         <Switch>
             <Route exact path="/">
-                <Home modal={modal} setModal={setModal}/>
+                <Home />
             </Route>
         </Switch>
     )

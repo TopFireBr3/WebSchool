@@ -26,13 +26,13 @@ export const ThemeHeader = styled.header`
   img {
     width: 200px;
     height: 40px;
-    margin-left: 5%;
+
   }
   .button1 {
-    margin-right: 30px;
+
     display: flex;
-    width:70px;
-    height:70px;
+    width:50px;
+    height:50px;
 
   }
   .react-modal {
@@ -119,7 +119,7 @@ export const ThemeDiv = styled.div`
   margin: ${(props) => props.m};
 
   background-color: ${(props) => props.bc};
-  color:var(--pink-1);
+
 
   @media (min-width: 768px) {
     justify-content: space-between;

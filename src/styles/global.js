@@ -34,4 +34,3 @@ export default createGlobalStyle`
         max-height: ${(props) => props.mh} ;
     }
 `;
-

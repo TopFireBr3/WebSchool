@@ -1,17 +1,20 @@
 import React from "react";
+
 import Header from "../../components/Header";
-import { ThemeDiv, ThemeSection, ThemeTextDiv } from "./style";
-import imgHome1 from "../../assets/Teaching.gif";
-import imgHome2 from "../../assets/Happy student-pana.svg";
 import Footer from "../../components/Footer";
 
-const Home = ({modal, setModal}) => {
+import { ThemeDiv, ThemeSection, ThemeTextDiv } from "./style";
+
+import imgHome1 from "../../assets/Teaching.gif";
+import imgHome2 from "../../assets/Happy student-pana.svg";
+
+const Home = () => {
   return (
     <>
-      <Header modal={modal} setModal={setModal}/>
-      <ThemeSection f="column" a="center" g="10%" w="100%" >
+      <Header />
+      <ThemeSection f="column" a="center" g="10%" w="100%">
         <ThemeTextDiv f="column" g="10%" w="80%" a="center" m="30px">
-          <ThemeDiv f="column" a="center" w="100%" h="300px" g="30px">
+          <ThemeDiv f="column" a="center" w="100%" g="30px" j="center">
             <h2>Quem somos ?</h2>
             <p>
               It is a long established fact that a reader will be distracted by
@@ -30,7 +33,13 @@ const Home = ({modal, setModal}) => {
         </ThemeTextDiv>
         <ThemeTextDiv f="column" g="10%" w="80%" a="center" m="30px">
           <img className="img2" src={imgHome2} alt="Estudantes felizes" />
-          <ThemeDiv f="column" a="center" m="0px 0px 40px 0px" g="30px">
+          <ThemeDiv
+            f="column"
+            a="center"
+            m="0px 0px 40px 0px"
+            g="30px"
+            j="center"
+          >
             <h2>Oque oferecemos ?</h2>
             <span>
               It is a long established fact that a reader will be distracted by
@@ -47,7 +56,7 @@ const Home = ({modal, setModal}) => {
           </ThemeDiv>
         </ThemeTextDiv>
       </ThemeSection>
-      <Footer/>
+      <Footer />
     </>
   );
 };

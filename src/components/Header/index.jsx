@@ -1,3 +1,4 @@
+
 import Logo2 from "../../assets/img2.png";
 import { Container, ThemeDiv, ThemeHeader, ThemeTitle } from "./style";
 
@@ -5,20 +6,21 @@ import { FiMenu, FiMail, FiHome } from "react-icons/fi";
 import { BiUserCircle } from "react-icons/bi";
 import { VscBook } from "react-icons/vsc";
 import { MdInsertInvitation } from "react-icons/md";
-const Header = ({ modal, setModal }) => {
-  function openModal() {
-    setModal(!modal);
-  }
+import { useContext } from "react";
+import { ModalContext } from "../../contexts/modal/contextModal";
+const Header = () => {
+
+  const {modal, openModal} = useContext(ModalContext)
 
   return (
     <ThemeHeader
       w="100%"
       h="100px"
       bc="var(--blue-1)"
-      j="space-between"
+      j="center"
       a="center"
     >
-      <ThemeTitle j="center">
+      <ThemeTitle j="space-between" a="center" w="80%" >
         <img src={Logo2} alt="Logo" />
 
         <FiMenu onClick={() => openModal()} className="button1" />
