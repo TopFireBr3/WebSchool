@@ -10,7 +10,7 @@ import { useHistory } from 'react-router-dom';
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-import { LoginContext } from '../../providers/loginContext';
+import { LoginContext } from '../../contexts/login/loginContext';
 
 import { FormLogin, MainLogin, MainLoginDiv } from "./styled"
 

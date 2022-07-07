@@ -34,7 +34,7 @@ const Header = () => {
         >
           <button onClick={() => history.push("/")}>Home</button>
 
-          <button>Login</button>
+          <button onClick={() => history.push("/login")}>Login</button>
 
           <button>Cadastrar escola</button>
 

@@ -23,20 +23,23 @@ export const ThemeHeader = styled.header`
 
   background-color: ${(props) => props.bc};
 
+  * {
+    margin: none;
+  }
   img {
     width: 200px;
     height: 40px;
+    
+    margin-left: 5%;
   }
-  .button1 {
-    display: flex;
-    width: 50px;
-    height: 50px;
+  .button1{
+    margin-right:30px;
   }
-  .react-modal {
-    background-color: black;
+  .react-modal{
+    background-color:black;
 
-    width: 100%;
-    height: 100%;
+    width:100%;
+    height:100%;
 
     display: flex;
     align-items: center;
@@ -141,7 +144,6 @@ export const Container = styled.div`
 
   padding: ${(props) => props.p};
   border: ${(props) => props.b};
-
   margin: ${(props) => props.m};
 
   background-color: ${(props) => props.bc};

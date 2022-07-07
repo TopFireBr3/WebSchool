@@ -25,11 +25,17 @@ export default createGlobalStyle`
         --pink-2: #FF6C80;
         --grey-0: #F4F4F4;
         --grey-1: #6B6B6B;
+<<<<<<< HEAD
         --bg-modal: #00000099;
     }
     body {
         background: var(--body);
         overflow: ${(props) => props.o};
         max-height: ${(props) => props.mh} ;
+=======
+    }
+    body {
+        background: var(--body);
+>>>>>>> 02774191daff01aea7972697cd0bd751105d537c
     }
 `;
