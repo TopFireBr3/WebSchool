@@ -8,11 +8,10 @@ import { LeftDiv, RightDiv, StyledForm, StyledMain } from "../Register/styles";
 import { FormDiv } from "./styles";
 
 import earth from "../../img/earth.png";
-import { RegisterInfoContext } from "../../contexts/RegisterInfoContext";
-import { api } from "../../api/api";
+import { RegisterInfoContext } from "../../contexts/Register/RegisterInfoContext";
 
 export const RegisterComplement = () => {
-  const { setInfoPartOne, infoPartOne, infoPartTwo, setInfoPartTwo } =
+  const { infoPartOne, infoPartTwo, setInfoPartTwo } =
     useContext(RegisterInfoContext);
 
   const schema = yup.object().shape({
