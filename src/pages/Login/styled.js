@@ -119,7 +119,7 @@ export const FormLogin = styled.form`
 
     .errorMessage {
         position: absolute;
-        top: 31.5vh;
+        top: 51.5vh;
         color: red;
         font-size: 2.3vh;
         height: 2vh;
@@ -127,7 +127,7 @@ export const FormLogin = styled.form`
 
     .errorMessage1 {
         position: absolute;
-        top: 21.5vh;
+        top: 41.5vh;
         color: red;
         font-size: 2.3vh;
         height: 2vh;
