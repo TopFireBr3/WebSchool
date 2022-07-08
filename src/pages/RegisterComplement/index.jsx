@@ -53,7 +53,13 @@ export const RegisterComplement = () => {
   function criarUsuario(data) {
     api
       .post("/register", data)
-      .then((_) => toast.success("Sucesso ao cadastrar-se."))
+      .then((_) => {
+        toast.success("Sucesso ao cadastrar-se.");
+
+        setTimeout(() => {
+          history.push("/login");
+        }, 2500);
+      })
       .catch((_) => toast.error("Ops! algo deu errado."));
   }
 

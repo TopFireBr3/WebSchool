@@ -51,7 +51,7 @@ export const Register = () => {
   function registerSchool(data) {
     const { password, nome_escola, email, codigo_acesso } = data;
     const check = schools?.some(
-      (school) => school.codigo_acesso === data.codigo_acesso
+      (school) => school.codigo_acesso === +data.codigo_acesso
     );
 
     if (check) {
