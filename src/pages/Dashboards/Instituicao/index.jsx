@@ -1,4 +1,5 @@
-import React, { useContext, useState } from "react";
+import axios from "axios";
+import React, { useContext, useEffect, useState } from "react";
 import Footer from "../../../components/Footer";
 import { ModalContext } from "../../../contexts/modal/ContextModal";
 import Card from "./Card/index";
@@ -10,6 +11,24 @@ import { Container, ThemeDiv, ThemeNav, ThemeMain, ThemeUl } from "./style";
 const Instituicao = () => {
   const [aluno, setAluno] = useState(false);
   const [professor, setProfessor] = useState(false);
+
+  const [vitrine, setVitrine] = useState([]);
+
+  console.log(vitrine)
+
+  useEffect(() => {
+    axios
+      .get(`https://api-web-school.herokuapp.com/users`,{Authorization:{ }})
+      .then((res) => {
+        console.log(res);
+        setVitrine(res)
+        console.log("deu bom");
+      })
+      .catch((e) => {
+        console.log(e);
+        console.log("deu ruim");
+      });
+  }, []);
 
   function openAluno() {
     setAluno(!aluno);
