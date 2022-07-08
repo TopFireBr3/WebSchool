@@ -14,6 +14,10 @@ export const LeftDiv = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+
+  @media (max-width: 768px) {
+    width: 100%;
+  }
 `;
 
 export const FormDiv = styled.div`
@@ -31,6 +35,10 @@ export const FormDiv = styled.div`
 
   h1 {
     font-weight: 400;
+  }
+
+  @media (max-width: 768px) {
+    width: 80%;
   }
 `;
 
@@ -68,6 +76,12 @@ export const StyledForm = styled.form`
   a {
     color: #000;
   }
+
+  @media (max-width: 768px) {
+    width: 80%;
+
+    gap: 13px;
+  }
 `;
 
 export const RightDiv = styled.div`
@@ -81,5 +95,9 @@ export const RightDiv = styled.div`
   img {
     width: 80%;
     height: 80vh;
+  }
+
+  @media (max-width: 768px) {
+    display: none;
   }
 `;

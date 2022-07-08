@@ -1,4 +1,4 @@
-import { ModalProvider } from "../contexts/modal/ContextModal.jsx";
+import { ModalProvider } from "../contexts/modal/contextModal";
 import { RegisterInfoProvider } from "../contexts/Register/RegisterInfoContext.jsx";
 
 const Providers = ({ children }) => {

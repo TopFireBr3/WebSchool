@@ -2,9 +2,9 @@ import { useContext } from "react";
 
 import GlobalStyle from "./styles/global";
 
-import { ModalContext } from "./contexts/modal/ContextModal";
+import { ModalContext } from "./contexts/modal/contextModal";
 
-import { Routes } from "./routes";
+import { Routes } from "./Routes";
 
 import "react-image-gallery/styles/css/image-gallery.css";
 

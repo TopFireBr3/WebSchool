@@ -13,7 +13,7 @@ import { useContext, useEffect, useState } from "react";
 import { FormDiv, LeftDiv, RightDiv, StyledForm, StyledMain } from "./styles";
 
 import education from "../../img/education.png";
-import { api } from "../../api/api";
+import { api } from "../../API/api";
 
 export const Register = () => {
   const [schools, setSchools] = useState({});

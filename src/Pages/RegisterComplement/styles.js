@@ -12,4 +12,9 @@ export const FormDiv = styled.div`
   padding: 20px;
 
   box-sizing: border-box;
+
+  @media (max-width: 768px) {
+    width: 80%;
+    font-size: 2vh;
+  }
 `;
