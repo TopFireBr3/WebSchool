@@ -7,8 +7,6 @@ export const StyledMain = styled.main`
 `;
 
 export const LeftDiv = styled.div`
-  background-color: #fdf0e7;
-
   width: 50%;
 
   display: flex;
@@ -25,20 +23,25 @@ export const FormDiv = styled.div`
   flex-direction: column;
   align-items: center;
 
-  background-color: #c8fcfa;
+  background-color: var(--blue-0);
 
   border-radius: 8px;
-  width: 40%;
+  width: 70%;
   padding: 20px;
 
   box-sizing: border-box;
 
   h1 {
     font-weight: 400;
+    margin-bottom: 40px;
   }
 
   @media (max-width: 768px) {
     width: 80%;
+
+    h1 {
+      margin-bottom: 20px;
+    }
   }
 `;
 
@@ -53,20 +56,26 @@ export const StyledForm = styled.form`
   box-sizing: border-box;
 
   .buttonRegister {
-    background-color: #e08692;
-    color: #fff;
-
-    border: none;
-    border-radius: 8px;
-
     width: 100%;
-    height: 40px;
+    background-color: var(--pink-0);
+    color: var(--body);
+    margin-top: 15px;
 
-    font-size: 20px;
+    &:hover {
+      background-color: var(--pink-1);
+      transition: 0.3s;
+    }
+
+    span {
+      position: inherit;
+    }
   }
 
   input {
-    background-color: #fdf0e7;
+    height: 6vh;
+    padding-left: 15px;
+    background-color: var(--grey-0);
+    border-radius: 1vh;
   }
 
   input[type="number"]::-webkit-outer-spin-button,
@@ -75,12 +84,16 @@ export const StyledForm = styled.form`
     margin: 0;
   }
 
-  label {
-    background-color: #fdf0e7;
+  .error {
+    position: relative;
+    color: var(--error);
+    font-size: 2.3vh;
+    height: 2vh;
+    bottom: 8px;
   }
 
   a {
-    color: #000;
+    text-decoration: none;
   }
 
   @media (max-width: 768px) {
@@ -88,10 +101,24 @@ export const StyledForm = styled.form`
 
     gap: 13px;
   }
+
+  @media (min-width: 1024px) {
+    .buttonRegister {
+      margin-top: -10px;
+    }
+
+    input {
+      margin-top: -25px;
+    }
+
+    .error {
+      bottom: 18px;
+    }
+  }
 `;
 
 export const RightDiv = styled.div`
-  background-color: #c8fcfa;
+  background-color: var(--blue-0);
 
   width: 50%;
   display: flex;

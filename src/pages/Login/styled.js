@@ -111,27 +111,27 @@ export const FormLogin = styled.form`
     }
   }
 
-  .errorMessage {
+  .error {
     position: absolute;
-    top: 51.5vh;
-    color: red;
+    color: var(--error);
     font-size: 2.3vh;
     height: 2vh;
   }
 
-  .errorMessage1 {
-    position: absolute;
+  .error:nth-child(5) {
+    top: 51.5vh;
+  }
+
+  .error:nth-child(3) {
     top: 41.5vh;
-    color: red;
-    font-size: 2.3vh;
-    height: 2vh;
   }
 
   button {
     width: 80%;
     background-color: var(--pink-0);
-    color: #fdf0e7;
+    color: var(--body);
     margin-top: -8vh;
+
     &:hover {
       background-color: var(--pink-1);
       transition: 0.3s;
@@ -139,7 +139,7 @@ export const FormLogin = styled.form`
   }
 
   .Link {
-    text-decoration: dashed;
+    text-decoration: none;
   }
 
   .Link:hover {

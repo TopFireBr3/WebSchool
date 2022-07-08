@@ -4,9 +4,9 @@ import * as yup from "yup";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 
-import { TextField } from "@mui/material";
+import { Button, Input, Link } from "@mui/material";
 
-import { Link, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 import { RegisterInfoContext } from "../../contexts/register/RegisterInfoContext";
 
@@ -71,7 +71,7 @@ export const Register = () => {
       })
       .catch((_) => toast.error("Ops! algo deu errado."));
   }, []);
-
+  console.log(errors);
   return (
     <>
       <StyledMain>
@@ -80,52 +80,81 @@ export const Register = () => {
             <h1>Registrar-se</h1>
 
             <StyledForm onSubmit={handleSubmit(registerSchool)}>
-              <TextField
-                label="Nome da escola"
+              <Input
+                placeholder="Nome da escola"
                 error={!!errors.nome_escola}
-                helperText={errors?.nome_escola?.message}
                 {...register("nome_escola")}
-                sx={{ width: "100%" }}
+                style={{
+                  marginTop: !!errors.nome_escola ? "-5px" : "10px",
+                  width: "100%",
+                }}
               />
+              {errors.nome_escola && (
+                <span className="error">{errors.nome_escola.message}</span>
+              )}
 
-              <TextField
-                label="Email institucional"
+              <Input
+                placeholder="Email institucional"
                 error={!!errors.email}
-                helperText={errors?.email?.message}
                 {...register("email")}
-                sx={{ width: "100%" }}
+                style={{
+                  marginTop: !!errors.email ? "-5px" : "10px",
+                  width: "100%",
+                }}
               />
+              {errors.email && (
+                <span className="error">{errors.email.message}</span>
+              )}
 
-              <TextField
-                label="Senha"
+              <Input
+                placeholder="Senha"
                 type="password"
                 error={!!errors.password}
-                helperText={errors?.password?.message}
                 {...register("password")}
-                sx={{ width: "100%" }}
+                style={{
+                  marginTop: !!errors.password ? "-5px" : "10px",
+                  width: "100%",
+                }}
               />
+              {errors.password && (
+                <span className="error">{errors.password.message}</span>
+              )}
 
-              <TextField
-                label="Confirme a senha"
+              <Input
+                placeholder="Confirme a senha"
                 type="password"
                 error={!!errors.confirmPassword}
-                helperText={errors?.confirmPassword?.message}
                 {...register("confirmPassword")}
-                sx={{ width: "100%" }}
+                style={{
+                  marginTop: !!errors.confirmPassword ? "-5px" : "10px",
+                  width: "100%",
+                }}
               />
+              {errors.confirmPassword && (
+                <span className="error">{errors.confirmPassword.message}</span>
+              )}
 
-              <TextField
+              <Input
                 type="number"
-                label="Código de acesso"
+                placeholder="Código de acesso"
                 error={!!errors.codigo_acesso}
-                helperText={errors?.codigo_acesso?.message}
                 {...register("codigo_acesso")}
-                sx={{ width: "100%" }}
+                style={{
+                  marginTop: !!errors.codigo_acesso ? "-5px" : "10px",
+                  width: "100%",
+                }}
               />
+              {errors.codigo_acesso && (
+                <span className="error">{errors.codigo_acesso.message}</span>
+              )}
 
-              <button className="buttonRegister" type="submit">
+              <Button
+                variant="contained"
+                className="buttonRegister"
+                type="submit"
+              >
                 Cadastrar
-              </button>
+              </Button>
 
               <Link to="/">voltar para a página inicial</Link>
             </StyledForm>

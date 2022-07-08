@@ -18,6 +18,7 @@ export default createGlobalStyle`
         --body: #FDF0E7;
         --white: #FFFFFF;
         --black: #000000;
+        --error: #FF0000;
         --blue-0: #C8FCFA;
         --blue-1: #68DAD8;
         --pink-0: #E08692;
