@@ -1,14 +1,15 @@
-import { useContext } from "react";
-
 import GlobalStyle from "./styles/global";
 
+import { useContext } from "react";
 import { ModalContext } from "./contexts/modal/ContextModal";
 
-import { Routes } from "./routes";
-
 import { ToastContainer } from "react-toastify";
+
 import "react-toastify/dist/ReactToastify.css";
+
 import "react-image-gallery/styles/css/image-gallery.css";
+
+import { Routes } from "./routes";
 
 function App() {
   const { modal } = useContext(ModalContext);
