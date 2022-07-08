@@ -122,7 +122,7 @@ export const FormLogin = styled.form`
   .errorMessage1 {
     position: absolute;
     top: 41.5vh;
-    color: red;
+    color: var(--error);
     font-size: 2.3vh;
     height: 2vh;
   }
@@ -130,7 +130,7 @@ export const FormLogin = styled.form`
   button {
     width: 80%;
     background-color: var(--pink-0);
-    color: #fdf0e7;
+    color: var(--body);
     margin-top: -8vh;
     &:hover {
       background-color: var(--pink-1);

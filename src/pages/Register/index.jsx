@@ -4,9 +4,9 @@ import * as yup from "yup";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 
-import { TextField } from "@mui/material";
+import { Link, TextField } from "@mui/material";
 
-import { Link, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 import { RegisterInfoContext } from "../../contexts/register/RegisterInfoContext";
 
@@ -127,7 +127,9 @@ export const Register = () => {
                 Cadastrar
               </button>
 
-              <Link to="/">voltar para a página inicial</Link>
+              <Link onClick={() => history.push("/")}>
+                voltar para a página inicial
+              </Link>
             </StyledForm>
           </FormDiv>
         </LeftDiv>

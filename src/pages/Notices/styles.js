@@ -16,13 +16,13 @@ export const Container = styled.div`
 `;
 
 export const SliderContainer = styled.div`
-margin-top: 50px;
+  margin-top: 50px;
 
   width: 80%;
-  img{
+
+  img {
     width: 300px;
-
-
+    background: var(--black);
   }
 `;
 

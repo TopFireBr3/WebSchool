@@ -7,7 +7,7 @@ import * as yup from "yup";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 
-import { TextField } from "@mui/material";
+import { Link, TextField } from "@mui/material";
 
 import { toast } from "react-toastify";
 
@@ -16,12 +16,13 @@ import { RegisterInfoContext } from "../../contexts/register/RegisterInfoContext
 import { api } from "../../services/api";
 
 import earth from "../../assets/Globalization-pana.svg";
-
-import { Link } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 export const RegisterComplement = () => {
   const { infoPartOne, infoPartTwo, setInfoPartTwo } =
     useContext(RegisterInfoContext);
+
+  const history = useHistory();
 
   const schema = yup.object().shape({
     endereco: yup.string().required("Campo obrigatório!"),
@@ -124,7 +125,7 @@ export const RegisterComplement = () => {
                 Enviar
               </button>
 
-              <Link to="/register">Voltar</Link>
+              <Link onClick={() => history.push("/register")}>Voltar</Link>
             </StyledForm>
           </FormDiv>
         </LeftDiv>
