@@ -9,16 +9,10 @@ export const ModalProvider = ({ children }) => {
   function openModal() {
     setModal(!modal);
   }
-  function openModal1() {
-    setModal(true);
-  }
 
-  function closeModal() {
-    setModal(false);
-  }
 
   return (
-    <ModalContext.Provider value={{ modal, openModal, openModal1, closeModal }}>
+    <ModalContext.Provider value={{ modal, openModal }}>
       {children}
     </ModalContext.Provider>
   );

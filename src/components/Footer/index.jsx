@@ -1,5 +1,4 @@
 import { ThemeDiv, ThemeFooter } from "./style";
-
 const Footer = () => {
   return (
     <ThemeFooter

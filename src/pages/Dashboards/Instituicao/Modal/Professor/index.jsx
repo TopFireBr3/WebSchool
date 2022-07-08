@@ -12,6 +12,7 @@ import {
 } from "./style";
 import { ModalContext } from "../../../../../contexts/modal/ContextModal";
 import { useContext } from "react";
+import axios from "axios";
 
 const ModalProfessor = (prop) => {
   const formSchema = yup.object().shape({
@@ -43,13 +44,24 @@ const ModalProfessor = (prop) => {
 
   const onSubmitFunction = (data) => {
     delete data.twoPassword;
-    const obj = { ...data, type: "professor" };
-    console.log(obj);
+    data = { ...data, type: "professor" };
+    data.gang = data.gang.split(",");
+
+    console.log(data);
+
+    axios
+      .post(`https://api-web-school.herokuapp.com/register`, data)
+      .then((res) => {
+        console.log(res);
+        console.log("deu bom");
+      })
+      .catch((e) => {
+        console.log(e);
+        console.log("deu ruim");
+      });
 
     history.push(`/${data.name}`);
   };
-
-  const { closeModal } = useContext(ModalContext);
 
   return (
     <ThemeBackGround
@@ -74,7 +86,6 @@ const ModalProfessor = (prop) => {
             <p
               onClick={() => {
                 prop.setProfessor();
-                closeModal();
               }}
             >
               X

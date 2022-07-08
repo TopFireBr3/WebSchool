@@ -19,7 +19,7 @@ const Notices = () => {
       setDataNoticias(res.data);
       setDataImg(
         res.data.map((item) => {
-          return { original: item.img, thumbnail: item.img };
+          return { original: item.img, thumbnail: item.img, originalWidth:'300px' , originalHeight:'400px' };
         })
       );
     });
@@ -37,7 +37,7 @@ const Notices = () => {
     <>
       <Header />
 
-      {/* <Container>
+       <Container>
         <SliderContainer>
           <ImageGallery
             items={dataImg}
@@ -45,15 +45,18 @@ const Notices = () => {
             showPlayButton={false}
             originalWidth={"200px"}
             onSlide={slide}
+            infinite={false}
           />
         </SliderContainer>
         <InfosContainer>
           <h1>{dataNoticias[indexNoticia]?.titulo}</h1>
           <p>{dataNoticias[indexNoticia]?.descricao}</p>
         </InfosContainer>
-      </Container> */}
+        <Footer/>
+        
+      </Container> 
 
-      <Footer />
+      
     </>
   );
 };

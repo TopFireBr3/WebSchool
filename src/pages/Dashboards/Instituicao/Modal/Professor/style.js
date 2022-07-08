@@ -24,7 +24,8 @@ export const ThemeBackGround = styled.main`
   background-color: ${(props) => props.bc};
 
   min-width: 100%;
-  position: absolute;
+  min-height:100vh;
+  position: fixed;
   z-index: 9;
   top: 0;
   left: 0;

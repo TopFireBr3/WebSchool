@@ -19,21 +19,30 @@ const Instituicao = () => {
     setProfessor(!professor);
   }
 
-  const { openModal1 } = useContext(ModalContext);
   return (
     <>
       <HeaderInstitucional />
       <ThemeMain f="column" g="20px" m="80px 10px 200px 10px">
         <ThemeDiv fd="column" j="center" g="5px">
-          <button onClick={() => {openProfessor()
-          openModal1()}}>Adicionar professor</button>
-          <button onClick={() => {openAluno()
-          openModal1()}}>Adicionar aluno</button>
+          <button
+            onClick={() => {
+              openProfessor();
+            }}
+          >
+            Adicionar professor
+          </button>
+          <button
+            onClick={() => {
+              openAluno();
+            }}
+          >
+            Adicionar aluno
+          </button>
         </ThemeDiv>
-        <ThemeNav g="10px" j="center" >
+        <ThemeNav g="10px" j="center">
           <button>Professores</button>
           <button>Alunos</button>
-        </ThemeNav>                                                                     
+        </ThemeNav>
         <Container f="column" a="center">
           <ThemeUl
             oy="auto"
@@ -45,7 +54,7 @@ const Instituicao = () => {
             h="600px"
             br="15px"
           >
-            <Card/>
+            <Card />
           </ThemeUl>
         </Container>
       </ThemeMain>

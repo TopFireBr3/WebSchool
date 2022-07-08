@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 
 import { Container, ThemeDiv, ThemeHeader, ThemeTitle } from "./style";
 
@@ -17,6 +17,8 @@ const Header = () => {
 
   const history = useHistory();
 
+  const [currentPage] = useState(history.location.pathname);
+
   return (
     <ThemeHeader w="100%" h="100px" bc="var(--blue-1)" j="center" a="center">
       <ThemeTitle j="space-between" a="center" w="80%">
@@ -32,13 +34,29 @@ const Header = () => {
           g="20px"
           m="0px 20px 0px 0px"
         >
-          <button onClick={() => history.push("/")}>Home</button>
+          <button
+            style={{
+              color: currentPage === "/" && "var(--pink-1)",
+              textDecoration: currentPage === "/" && "underline",
+            }}
+            onClick={() => history.push("/")}
+          >
+            Home
+          </button>
 
-          <button>Login</button>
+          <button onClick={() => history.push("/login")}>Login</button>
 
           <button>Cadastrar escola</button>
 
-          <button onClick={() => history.push("/notices")}>Notícias</button>
+          <button
+            style={{
+              color: currentPage === "/notices" && "var(--pink-1)",
+              textDecoration: currentPage === "/notices" && "underline",
+            }}
+            onClick={() => history.push("/notices")}
+          >
+            Notícias
+          </button>
         </ThemeDiv>
       </ThemeTitle>
       <div
@@ -52,6 +70,7 @@ const Header = () => {
           left: "0",
           minWidth: "100%",
           backgroundColor: "var(--bg-modal)",
+          zIndex: "9",
         }}
       >
         <Container d="flex" f="column" bc="var(--white)">
@@ -62,12 +81,21 @@ const Header = () => {
             b="1px solid var(--blue-1)"
             bt="2px solid var(--blue-1)"
             bch="var(--blue-0)"
+            style={{
+              color: currentPage === "/" && "var(--pink-1)",
+            }}
             onClick={() => {
               history.push("/");
               openModal();
             }}
           >
-            <FiHome className="icon" /> <h2>Home</h2>
+            <FiHome
+              className="icon"
+              style={{
+                color: currentPage === "/" && "var(--pink-1)",
+              }}
+            />{" "}
+            <h2>Home</h2>
           </ThemeDiv>
 
           <ThemeDiv
@@ -96,12 +124,20 @@ const Header = () => {
             p="20px 0px 20px 20px"
             b="1px solid var(--blue-1)"
             bch="var(--blue-0)"
+            style={{
+              color: currentPage === "/notices" && "var(--pink-1)",
+            }}
             onClick={() => {
               history.push("/notices");
               openModal();
             }}
           >
-            <MdInsertInvitation className="icon" />
+            <MdInsertInvitation
+              className="icon"
+              style={{
+                color: currentPage === "/notices" && "var(--pink-1)",
+              }}
+            />
             <h2>Notícias</h2>
           </ThemeDiv>
 

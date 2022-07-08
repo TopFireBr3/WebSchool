@@ -6,6 +6,8 @@ import { ModalContext } from "./contexts/modal/ContextModal";
 
 import { Routes } from "./routes";
 
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import "react-image-gallery/styles/css/image-gallery.css";
 import Instituicao from "./pages/Dashboards/Instituicao";
 import ModalProfessor from "./pages/Dashboards/Instituicao/Modal/Professor";
@@ -20,7 +22,22 @@ function App() {
         o={modal  ? "hidden" : "auto"}
         mh={modal ? "100vh" : "inherit"}
       />
-      <Instituicao/>
+
+
+      <ToastContainer
+        position="top-right"
+        autoClose={3000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss={false}
+        draggable
+        pauseOnHover
+      />
+
+      <Routes />
+
     </>
   );
 }

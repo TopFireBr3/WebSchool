@@ -12,6 +12,7 @@ import {
 } from "./style";
 import { useContext } from "react";
 import { ModalContext } from "../../../../../contexts/modal/ContextModal";
+import axios from "axios";
 
 const ModalAluno = (prop) => {
   const formSchema = yup.object().shape({
@@ -43,13 +44,22 @@ const ModalAluno = (prop) => {
 
   const onSubmitFunction = (data) => {
     delete data.twoPassword;
-    const obj = { ...data, type: "professor" };
-    console.log(obj);
+    data = { ...data, type: "Aluno" };
+
+    console.log(data);
+    axios
+      .post(`https://api-web-school.herokuapp.com/register`, data)
+      .then((res) => {
+        console.log(res);
+        console.log("deu bom");
+      })
+      .catch((e) => {
+        console.log(e);
+        console.log("deu ruim");
+      });
 
     history.push(`/${data.name}`);
   };
-
-  const { closeModal } = useContext(ModalContext);
 
   return (
     <ThemeBackGround
@@ -72,9 +82,8 @@ const ModalAluno = (prop) => {
           <ThemeDiv j="space-between">
             <h2>Adicionar Aluno</h2>
             <p
-              onClick={()=>{
-                prop.setAluno()
-                closeModal()
+              onClick={() => {
+                prop.setAluno();
               }}
             >
               X
@@ -91,15 +100,15 @@ const ModalAluno = (prop) => {
           a="center"
           br="0px 0px 10px 10px"
         >
-          <input placeholder="   Nome" {...register("nome_professor")} />
-          {errors.nome_professor?.message}
+          <input placeholder="   Nome" {...register("nome_aluno")} />
+          {errors.nome_aluno?.message}
           <input placeholder="   E-mail" {...register("email")} />
           {errors.email?.message}
           <input placeholder="   Senha" {...register("password")} />
           {errors.password?.message}
           <input placeholder="   Repetir senha" {...register("twoPassword")} />
           {errors.twoPassword?.message}
-          <input placeholder="   Turmas" {...register("gang")} />
+          <input placeholder="   Turma" {...register("gang")} />
           {errors.gang?.message}
           <input placeholder="   Turno" {...register("shift")} />
           {errors.shift?.message}
