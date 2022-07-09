@@ -1,7 +1,7 @@
 import axios from "axios";
-import React, { useContext, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import Footer from "../../../components/Footer";
-import { ModalContext } from "../../../contexts/modal/ContextModal";
+
 import Card from "./Card/index";
 import HeaderInstitucional from "./HeaderIntitucional";
 import ModalAluno from "./Modal/Aluno";
@@ -14,14 +14,14 @@ const Instituicao = () => {
 
   const [vitrine, setVitrine] = useState([]);
 
-  console.log(vitrine)
-
   useEffect(() => {
     axios
-      .get(`https://api-web-school.herokuapp.com/users`,{Authorization:{ }})
+      .get(`https://api-web-school.herokuapp.com/users`, {
+        headers: { Authorization: `Bearer ${localStorage.getItem("Token")}` },
+      })
       .then((res) => {
         console.log(res);
-        setVitrine(res)
+        setVitrine(res.data);
         console.log("deu bom");
       })
       .catch((e) => {
@@ -29,7 +29,10 @@ const Instituicao = () => {
         console.log("deu ruim");
       });
   }, []);
-
+  const [arrayFilter, setArrayFilter] = useState(vitrine);
+  function filterClick(value) {
+    setArrayFilter(vitrine.filter((e) => e.type === value));
+  }
   function openAluno() {
     setAluno(!aluno);
   }
@@ -37,6 +40,7 @@ const Instituicao = () => {
   function openProfessor() {
     setProfessor(!professor);
   }
+  const arr = vitrine.filter((e) => e.type === "professor");
 
   return (
     <>
@@ -59,8 +63,18 @@ const Instituicao = () => {
           </button>
         </ThemeDiv>
         <ThemeNav g="10px" j="center">
-          <button>Professores</button>
-          <button>Alunos</button>
+          <button
+            onClick={(event) => filterClick(event.target.value)}
+            value="professor"
+          >
+            Professores
+          </button>
+          <button
+            onClick={(event) => filterClick(event.target.value)}
+            value="aluno"
+          >
+            Alunos
+          </button>
         </ThemeNav>
         <Container f="column" a="center">
           <ThemeUl
@@ -73,14 +87,22 @@ const Instituicao = () => {
             h="600px"
             br="15px"
           >
-            <Card />
+            {(arrayFilter.length > 0 ? arrayFilter : arr).map((e, index) => (
+              <Card key={index} cadastro={e} />
+            ))}
           </ThemeUl>
         </Container>
       </ThemeMain>
-      <ModalAluno dp={aluno ? "flex" : "none"} setAluno={openAluno} />
+      <ModalAluno
+        dp={aluno ? "flex" : "none"}
+        setAluno={openAluno}
+        setVitrine={setVitrine}
+        arr={arr}
+      />
       <ModalProfessor
         dp={professor ? "flex" : "none"}
         setProfessor={openProfessor}
+        setVitrine={setVitrine}
       />
       <Footer />
     </>

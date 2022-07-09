@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const ThemeBackGround = styled.main`
+export const ThemeBackGround = styled.div`
   display: ${(props) => props.d};
   flex-direction: ${(props) => props.f};
   align-items: ${(props) => props.a};
@@ -31,7 +31,7 @@ export const ThemeBackGround = styled.main`
   left: 0;
 `;
 
-export const ThemeMain = styled.main`
+export const ThemeMain = styled.div`
   display: flex;
   flex-direction: ${(props) => props.f};
   align-items: ${(props) => props.a};
@@ -54,6 +54,11 @@ export const ThemeMain = styled.main`
 
 
   background-color: ${(props) => props.bc};
+
+  @media (min-width: 768px){
+    width:450px;
+
+  }
 `;
 
 export const Container = styled.div`
@@ -99,6 +104,7 @@ export const ThemeDiv = styled.div`
 
   background-color: ${(props) => props.bc};
   color: var(--pink-1);
+  width: 82%;
 `;
 
 export const ThemeForm = styled.form`
@@ -145,6 +151,10 @@ export const ThemeForm = styled.form`
     border:none;
     background-color: var(--pink-1);
   }
+  @media (min-width: 768px){
+    padding:50px 0px 50px 0px;
+
+  }
 `;
 
 export const ThemeNav = styled.div`
@@ -171,8 +181,8 @@ export const ThemeNav = styled.div`
   background-color: ${(props) => props.bc};
   color: var(--pink-1);
 
+
   p{
-    margin-left:95px;
     margin-right:20px;
     font-size:24px;
     color:var(--white);

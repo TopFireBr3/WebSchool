@@ -10,19 +10,18 @@ import {
   ThemeBackGround,
   ThemeForm,
 } from "./style";
-import { ModalContext } from "../../../../../contexts/modal/ContextModal";
-import { useContext } from "react";
+
 import axios from "axios";
 
 const ModalProfessor = (prop) => {
   const formSchema = yup.object().shape({
-    nome_professor: yup.string().required("Campo requerido"),
+    name: yup.string().required("Campo requerido"),
     email: yup.string().required("Campo requerido").email("E-mail inválido"),
     password: yup
       .string()
       .required("Campo requerido")
       .matches(
-        /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[$*&@#])(?:([0-9a-zA-Z$*&@#])(?!\1)){8,}$/,
+        /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[$*&@#])(?:([0-9a-zA-Z$*&@#])(?!\1)){6,}$/,
         "Senha Ivalida"
       ),
     twoPassword: yup
@@ -54,13 +53,29 @@ const ModalProfessor = (prop) => {
       .then((res) => {
         console.log(res);
         console.log("deu bom");
+        axios
+          .get(`https://api-web-school.herokuapp.com/users`, {
+            headers: {
+              Authorization: `Bearer ${localStorage.getItem("Token")}`,
+            },
+          })
+          .then((res) => {
+            console.log(res);
+            prop.setVitrine(res.data);
+            console.log("deu bom");
+            prop.arr = res.data.filter((e) => e.type === "professor");
+          })
+          .catch((e) => {
+            console.log(e);
+            console.log("deu ruim");
+          });
       })
       .catch((e) => {
         console.log(e);
         console.log("deu ruim");
       });
 
-    history.push(`/${data.name}`);
+    // history.push(`/${data.name}`);
   };
 
   return (
@@ -73,7 +88,7 @@ const ModalProfessor = (prop) => {
       j="center"
       a="center"
     >
-      <ThemeMain f="column" w="500px" h="550px" br="10px">
+      <ThemeMain f="column" w="335px" br="10px">
         <ThemeNav
           h="60px"
           a="center"
@@ -94,16 +109,16 @@ const ModalProfessor = (prop) => {
         </ThemeNav>
         <ThemeForm
           onSubmit={handleSubmit(onSubmitFunction)}
-          g="15px"
-          h="50vh"
+          g="10px"
+          p="30px 0px 30px 0px"
           f="column"
           bc="var(--blue-1)"
           j="center"
           a="center"
           br="0px 0px 10px 10px"
         >
-          <input placeholder="   Nome" {...register("nome_professor")} />
-          {errors.nome_professor?.message}
+          <input placeholder="   Nome" {...register("name")} />
+          {errors.name?.message}
           <input placeholder="   E-mail" {...register("email")} />
           {errors.email?.message}
           <input placeholder="   Senha" {...register("password")} />

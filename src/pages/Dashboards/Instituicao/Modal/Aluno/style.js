@@ -99,6 +99,7 @@ export const ThemeDiv = styled.div`
 
   background-color: ${(props) => props.bc};
   color: var(--pink-1);
+  width: 76%;
 `;
 
 export const ThemeForm = styled.form`
@@ -130,6 +131,7 @@ export const ThemeForm = styled.form`
     height:40px;
     border-radius:8px;
     border:none;
+    padding: 0px 0px 0px 10px;
   }
   select{
     width:300px;
@@ -172,7 +174,6 @@ export const ThemeNav = styled.div`
   color: var(--pink-1);
 
   p{
-    margin-left:120px;
     margin-right:20px;
     font-size:24px;
     color:var(--white);
