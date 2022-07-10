@@ -4,7 +4,7 @@ import * as yup from "yup";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 
-import { Link, TextField } from "@mui/material";
+import { Button, Link, TextField } from "@mui/material";
 
 import { useHistory } from "react-router-dom";
 
@@ -71,7 +71,7 @@ export const Register = () => {
       })
       .catch((_) => toast.error("Ops! algo deu errado."));
   }, []);
-  console.log(errors);
+
   return (
     <>
       <StyledMain>
@@ -80,73 +80,48 @@ export const Register = () => {
             <h1>Registrar-se</h1>
 
             <StyledForm onSubmit={handleSubmit(registerSchool)}>
-              <Input
-                placeholder="Nome da escola"
+              <TextField
+                label="Nome da escola"
                 error={!!errors.nome_escola}
+                helperText={errors?.nome_escola?.message}
                 {...register("nome_escola")}
-                style={{
-                  marginTop: !!errors.nome_escola ? "-5px" : "10px",
-                  width: "100%",
-                }}
+                sx={{ width: "100%" }}
               />
-              {errors.nome_escola && (
-                <span className="error">{errors.nome_escola.message}</span>
-              )}
 
-              <Input
-                placeholder="Email institucional"
+              <TextField
+                label="Email institucional"
                 error={!!errors.email}
+                helperText={errors?.email?.message}
                 {...register("email")}
-                style={{
-                  marginTop: !!errors.email ? "-5px" : "10px",
-                  width: "100%",
-                }}
+                sx={{ width: "100%" }}
               />
-              {errors.email && (
-                <span className="error">{errors.email.message}</span>
-              )}
 
-              <Input
-                placeholder="Senha"
+              <TextField
+                label="Senha"
                 type="password"
                 error={!!errors.password}
+                helperText={errors?.password?.message}
                 {...register("password")}
-                style={{
-                  marginTop: !!errors.password ? "-5px" : "10px",
-                  width: "100%",
-                }}
+                sx={{ width: "100%" }}
               />
-              {errors.password && (
-                <span className="error">{errors.password.message}</span>
-              )}
 
-              <Input
-                placeholder="Confirme a senha"
+              <TextField
+                label="Confirme a senha"
                 type="password"
                 error={!!errors.confirmPassword}
+                helperText={errors?.confirmPassword?.message}
                 {...register("confirmPassword")}
-                style={{
-                  marginTop: !!errors.confirmPassword ? "-5px" : "10px",
-                  width: "100%",
-                }}
+                sx={{ width: "100%" }}
               />
-              {errors.confirmPassword && (
-                <span className="error">{errors.confirmPassword.message}</span>
-              )}
 
-              <Input
+              <TextField
                 type="number"
-                placeholder="Código de acesso"
+                label="Código de acesso"
                 error={!!errors.codigo_acesso}
+                helperText={errors?.codigo_acesso?.message}
                 {...register("codigo_acesso")}
-                style={{
-                  marginTop: !!errors.codigo_acesso ? "-5px" : "10px",
-                  width: "100%",
-                }}
+                sx={{ width: "100%" }}
               />
-              {errors.codigo_acesso && (
-                <span className="error">{errors.codigo_acesso.message}</span>
-              )}
 
               <Button
                 variant="contained"

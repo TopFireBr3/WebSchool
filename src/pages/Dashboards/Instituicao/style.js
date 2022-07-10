@@ -129,9 +129,9 @@ export const ThemeUl = styled.div`
   color: ${(props) => props.c};
 
   @media (min-width: 768px){
-    padding:20px 0px 0px 20px;
+    padding:20px 0px 0px 0px;
     width:60%;
-
+    align-items:center;
   }
 
 `;

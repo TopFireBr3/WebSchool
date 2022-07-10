@@ -1,4 +1,16 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
+
+const slideForm = keyframes`
+  0%{
+    transform: translateX(50px);
+    opacity: 0;
+  }
+
+  100%{
+    transform: translateX(0px);
+    opacity: 1;
+  }
+`;
 
 export const MainLogin = styled.main`
   width: 100vw;
@@ -77,6 +89,9 @@ export const FormLogin = styled.form`
   justify-content: center;
   gap: 4vh;
 
+  animation: ${slideForm} 0.5s linear;
+  transition: 0.3s;
+
   .Input {
     width: 80%;
     height: 6vh;
@@ -84,6 +99,7 @@ export const FormLogin = styled.form`
     border-radius: 1vh;
     text-decoration: none;
     border: none;
+    padding-left: 14px;
   }
 
   .showPassword {

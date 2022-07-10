@@ -6,6 +6,8 @@ import Notices from "../pages/Notices";
 import { Register } from "../pages/Register";
 import { RegisterComplement } from "../pages/RegisterComplement";
 
+import Instituicao from "../pages/Dashboards/Instituicao";
+
 export const Routes = () => {
   return (
     <Switch>
@@ -27,6 +29,9 @@ export const Routes = () => {
 
       <Route path="/notices">
         <Notices />
+      </Route>
+      <Route path="/dashboard/instituicao">
+        <Instituicao />
       </Route>
     </Switch>
   );

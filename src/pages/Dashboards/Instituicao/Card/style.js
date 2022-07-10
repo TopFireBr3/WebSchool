@@ -49,6 +49,11 @@ export const ThemeDiv = styled.div`
   background-color: ${(props) => props.bc};
   color: ${(props) => props.c};
 
+  svg{
+    width:20px;
+    height:20px;
+  }
+
 `;
 
 

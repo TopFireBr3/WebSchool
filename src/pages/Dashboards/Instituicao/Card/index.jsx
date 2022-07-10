@@ -1,8 +1,13 @@
+import { Container, ThemeDiv } from "./style";
 
-import { Container, ThemeDiv} from "./style";
+import { BiTrash } from "react-icons/bi";
 
-const Card = () => {
+import { apiPrivate } from "../../../../services/api";
 
+const Card = ({ cadastro }) => {
+  function remove() {
+    apiPrivate.delete(`/users/${cadastro.id}`);
+  }
 
   return (
     <Container
@@ -14,12 +19,29 @@ const Card = () => {
       j="space-between"
       p="0px 0px 0px 20px"
     >
-      adasds-asdasddfvgth
-      <ThemeDiv j="space-between" w="30%" p="0px 20px 0px 0px">
-        <p>dadasdef</p> <p>ooo</p>
-      </ThemeDiv>
+      {cadastro.type === "aluno" && (
+        <>
+          <p>
+            {cadastro.registration} - {cadastro.name}
+          </p>
+          <ThemeDiv j="space-between" w="36%" p="0px 10px 0px 0px">
+            <p>Aluno</p> <BiTrash onClick={remove} />
+          </ThemeDiv>
+        </>
+      )}
+
+      {cadastro.type === "professor" && (
+        <>
+          <p>
+            {cadastro.matter} - {cadastro.name}
+          </p>
+          <ThemeDiv j="space-between" w="36%" p="0px 10px 0px 0px">
+            <p>Professor</p> <BiTrash onClick={remove} />
+          </ThemeDiv>
+        </>
+      )}
     </Container>
-    
-    )}
+  );
+};
 
 export default Card;
