@@ -1,13 +1,43 @@
 import Footer from '../../components/Footer'
 import {Container, Content,TurmasContainer,TurmasHeaderContainer,FooterContainer} from './style'
 import logoImg from '../../assets/img2.png';
-import { useState } from 'react';
-
+import { useEffect, useState } from 'react';
+import axios from 'axios'
+import { type } from '@testing-library/user-event/dist/type';
 
 const DashboardProfessor = () =>{
-
+    const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6IkFsZXhAZWR1Y2FjYW8uY29tIiwiaWF0IjoxNjU3NDc2NDg1LCJleHAiOjE2NTc0ODAwODUsInN1YiI6IjQifQ.x8T-Od_wVoJYfgfd-xtIKO6zLtnB2DKJ90QIEJPJIyI'
     const [activeTurma, setActiveTurma] = useState('');
+    const nomeProf = 'Alex'
+    const [turmas, setTurmas] = useState([]);
+    const [alunos,setAlunos] = useState([]);
 
+
+    useEffect(()=>{
+        axios.get("https://api-web-school.herokuapp.com/users?type=professor",{
+        headers: {
+            'Authorization': 'Bearer ' + token
+          }
+    }).then(res=>{  
+        setTurmas(res.data[0].gang.slice(1,res.data[0].gang.length - 1).split(','))
+
+    }).catch(err=>console.log(err))
+
+    },[])
+    
+
+    const getAlunosTurma = (gang) => {
+
+
+        axios.get('https://api-web-school.herokuapp.com/users?type=aluno',{
+            headers:{
+                'Authorization': 'Bearer ' + token,
+            }
+        }).then(res=>{
+            setAlunos(res.data.filter(aluno=>aluno.gang === gang))
+        }).catch(err=>console.log(err))
+    }
+    
 
 
 
@@ -22,7 +52,7 @@ const DashboardProfessor = () =>{
 
         </header>
             <Content>
-                <h1>{activeTurma ? '' : 'Olá professor X'}</h1>
+                <h1>{activeTurma ? '' : `Olá Professor ${nomeProf}`}</h1>
                 <TurmasContainer>
                     <TurmasHeaderContainer buttonDisplay={!activeTurma}>
                         <h2>{activeTurma || 'Turmas'}</h2>
@@ -31,12 +61,12 @@ const DashboardProfessor = () =>{
                        
 
                     </TurmasHeaderContainer>
-                    <ul>
-                        
-                             <li><button onClick={()=>setActiveTurma('Turma 101')}>{activeTurma? 'Aluno 01' : 'Turma 101'}</button></li>
-                       
-                        <li><button onClick={()=>setActiveTurma('Turma 102')}>{activeTurma? 'Aluno 02' : 'Turma 102'}</button></li>
-                    </ul>
+                    {
+                        activeTurma ? <ul>
+                            {alunos.map(aluno=><li key={aluno.id}>{aluno.name}</li>)}
+                        </ul>: typeof turmas != 'string' ? <ul>{turmas.map(item=><li key={item}><button onClick={()=>{setActiveTurma(item);getAlunosTurma(item)}}>{item}</button></li>)}</ul> : '' 
+                    }
+                    
 
                     <h3>{ activeTurma ? '' : 'Informações gerais'}</h3>
                 </TurmasContainer>
