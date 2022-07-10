@@ -124,6 +124,9 @@ export const FormLogin = styled.form`
 
   .error:nth-child(3) {
     top: 41.5vh;
+    color: var(--error);
+    font-size: 2.3vh;
+    height: 2vh;
   }
 
   button {

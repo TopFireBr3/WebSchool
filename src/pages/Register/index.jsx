@@ -4,7 +4,7 @@ import * as yup from "yup";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 
-import { Button, Input, Link } from "@mui/material";
+import { Link, TextField } from "@mui/material";
 
 import { useHistory } from "react-router-dom";
 
@@ -51,7 +51,7 @@ export const Register = () => {
   function registerSchool(data) {
     const { password, nome_escola, email, codigo_acesso } = data;
     const check = schools?.some(
-      (school) => school.codigo_acesso === data.codigo_acesso
+      (school) => school.codigo_acesso === +data.codigo_acesso
     );
 
     if (check) {
@@ -156,7 +156,9 @@ export const Register = () => {
                 Cadastrar
               </Button>
 
-              <Link to="/">voltar para a página inicial</Link>
+              <Link onClick={() => history.push("/")}>
+                voltar para a página inicial
+              </Link>
             </StyledForm>
           </FormDiv>
         </LeftDiv>

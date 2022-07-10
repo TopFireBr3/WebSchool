@@ -33,7 +33,7 @@ export const FormDiv = styled.div`
 
   h1 {
     font-weight: 400;
-    margin-bottom: 40px;
+    margin-bottom: 20px;
   }
 
   @media (max-width: 768px) {
@@ -56,6 +56,12 @@ export const StyledForm = styled.form`
   box-sizing: border-box;
 
   .buttonRegister {
+    background-color: var(--pink-0);
+    color: var(--white);
+
+    border: none;
+    border-radius: 8px;
+
     width: 100%;
     background-color: var(--pink-0);
     color: var(--body);
@@ -72,10 +78,7 @@ export const StyledForm = styled.form`
   }
 
   input {
-    height: 6vh;
-    padding-left: 15px;
-    background-color: var(--grey-0);
-    border-radius: 1vh;
+    background-color: var(--body);
   }
 
   input[type="number"]::-webkit-outer-spin-button,
@@ -84,15 +87,12 @@ export const StyledForm = styled.form`
     margin: 0;
   }
 
-  .error {
-    position: relative;
-    color: var(--error);
-    font-size: 2.3vh;
-    height: 2vh;
-    bottom: 8px;
+  label {
+    background-color: var(--body);
   }
 
   a {
+    cursor: pointer;
     text-decoration: none;
   }
 
