@@ -1,38 +1,30 @@
-import axios from "axios";
 import React, { useEffect, useState } from "react";
-import Footer from "../../../components/Footer";
+
+import { Container, ThemeDiv, ThemeNav, ThemeMain, ThemeUl } from "./style";
+
+import { apiPrivate } from "../../../services/api";
 
 import Card from "./Card/index";
-import HeaderInstitucional from "./HeaderIntitucional";
 import ModalAluno from "./Modal/Aluno";
 import ModalProfessor from "./Modal/Professor";
-import { Container, ThemeDiv, ThemeNav, ThemeMain, ThemeUl } from "./style";
+import Footer from "../../../components/Footer";
+import HeaderInstitucional from "./HeaderIntitucional";
 
 const Instituicao = () => {
   const [aluno, setAluno] = useState(false);
   const [professor, setProfessor] = useState(false);
-
   const [vitrine, setVitrine] = useState([]);
+  const [type, setType] = useState("professor");
 
   useEffect(() => {
-    axios
-      .get(`https://api-web-school.herokuapp.com/users`, {
-        headers: { Authorization: `Bearer ${localStorage.getItem("Token")}` },
-      })
+    apiPrivate
+      .get(`/users?type=${type}`)
       .then((res) => {
-        console.log(res);
         setVitrine(res.data);
-        console.log("deu bom");
       })
-      .catch((e) => {
-        console.log(e);
-        console.log("deu ruim");
-      });
-  }, []);
-  const [arrayFilter, setArrayFilter] = useState(vitrine);
-  function filterClick(value) {
-    setArrayFilter(vitrine.filter((e) => e.type === value));
-  }
+      .catch((err) => console.error(err));
+  }, [type]);
+
   function openAluno() {
     setAluno(!aluno);
   }
@@ -40,7 +32,6 @@ const Instituicao = () => {
   function openProfessor() {
     setProfessor(!professor);
   }
-  const arr = vitrine.filter((e) => e.type === "professor");
 
   return (
     <>
@@ -62,16 +53,17 @@ const Instituicao = () => {
             Adicionar aluno
           </button>
         </ThemeDiv>
+
         <ThemeNav g="10px" j="center">
           <button
-            onClick={(event) => filterClick(event.target.value)}
-            value="professor"
+            onClick={() => setType("professor")}
+            style={{ background: type === "professor" && "var(--blue-1)" }}
           >
             Professores
           </button>
           <button
-            onClick={(event) => filterClick(event.target.value)}
-            value="aluno"
+            onClick={() => setType("aluno")}
+            style={{ background: type === "aluno" && "var(--blue-1)" }}
           >
             Alunos
           </button>
@@ -87,22 +79,31 @@ const Instituicao = () => {
             h="600px"
             br="15px"
           >
-            {(arrayFilter.length > 0 ? arrayFilter : arr).map((e, index) => (
-              <Card key={index} cadastro={e} />
-            ))}
+            {vitrine.length === 0 ? (
+              <p>Nenhum resultado foi encontrado!</p>
+            ) : (
+              <>
+                {vitrine.map((e, index) => (
+                  <Card key={index} cadastro={e} />
+                ))}
+              </>
+            )}
           </ThemeUl>
         </Container>
       </ThemeMain>
+
       <ModalAluno
         dp={aluno ? "flex" : "none"}
         setAluno={openAluno}
         setVitrine={setVitrine}
-        arr={arr}
+        setType={setType}
       />
+
       <ModalProfessor
         dp={professor ? "flex" : "none"}
         setProfessor={openProfessor}
         setVitrine={setVitrine}
+        setType={setType}
       />
       <Footer />
     </>

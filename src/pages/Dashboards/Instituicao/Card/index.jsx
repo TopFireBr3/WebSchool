@@ -1,23 +1,14 @@
-import axios from "axios";
-import { BiTrash } from "react-icons/bi";
 import { Container, ThemeDiv } from "./style";
 
+import { BiTrash } from "react-icons/bi";
+
+import { apiPrivate } from "../../../../services/api";
+
 const Card = ({ cadastro }) => {
-  console.log(cadastro);
   function remove() {
-    axios
-      .delete(`https://api-web-school.herokuapp.com/users/${cadastro.id}`, {
-        headers: { Authorization: `Bearer ${localStorage.getItem("Token")}` },
-      })
-      .then((res) => {
-        console.log(res);
-        console.log("deu bom");
-      })
-      .catch((e) => {
-        console.log(e);
-        console.log("deu ruim");
-      });
+    apiPrivate.delete(`/users/${cadastro.id}`);
   }
+
   return (
     <Container
       bc="var(--blue-0)"
@@ -28,24 +19,24 @@ const Card = ({ cadastro }) => {
       j="space-between"
       p="0px 0px 0px 20px"
     >
-      {console.log(cadastro.type)}
       {cadastro.type === "aluno" && (
         <>
           <p>
             {cadastro.registration} - {cadastro.name}
           </p>
           <ThemeDiv j="space-between" w="36%" p="0px 10px 0px 0px">
-            <p>Aluno</p> <BiTrash onClick={remove}/>
+            <p>Aluno</p> <BiTrash onClick={remove} />
           </ThemeDiv>
         </>
       )}
+
       {cadastro.type === "professor" && (
         <>
           <p>
             {cadastro.matter} - {cadastro.name}
           </p>
           <ThemeDiv j="space-between" w="36%" p="0px 10px 0px 0px">
-            <p>Professor</p> <BiTrash onClick={remove}/>
+            <p>Professor</p> <BiTrash onClick={remove} />
           </ThemeDiv>
         </>
       )}

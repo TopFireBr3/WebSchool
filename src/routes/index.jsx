@@ -1,12 +1,12 @@
 import { Route, Switch } from "react-router-dom";
-import Instituicao from "../pages/Dashboards/Instituicao";
 
 import Home from "../pages/Home";
 import Login from "../pages/Login";
-
 import Notices from "../pages/Notices";
 import { Register } from "../pages/Register";
 import { RegisterComplement } from "../pages/RegisterComplement";
+
+import Instituicao from "../pages/Dashboards/Instituicao";
 
 export const Routes = () => {
   return (
@@ -29,6 +29,9 @@ export const Routes = () => {
 
       <Route path="/notices">
         <Notices />
+      </Route>
+      <Route path="/dashboard/instituicao">
+        <Instituicao />
       </Route>
     </Switch>
   );

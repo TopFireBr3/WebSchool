@@ -1,7 +1,6 @@
-import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { useForm } from "react-hook-form";
-import { useHistory } from "react-router-dom";
+import { yupResolver } from "@hookform/resolvers/yup";
 
 import {
   ThemeDiv,
@@ -10,19 +9,15 @@ import {
   ThemeBackGround,
   ThemeForm,
 } from "./style";
-import axios from "axios";
+
+import { api, apiPrivate } from "../../../../../services/api";
+import { toast } from "react-toastify";
 
 const ModalAluno = (prop) => {
   const formSchema = yup.object().shape({
     name: yup.string().required("Campo requerido"),
     email: yup.string().required("Campo requerido").email("E-mail inválido"),
-    password: yup
-      .string()
-      .required("Campo requerido")
-      .matches(
-        /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[$*&@#])(?:([0-9a-zA-Z$*&@#])(?!\1)){6,}$/,
-        "Senha Ivalida"
-      ),
+    password: yup.string().required("Campo requerido"),
     twoPassword: yup
       .string()
       .required("Campo requerido")
@@ -31,6 +26,7 @@ const ModalAluno = (prop) => {
     shift: yup.string().required("Campo requerido"),
     registration: yup.string().required("Campo requerido"),
   });
+
   const {
     register,
     handleSubmit,
@@ -38,40 +34,26 @@ const ModalAluno = (prop) => {
   } = useForm({
     resolver: yupResolver(formSchema),
   });
-  // const history = useHistory();
 
   const onSubmitFunction = (data) => {
     delete data.twoPassword;
     data = { ...data, type: "aluno" };
 
-    console.log(data);
-    axios
-      .post(`https://api-web-school.herokuapp.com/register`, data)
-      .then((res) => {
-        console.log(res);
-        console.log("deu bom");
-        axios
-      .get(`https://api-web-school.herokuapp.com/users`, {
-        headers: { Authorization: `Bearer ${localStorage.getItem("Token")}` },
+    api
+      .post("/register", data)
+      .then((_) => {
+        apiPrivate
+          .get("/users?type=aluno")
+          .then((res) => {
+            prop.setVitrine(res.data);
+            prop.setType("aluno");
+          })
+          .catch((err) => console.error(err));
       })
-      .then((res) => {
-        console.log(res);
-        prop.setVitrine(res.data);
-        console.log("deu bom");
-      })
-      .catch((e) => {
-        console.log(e);
-        console.log("deu ruim");
-      });
-      })
-      .catch((e) => {
-        console.log(e);
-        console.log("deu ruim");
-      });
+      .catch((_) => toast.error("Ops, algo deu errado!"));
 
-    // history.push(`/${data.name}`);
+    prop.setAluno();
   };
-
 
   function geradorMatricula() {
     const today = new Date();
@@ -81,19 +63,17 @@ const ModalAluno = (prop) => {
       today.getMinutes(),
       today.getFullYear(),
     ];
-    const matricula =(
+    const matricula =
       JSON.stringify(year) +
-        JSON.stringify(Minutes) +
-        JSON.stringify(Seconds) +
-        JSON.stringify(Milliseconds)
-    );
+      JSON.stringify(Minutes) +
+      JSON.stringify(Seconds) +
+      JSON.stringify(Milliseconds);
 
-    return matricula
+    return matricula;
   }
 
   return (
     <ThemeBackGround
-
       d={prop.dp}
       className="aluno"
       bc="var(--bg-modal)"
@@ -102,7 +82,7 @@ const ModalAluno = (prop) => {
       j="center"
       a="center"
     >
-      <ThemeMain f="column" w="335px"  br="10px">
+      <ThemeMain f="column" w="400px" br="10px">
         <ThemeNav
           h="60px"
           a="center"
@@ -143,7 +123,11 @@ const ModalAluno = (prop) => {
           {errors.gang?.message}
           <input placeholder="Turno" {...register("shift")} />
           {errors.shift?.message}
-          <input placeholder="Matrícula" {...register("registration")} value={geradorMatricula()} />
+          <input
+            placeholder="Matrícula"
+            {...register("registration")}
+            value={geradorMatricula()}
+          />
           {errors.registration?.message}
           <button type="submit">Enviar</button>
         </ThemeForm>

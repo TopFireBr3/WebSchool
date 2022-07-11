@@ -1,24 +1,14 @@
-import { useContext } from "react";
+import { ThemeHeader, ThemeTitle } from "./style";
 
-import { Container, ThemeDiv, ThemeHeader, ThemeTitle } from "./style";
-
-import { FiMenu, FiMail, FiHome } from "react-icons/fi";
-import { MdInsertInvitation } from "react-icons/md";
-import { BiUserCircle } from "react-icons/bi";
-import { VscBook } from "react-icons/vsc";
-
-import { ModalContext } from "../../../../contexts/modal/ContextModal";
-
-import Logo2 from "../../../../assets/img2.png";
 import { useHistory } from "react-router-dom";
 
-const HeaderInstitucional = () => {
-  
+import Logo2 from "../../../../assets/img2.png";
 
+const HeaderInstitucional = () => {
   const history = useHistory();
-  function callBack(){
-    localStorage.clear()
-    history.push("/")
+  function callBack() {
+    localStorage.clear();
+    history.push("/");
   }
 
   return (

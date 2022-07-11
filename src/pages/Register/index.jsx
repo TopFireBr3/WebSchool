@@ -4,7 +4,7 @@ import * as yup from "yup";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 
-import { Link, TextField } from "@mui/material";
+import { Button, Link, TextField } from "@mui/material";
 
 import { useHistory } from "react-router-dom";
 
@@ -123,9 +123,13 @@ export const Register = () => {
                 sx={{ width: "100%" }}
               />
 
-              <button className="buttonRegister" type="submit">
+              <Button
+                variant="contained"
+                className="buttonRegister"
+                type="submit"
+              >
                 Cadastrar
-              </button>
+              </Button>
 
               <Link onClick={() => history.push("/")}>
                 voltar para a página inicial

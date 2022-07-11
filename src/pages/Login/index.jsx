@@ -25,9 +25,7 @@ const Login = () => {
       .string()
       .required("Digite seu e-mail")
       .email("Digite um e-mail válido"),
-    password: yup
-      .string()
-      .required("Digite sua senha")
+    password: yup.string().required("Digite sua senha"),
   });
 
   const onHandleSubmit = (formLogin) => Login(formLogin);
@@ -56,7 +54,7 @@ const Login = () => {
             {...register("email")}
           />
           {errors.email && (
-            <span className="errorMessage1">{errors.email.message}</span>
+            <span className="error">{errors.email.message}</span>
           )}
 
           <Input
@@ -66,7 +64,7 @@ const Login = () => {
             {...register("password")}
           />
           {errors.password && (
-            <span className="errorMessage">{errors.password.message}</span>
+            <span className="error">{errors.password.message}</span>
           )}
           {showPassword === "password" ? (
             <AiOutlineEye

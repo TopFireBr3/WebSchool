@@ -24,7 +24,7 @@ export const ThemeBackGround = styled.div`
   background-color: ${(props) => props.bc};
 
   min-width: 100%;
-  min-height:100vh;
+  min-height: 100vh;
   position: fixed;
   z-index: 9;
   top: 0;
@@ -52,12 +52,10 @@ export const ThemeMain = styled.div`
   margin-bottom: ${(props) => props.mb};
   margin: ${(props) => props.m};
 
-
   background-color: ${(props) => props.bc};
 
-  @media (min-width: 768px){
-    width:450px;
-
+  @media (min-width: 768px) {
+    width: 450px;
   }
 `;
 
@@ -131,29 +129,32 @@ export const ThemeForm = styled.form`
   background-color: ${(props) => props.bc};
   color: var(--pink-1);
 
-  input{
-    width:300px;
-    height:40px;
-    border-radius:8px;
-    border:none;
+  input {
+    width: 300px;
+    height: 40px;
+    border-radius: 8px;
+    border: none;
+    padding-left: 15px;
+    outline: none;
   }
-  select{
-    width:300px;
-    height:40px;
-    border-radius:8px;
-    border:none;
+
+  select {
+    width: 300px;
+    height: 40px;
+    border-radius: 8px;
+    border: none;
   }
-  button{
-    font-size:20px;
-    width:300px;
-    height:50px;
-    border-radius:8px;
-    border:none;
+
+  button {
+    font-size: 20px;
+    width: 300px;
+    height: 50px;
+    border-radius: 8px;
+    border: none;
     background-color: var(--pink-1);
   }
-  @media (min-width: 768px){
-    padding:50px 0px 50px 0px;
-
+  @media (min-width: 768px) {
+    padding: 50px 0px 50px 0px;
   }
 `;
 
@@ -181,13 +182,12 @@ export const ThemeNav = styled.div`
   background-color: ${(props) => props.bc};
   color: var(--pink-1);
 
-
-  p{
-    margin-right:20px;
-    font-size:24px;
-    color:var(--white);
+  p {
+    margin-right: 20px;
+    font-size: 24px;
+    color: var(--white);
   }
-  h2{
-    color:var(--white);
+  h2 {
+    color: var(--white);
   }
 `;
