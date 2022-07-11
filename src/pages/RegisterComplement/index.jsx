@@ -60,7 +60,7 @@ export const RegisterComplement = () => {
           history.push("/login");
         }, 2500);
       })
-      .catch((_) => toast.error("Ops! algo deu errado."));
+      .catch((error) => toast.error(error.response.data));
   }
 
   return (

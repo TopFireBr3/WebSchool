@@ -10,7 +10,7 @@ import {
   ThemeForm,
 } from "./style";
 
-import { api, apiPrivate } from "../../../../../services/api";
+import { api } from "../../../../../services/api";
 import { toast } from "react-toastify";
 
 const ModalAluno = (prop) => {
@@ -42,20 +42,11 @@ const ModalAluno = (prop) => {
     api
       .post("/register", data)
       .then((_) => {
-        apiPrivate
-          .get("/users?type=aluno")
-          .then((res) => {
-            prop.setVitrine(res.data);
-            prop.setType("aluno");
-            toast.success("Usuário adicionado")
-          })
-          .catch((err) => {console.error(err)
-            toast.error("Ops, algo deu errado!")
-          });
+        prop.setType("aluno");
+        toast.success("Usuário adicionado");
+        prop.setAluno();
       })
       .catch((_) => toast.error("Ops, algo deu errado!"));
-
-    prop.setAluno();
   };
 
   function geradorMatricula() {

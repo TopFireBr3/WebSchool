@@ -10,7 +10,7 @@ import {
   ThemeForm,
 } from "./style";
 
-import { api, apiPrivate } from "../../../../../services/api";
+import { api } from "../../../../../services/api";
 import { toast } from "react-toastify";
 
 const ModalProfessor = (prop) => {
@@ -43,20 +43,11 @@ const ModalProfessor = (prop) => {
     api
       .post(`/register`, data)
       .then((_) => {
-        apiPrivate
-          .get("/users?type=professor")
-          .then((res) => {
-            prop.setVitrine(res.data);
-            prop.setType("professor");
-            toast.success("Usuário adicionado")
-          })
-          .catch((err) => {console.error(err)
-            toast.error("Ops, algo deu errado!")
-          });
+        prop.setType("professor");
+        toast.success("Usuário adicionado");
+        prop.setProfessor();
       })
       .catch((_) => toast.error("Ops, algo deu errado"));
-
-    prop.setProfessor();
   };
 
   return (

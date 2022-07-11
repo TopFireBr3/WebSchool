@@ -24,7 +24,7 @@ const Instituicao = () => {
         setVitrine(res.data);
       })
       .catch((err) => console.error(err));
-  }, [type]);
+  }, [type, professor]);
 
   function openAluno() {
     setAluno(!aluno);
@@ -101,7 +101,13 @@ const Instituicao = () => {
             ) : (
               <>
                 {vitrine.map((e, index) => (
-                  <Card key={index} cadastro={e} setVitrine={setVitrine} setType={setType}/>
+                  <Card
+                    key={index}
+                    cadastro={e}
+                    vitrine={vitrine}
+                    setVitrine={setVitrine}
+                    setType={setType}
+                  />
                 ))}
               </>
             )}
@@ -112,7 +118,6 @@ const Instituicao = () => {
       <ModalAluno
         dp={aluno ? "flex" : "none"}
         setAluno={openAluno}
-        setVitrine={setVitrine}
         setType={setType}
       />
 

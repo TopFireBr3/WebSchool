@@ -5,21 +5,15 @@ import { BiTrash } from "react-icons/bi";
 import { apiPrivate } from "../../../../services/api";
 import { toast } from "react-toastify";
 
-const Card = ({ cadastro, setVitrine, setType}) => {
+const Card = ({ cadastro, vitrine, setVitrine, setType }) => {
   function remove() {
-    apiPrivate.delete(`/users/${cadastro.id}`)
-    .then(toast.success("Usuário deletado"))
+    apiPrivate.delete(`/users/${cadastro.id}`).then((_) => {
+      const filter = vitrine.filter((user) => user.id !== cadastro.id);
 
-    apiPrivate
-    .get("/users?type=professor")
-    .then((res) => {
+      setVitrine(filter);
       setType("professor");
-      setVitrine(res.data);
-    })
-    .catch((err) => {console.error(err)
-      toast.error("Ops, algo deu errado!")
+      toast.success("Usuário deletado");
     });
-
   }
 
   return (
