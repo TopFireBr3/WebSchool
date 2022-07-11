@@ -1,4 +1,7 @@
 import { Route, Switch } from "react-router-dom";
+import InfosPai from "../pages/Dashboards/Pai/InfosPai";
+import NotasPai from "../pages/Dashboards/Pai/NotasPai";
+import PagPrincipalPai from "../pages/Dashboards/Pai/PagPrincipalPai";
 
 import Home from "../pages/Home";
 import Login from "../pages/Login";
@@ -27,6 +30,16 @@ export const Routes = () => {
 
       <Route path="/notices">
         <Notices />
+      </Route>
+
+      <Route exact path="/pagPrincipalPai">
+        <PagPrincipalPai />
+      </Route>
+      <Route exact path="/notasPai">
+        <NotasPai />
+      </Route>
+      <Route exact path="/infosPai">
+        <InfosPai />
       </Route>
     </Switch>
   );
