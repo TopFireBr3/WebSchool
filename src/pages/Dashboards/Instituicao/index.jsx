@@ -84,7 +84,7 @@ const Instituicao = () => {
             ) : (
               <>
                 {vitrine.map((e, index) => (
-                  <Card key={index} cadastro={e} />
+                  <Card key={index} cadastro={e} setVitrine={setVitrine} setType={setType}/>
                 ))}
               </>
             )}

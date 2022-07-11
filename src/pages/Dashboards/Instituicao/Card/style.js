@@ -50,6 +50,7 @@ export const ThemeDiv = styled.div`
   color: ${(props) => props.c};
 
   svg{
+    cursor: pointer;
     width:20px;
     height:20px;
   }

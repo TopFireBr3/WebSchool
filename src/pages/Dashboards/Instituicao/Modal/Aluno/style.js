@@ -53,6 +53,12 @@ export const ThemeMain = styled.div`
   margin: ${(props) => props.m};
 
   background-color: ${(props) => props.bc};
+
+  @media (min-width: 768px){
+    width:450px;
+  }
+    
+  
 `;
 
 export const Container = styled.div`

@@ -3,10 +3,23 @@ import { Container, ThemeDiv } from "./style";
 import { BiTrash } from "react-icons/bi";
 
 import { apiPrivate } from "../../../../services/api";
+import { toast } from "react-toastify";
 
-const Card = ({ cadastro }) => {
+const Card = ({ cadastro, setVitrine, setType}) => {
   function remove() {
-    apiPrivate.delete(`/users/${cadastro.id}`);
+    apiPrivate.delete(`/users/${cadastro.id}`)
+    .then(toast.success("Usuário deletado"))
+
+    apiPrivate
+    .get("/users?type=professor")
+    .then((res) => {
+      setType("professor");
+      setVitrine(res.data);
+    })
+    .catch((err) => {console.error(err)
+      toast.error("Ops, algo deu errado!")
+    });
+
   }
 
   return (

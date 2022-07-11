@@ -48,8 +48,11 @@ const ModalProfessor = (prop) => {
           .then((res) => {
             prop.setVitrine(res.data);
             prop.setType("professor");
+            toast.success("Usuário adicionado")
           })
-          .catch((err) => console.error(err));
+          .catch((err) => {console.error(err)
+            toast.error("Ops, algo deu errado!")
+          });
       })
       .catch((_) => toast.error("Ops, algo deu errado"));
 

@@ -47,8 +47,11 @@ const ModalAluno = (prop) => {
           .then((res) => {
             prop.setVitrine(res.data);
             prop.setType("aluno");
+            toast.success("Usuário adicionado")
           })
-          .catch((err) => console.error(err));
+          .catch((err) => {console.error(err)
+            toast.error("Ops, algo deu errado!")
+          });
       })
       .catch((_) => toast.error("Ops, algo deu errado!"));
 
@@ -82,7 +85,7 @@ const ModalAluno = (prop) => {
       j="center"
       a="center"
     >
-      <ThemeMain f="column" w="400px" br="10px">
+      <ThemeMain f="column" w="335px" br="10px">
         <ThemeNav
           h="60px"
           a="center"

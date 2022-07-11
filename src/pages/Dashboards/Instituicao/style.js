@@ -128,6 +128,18 @@ export const ThemeUl = styled.div`
   background-color: ${(props) => props.bc};
   color: ${(props) => props.c};
 
+  justify-content:center;
+  align-items:center;
+  p{
+
+    width:270px;
+    border-radius:10px;
+    background-color: var(--white);
+    padding: 10px;
+    margin-right:20px;
+
+  }
+
   @media (min-width: 768px){
     padding:20px 0px 0px 0px;
     width:60%;
