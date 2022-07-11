@@ -46,7 +46,9 @@ const Header = () => {
 
           <button onClick={() => history.push("/login")}>Login</button>
 
-          <button>Cadastrar escola</button>
+          <button onClick={() => history.push("/register")}>
+            Cadastrar escola
+          </button>
 
           <button
             style={{
@@ -104,6 +106,10 @@ const Header = () => {
             p="20px 0px  20px 20px"
             b="1px solid var(--blue-1)"
             bch="var(--blue-0)"
+            onClick={() => {
+              history.push("/login");
+              openModal();
+            }}
           >
             <BiUserCircle className="icon" /> <h2>Login</h2>
           </ThemeDiv>
@@ -114,6 +120,10 @@ const Header = () => {
             p="20px 0px 20px 20px"
             b="1px solid var(--blue-1)"
             bch="var(--blue-0)"
+            onClick={() => {
+              history.push("/register");
+              openModal();
+            }}
           >
             <VscBook className="icon" /> <h2>Cadastrar escola</h2>
           </ThemeDiv>

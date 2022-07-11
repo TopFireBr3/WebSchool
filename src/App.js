@@ -1,17 +1,15 @@
-import { useContext } from "react";
-
 import GlobalStyle from "./styles/global";
 
+import { useContext } from "react";
 import { ModalContext } from "./contexts/modal/ContextModal";
 
-import { Routes } from "./routes";
-
 import { ToastContainer } from "react-toastify";
+
 import "react-toastify/dist/ReactToastify.css";
+
 import "react-image-gallery/styles/css/image-gallery.css";
-import Instituicao from "./pages/Dashboards/Instituicao";
-import ModalProfessor from "./pages/Dashboards/Instituicao/Modal/Professor";
-import ModalAluno from "./pages/Dashboards/Instituicao/Modal/Aluno";
+
+import { Routes } from "./routes";
 
 function App() {
   const { modal } = useContext(ModalContext);
@@ -19,10 +17,9 @@ function App() {
   return (
     <>
       <GlobalStyle
-        o={modal  ? "hidden" : "auto"}
+        o={modal ? "hidden" : "auto"}
         mh={modal ? "100vh" : "inherit"}
       />
-
 
       <ToastContainer
         position="top-right"
@@ -37,7 +34,6 @@ function App() {
       />
 
       <Routes />
-
     </>
   );
 }

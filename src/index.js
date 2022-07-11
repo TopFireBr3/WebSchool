@@ -5,6 +5,7 @@ import App from "./App";
 import Providers from "./providers/index";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
+
 root.render(
   <React.StrictMode>
     <BrowserRouter>

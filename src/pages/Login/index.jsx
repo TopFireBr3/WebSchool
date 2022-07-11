@@ -28,7 +28,6 @@ const Login = () => {
     password: yup
       .string()
       .required("Digite sua senha")
-      .min(6, "Sua senha deve ter no mínimo 6 caracteres"),
   });
 
   const onHandleSubmit = (formLogin) => Login(formLogin);
