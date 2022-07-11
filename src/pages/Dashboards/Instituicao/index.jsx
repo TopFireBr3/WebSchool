@@ -80,7 +80,7 @@ const Instituicao = () => {
             br="15px"
           >
             {vitrine.length === 0 ? (
-              <p>Nenhum resultado foi encontrado!</p>
+              <span>Nenhum resultado foi encontrado!</span>
             ) : (
               <>
                 {vitrine.map((e, index) => (

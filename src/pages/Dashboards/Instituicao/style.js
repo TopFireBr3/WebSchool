@@ -128,10 +128,9 @@ export const ThemeUl = styled.div`
   background-color: ${(props) => props.bc};
   color: ${(props) => props.c};
 
-  justify-content:center;
-  align-items:center;
-  p{
 
+  span{
+    margin-top:250px;
     width:270px;
     border-radius:10px;
     background-color: var(--white);
