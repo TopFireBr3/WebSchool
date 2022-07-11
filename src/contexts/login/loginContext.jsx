@@ -1,20 +1,27 @@
 import { createContext } from "react";
-import axios from "axios";
+
+import { api } from "../../services/api";
+
+import { useHistory } from "react-router-dom";
+
 import { toast } from "react-toastify";
 
 export const LoginContext = createContext({});
 
 export const LoginProvider = ({ children }) => {
+  const history = useHistory();
+
   async function Login(formLogin) {
     try {
-      const response = await axios.post(
-        "https://api-web-school.herokuapp.com/login",
-        formLogin
-      );
+      const response = await api.post("/login", formLogin);
 
-      localStorage.setItem("Token", response.data.accessToken);
+      localStorage.setItem("@WebSchool:Token", response.data.accessToken);
 
       toast.success("Entrando na aplicação");
+
+      setInterval(() => {
+        history.push("/dashboard/instituicao");
+      }, 2500);
     } catch (_) {
       toast.error("E-mail ou Senha incorretos");
     }
