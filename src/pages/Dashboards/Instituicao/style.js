@@ -28,7 +28,7 @@ export const ThemeMain = styled.main`
     border: none;
     width: auto;
     padding: 10px;
-    font-size:20px;
+    font-size: 20px;
     background-color: var(--blue-0);
     border-radius: 10px;
   }
@@ -39,9 +39,9 @@ export const ThemeMain = styled.main`
     padding: 10px;
     border-radius: 10px;
   }
-  @media (min-width: 768px){
+  @media (min-width: 768px) {
     flex-direction: column;
-    gap:20px;
+    gap: 20px;
     margin: 80px 20px 200px 30px;
   }
 `;
@@ -65,9 +65,9 @@ export const Container = styled.div`
   border-radius: ${(props) => props.br};
   background-color: ${(props) => props.bc};
 
-  @media (min-width: 768px){
+  @media (min-width: 768px) {
     flex-direction: column;
-    align-items:center;
+    align-items: center;
   }
 `;
 
@@ -95,13 +95,12 @@ export const ThemeDiv = styled.div`
   background-color: ${(props) => props.bc};
   color: ${(props) => props.c};
 
-  @media (min-width: 768px){
+  @media (min-width: 768px) {
     flex-direction: row;
     justify-content: flex-end;
-    gap:5px;
+    gap: 5px;
     margin: 0px 10% 0px 0px;
   }
-
 `;
 
 export const ThemeUl = styled.div`
@@ -128,23 +127,19 @@ export const ThemeUl = styled.div`
   background-color: ${(props) => props.bc};
   color: ${(props) => props.c};
 
-
-  span{
-    margin-top:250px;
-    width:270px;
-    border-radius:10px;
+  span {
+    margin: 250px auto 0 auto;
+    width: 270px;
+    border-radius: 10px;
     background-color: var(--white);
     padding: 10px;
-    margin-right:20px;
-
   }
 
-  @media (min-width: 768px){
-    padding:20px 0px 0px 0px;
-    width:60%;
-    align-items:center;
+  @media (min-width: 768px) {
+    padding: 20px 0px 0px 0px;
+    width: 60%;
+    align-items: center;
   }
-
 `;
 
 export const ThemeNav = styled.div`
@@ -171,9 +166,9 @@ export const ThemeNav = styled.div`
   background-color: ${(props) => props.bc};
   color: var(--pink-1);
 
-  @media (min-width: 768px){
-    justify-content:flex-start;
-    gap:10px;
+  @media (min-width: 768px) {
+    justify-content: flex-start;
+    gap: 10px;
     margin: 0px 0px 0px 20%;
   }
 `;
