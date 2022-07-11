@@ -13,7 +13,7 @@ import {
 import { api, apiPrivate } from "../../../../../services/api";
 import { toast } from "react-toastify";
 
-const ModalProfessor = (prop) => {
+const ModalResponsavel = (prop) => {
   const formSchema = yup.object().shape({
     name: yup.string().required("Campo requerido"),
     email: yup.string().required("Campo requerido").email("E-mail inválido"),
@@ -35,33 +35,23 @@ const ModalProfessor = (prop) => {
 
   const onSubmitFunction = (data) => {
     delete data.twoPassword;
-    data = { ...data, type: "professor" };
-    data.gang = data.gang.split(",");
+    data = { ...data, type: "responsavel" };
 
     api
       .post(`/register`, data)
       .then((_) => {
-        apiPrivate
-          .get("/users?type=professor")
-          .then((res) => {
-            prop.setVitrine(res.data);
-            prop.setType("professor");
-            toast.success("Usuário adicionado");
-          })
-          .catch((err) => {
-            console.error(err);
-            toast.error("Ops, algo deu errado!");
-          });
+        prop.setType("responsavel");
+        toast.success("Usuário adicionado");
+        prop.setResponsavel();
       })
       .catch((_) => toast.error("Ops, algo deu errado"));
 
-    prop.setProfessor();
   };
 
   return (
     <ThemeBackGround
       d={prop.dp}
-      className="professor"
+      className="responsavel"
       bc="var(--bg-modal)"
       w="100vw"
       h="100vh"
@@ -77,11 +67,11 @@ const ModalProfessor = (prop) => {
           br="10px 10px 0px 0px"
         >
           <ThemeDiv j="space-between">
-            <h2>Adicionar professor</h2>
+            <h2>Adicionar responsavel</h2>
             <p
               style={{ cursor: "pointer" }}
               onClick={() => {
-                prop.setProfessor();
+                prop.setResponsavel();
               }}
             >
               X
@@ -106,7 +96,10 @@ const ModalProfessor = (prop) => {
           {errors.password?.message}
           <input placeholder="Repetir senha" {...register("twoPassword")} />
           {errors.twoPassword?.message}
-          <input placeholder="Matrícula do filho" {...register("registration_son")} />
+          <input
+            placeholder="Matrícula do filho"
+            {...register("registration_son")}
+          />
           {errors.registration_son?.message}
 
           <button type="submit">Enviar</button>
@@ -116,4 +109,4 @@ const ModalProfessor = (prop) => {
   );
 };
 
-export default ModalProfessor;
+export default ModalResponsavel;
