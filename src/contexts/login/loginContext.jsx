@@ -24,7 +24,6 @@ export const LoginProvider = ({ children }) => {
           "@WebSchool:UserId",
           JSON.stringify(response.data.user.id)
         );
-
         toast.success("Entrando na aplicação");
 
         setInterval(() => {
