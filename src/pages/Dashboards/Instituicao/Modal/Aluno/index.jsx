@@ -1,7 +1,6 @@
-import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { useForm } from "react-hook-form";
-import { useHistory } from "react-router-dom";
+import { yupResolver } from "@hookform/resolvers/yup";
 
 import {
   ThemeDiv,
@@ -10,20 +9,15 @@ import {
   ThemeBackGround,
   ThemeForm,
 } from "./style";
-import { useContext } from "react";
-import { ModalContext } from "../../../../../contexts/modal/ContextModal";
+
+import { api } from "../../../../../services/api";
+import { toast } from "react-toastify";
 
 const ModalAluno = (prop) => {
   const formSchema = yup.object().shape({
-    nome_aluno: yup.string().required("Campo requerido"),
+    name: yup.string().required("Campo requerido"),
     email: yup.string().required("Campo requerido").email("E-mail inválido"),
-    password: yup
-      .string()
-      .required("Campo requerido")
-      .matches(
-        /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[$*&@#])(?:([0-9a-zA-Z$*&@#])(?!\1)){8,}$/,
-        "Senha Ivalida"
-      ),
+    password: yup.string().required("Campo requerido"),
     twoPassword: yup
       .string()
       .required("Campo requerido")
@@ -32,6 +26,7 @@ const ModalAluno = (prop) => {
     shift: yup.string().required("Campo requerido"),
     registration: yup.string().required("Campo requerido"),
   });
+
   const {
     register,
     handleSubmit,
@@ -39,17 +34,37 @@ const ModalAluno = (prop) => {
   } = useForm({
     resolver: yupResolver(formSchema),
   });
-  const history = useHistory();
 
   const onSubmitFunction = (data) => {
     delete data.twoPassword;
-    const obj = { ...data, type: "professor" };
-    console.log(obj);
+    data = { ...data, type: "aluno" };
 
-    history.push(`/${data.name}`);
+    api
+      .post("/register", data)
+      .then((_) => {
+        prop.setType("aluno");
+        toast.success("Usuário adicionado");
+        prop.setAluno();
+      })
+      .catch((_) => toast.error("Ops, algo deu errado!"));
   };
 
-  const { closeModal } = useContext(ModalContext);
+  function geradorMatricula() {
+    const today = new Date();
+    const [Milliseconds, Seconds, Minutes, year] = [
+      today.getMilliseconds(),
+      today.getSeconds(),
+      today.getMinutes(),
+      today.getFullYear(),
+    ];
+    const matricula =
+      JSON.stringify(year) +
+      JSON.stringify(Minutes) +
+      JSON.stringify(Seconds) +
+      JSON.stringify(Milliseconds);
+
+    return matricula;
+  }
 
   return (
     <ThemeBackGround
@@ -61,7 +76,7 @@ const ModalAluno = (prop) => {
       j="center"
       a="center"
     >
-      <ThemeMain f="column" w="500px" h="550px" br="10px">
+      <ThemeMain f="column" w="335px" br="10px">
         <ThemeNav
           h="60px"
           a="center"
@@ -72,9 +87,8 @@ const ModalAluno = (prop) => {
           <ThemeDiv j="space-between">
             <h2>Adicionar Aluno</h2>
             <p
-              onClick={()=>{
-                prop.setAluno()
-                closeModal()
+              onClick={() => {
+                prop.setAluno();
               }}
             >
               X
@@ -84,26 +98,30 @@ const ModalAluno = (prop) => {
         <ThemeForm
           onSubmit={handleSubmit(onSubmitFunction)}
           g="15px"
-          h="50vh"
+          p="30px 0px 30px 0px"
           f="column"
           bc="var(--blue-1)"
           j="center"
           a="center"
           br="0px 0px 10px 10px"
         >
-          <input placeholder="   Nome" {...register("nome_professor")} />
-          {errors.nome_professor?.message}
-          <input placeholder="   E-mail" {...register("email")} />
+          <input placeholder="Nome" {...register("name")} />
+          {errors.name?.message}
+          <input placeholder="E-mail" {...register("email")} />
           {errors.email?.message}
-          <input placeholder="   Senha" {...register("password")} />
+          <input placeholder="Senha" {...register("password")} />
           {errors.password?.message}
-          <input placeholder="   Repetir senha" {...register("twoPassword")} />
+          <input placeholder="Repetir senha" {...register("twoPassword")} />
           {errors.twoPassword?.message}
-          <input placeholder="   Turmas" {...register("gang")} />
+          <input placeholder="Turma" {...register("gang")} />
           {errors.gang?.message}
-          <input placeholder="   Turno" {...register("shift")} />
+          <input placeholder="Turno" {...register("shift")} />
           {errors.shift?.message}
-          <input placeholder="   Matrícula" {...register("registration")} />
+          <input
+            placeholder="Matrícula"
+            {...register("registration")}
+            value={geradorMatricula()}
+          />
           {errors.registration?.message}
           <button type="submit">Enviar</button>
         </ThemeForm>

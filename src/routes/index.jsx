@@ -6,6 +6,8 @@ import Notices from "../pages/Notices";
 import { Register } from "../pages/Register";
 import { RegisterComplement } from "../pages/RegisterComplement";
 
+import Instituicao from "../pages/Dashboards/Instituicao";
+
 export const Routes = () => {
   return (
     <Switch>
@@ -28,21 +30,19 @@ export const Routes = () => {
       <Route path="/notices">
         <Notices />
       </Route>
-
-      <Route path="/dash-instituicao">
+      <Route path="/dashboard/aluno">
         <h1>Hello World</h1>
       </Route>
 
-      <Route path="/dash-aluno">
+      <Route path="/dashboard/professor">
         <h1>Hello World</h1>
       </Route>
 
-      <Route path="/dash-professor">
+      <Route path="/dashboard/responsavel">
         <h1>Hello World</h1>
       </Route>
-
-      <Route path="/dash-responsavel">
-        <h1>Hello World</h1>
+      <Route path="/dashboard/instituicao">
+        <Instituicao />
       </Route>
     </Switch>
   );
