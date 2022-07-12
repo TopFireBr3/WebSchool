@@ -11,20 +11,22 @@ export const LoginContext = createContext({});
 export const LoginProvider = ({ children }) => {
   const history = useHistory();
 
-  async function Login(formLogin) {
-    try {
-      const response = await api.post("/login", formLogin);
+  function Login(formLogin) {
+    api
+      .post("/login", formLogin)
+      .then((response) => {
+        localStorage.setItem(
+          "@WebSchool:Token",
+          JSON.stringify(response.data.accessToken)
+        );
 
-      localStorage.setItem("@WebSchool:Token", response.data.accessToken);
+        toast.success("Entrando na aplicação");
 
-      toast.success("Entrando na aplicação");
-
-      setInterval(() => {
-        history.push("/dashboard/instituicao");
-      }, 2500);
-    } catch (_) {
-      toast.error("E-mail ou Senha incorretos");
-    }
+        setInterval(() => {
+          history.push(`/dashboard/${response.data.user.type}`);
+        }, 2500);
+      })
+      .catch((_) => toast.error("E-mail ou Senha incorretos"));
   }
 
   return (

@@ -9,7 +9,6 @@ const Card = ({ cadastro, vitrine, setVitrine, setType }) => {
   function remove() {
     apiPrivate.delete(`/users/${cadastro.id}`).then((_) => {
       const filter = vitrine.filter((user) => user.id !== cadastro.id);
-
       setVitrine(filter);
       setType("professor");
       toast.success("Usuário deletado");
@@ -44,6 +43,17 @@ const Card = ({ cadastro, vitrine, setVitrine, setType }) => {
           </p>
           <ThemeDiv j="space-between" w="36%" p="0px 10px 0px 0px">
             <p>Professor</p> <BiTrash onClick={remove} />
+          </ThemeDiv>
+        </>
+      )}
+
+      {cadastro.type === "responsavel" && (
+        <>
+          <p>
+            {cadastro.registration_son} - {cadastro.name}
+          </p>
+          <ThemeDiv j="space-between" w="36%" p="0px 10px 0px 0px">
+            <p>Responsável</p> <BiTrash onClick={remove} />
           </ThemeDiv>
         </>
       )}
