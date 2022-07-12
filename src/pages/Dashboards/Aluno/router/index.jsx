@@ -5,22 +5,22 @@ import FeedBack from '../SubPages/FeedBack'
 import InfoGerais from '../SubPages/InformacoesGerais'
 import Notas from '../SubPages/notas'
 
-const Routes = () => {
+const Routess = () => {
   return (
     <Switch>
-      <Route  path="/dashboard/aluno/atividades">
+      <Route exact path="/dashboard/aluno/atividades">
         <Atividades />
       </Route>
 
-      <Route path="/dashboard/aluno/feedBack">
+      <Route exact path="/dashboard/aluno/feedBack">
         <FeedBack />
       </Route>
 
-      <Route  path="/dashboard/aluno/infoGerais">
+      <Route exact path="/dashboard/aluno/infoGerais">
         <InfoGerais />
       </Route>
 
-      <Route path="/dashboard/aluno/notas">
+      <Route exact path="/dashboard/aluno/notas">
         <Notas />
       </Route>
 
@@ -28,4 +28,4 @@ const Routes = () => {
   )
 }
 
-export default Routes
+export default Routess;

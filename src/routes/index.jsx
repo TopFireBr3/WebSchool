@@ -8,6 +8,7 @@ import { RegisterComplement } from "../pages/RegisterComplement";
 
 import Instituicao from "../pages/Dashboards/Instituicao";
 import Aluno from "../pages/Dashboards/Aluno";
+import Routess from "../pages/Dashboards/Aluno/router";
 
 export const Routes = () => {
   return (
@@ -39,7 +40,7 @@ export const Routes = () => {
       <Route exact path="/dashboard/aluno">
         <Aluno />
       </Route>
-
+        <Routess />
     </Switch>
   );
 };
