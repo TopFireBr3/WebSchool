@@ -14,7 +14,7 @@ const NotasPai = () => {
     api
       .get(`/users?registration=${users.registration_son}`, {
         headers: {
-          authorization: `Bearer ${localStorage.getItem("@WebSchool:Token")}`,
+          authorization: `Bearer ${JSON.parse(localStorage.getItem("@WebSchool:Token"))}`,
         },
       })
       .then((res) => res.data)
@@ -25,9 +25,9 @@ const NotasPai = () => {
   useEffect(() => {
     if (id) {
       api
-        .get(`/notas?userId=${id}`, {
+        .get(`/notas?UserId=${id}`, {
           headers: {
-            authorization: `Bearer ${localStorage.getItem("@WebSchool:Token")}`,
+            authorization: `Bearer ${JSON.parse(localStorage.getItem("@WebSchool:Token"))}`,
           },
         })
         .then((res) => res.data)

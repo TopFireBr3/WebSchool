@@ -13,10 +13,11 @@ const PagPrincipalPai = () => {
   const history = useHistory();
 
   useEffect(() => {
+
     api
       .get(`/users/${JSON.parse(localStorage.getItem("@WebSchool:UserId"))}`, {
         headers: {
-          authorization: `Bearer ${localStorage.getItem("@WebSchool:Token")}`,
+          authorization: `Bearer ${JSON.parse(localStorage.getItem("@WebSchool:Token"))}`,
         },
       })
       .then((res) => res.data)
@@ -33,9 +34,9 @@ const PagPrincipalPai = () => {
       <Container mw="800px">
         <h2>Olá {users?.name}</h2>
         <div className="dashboardPai">
-          <button onClick={() => history.push("/notasPai")}>NOTAS</button>
-          <button onClick={() => history.push("/FeedbacksPai")}>FEEDBACKS</button>
-          <button onClick={() => history.push("/infosPai")}>
+          <button onClick={() => history.push("/dashboard/responsavel/notas")}>NOTAS</button>
+          <button onClick={() => history.push("/dashboard/responsavel/feedbacks")}>FEEDBACKS</button>
+          <button onClick={() => history.push("/dashboard/responsavel/infos")}>
             INFORMAÇÕES GERAIS
           </button>
         </div>

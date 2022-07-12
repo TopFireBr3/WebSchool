@@ -4,12 +4,10 @@ import { useHistory } from "react-router-dom";
 
 import Logo2 from "../../../../assets/img2.png";
 
-const Header = ({ rota, texto }) => {
+const Header = ({rota, texto}) => {
   const history = useHistory();
   function callBack() {
-    if (texto === "Sair") {
-      localStorage.clear()
-    }
+    texto === "Sair"&&localStorage.clear() 
     history.push(`${rota}`);
   }
 

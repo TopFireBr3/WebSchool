@@ -13,7 +13,7 @@ const InfosPai = () => {
     api
       .get("/infos", {
         headers: {
-          authorization: `Bearer ${localStorage.getItem("@WebSchool:Token")}`,
+          authorization: `Bearer ${JSON.parse(localStorage.getItem("@WebSchool:Token"))}`,
         },
       })
       .then((res) => res.data)
