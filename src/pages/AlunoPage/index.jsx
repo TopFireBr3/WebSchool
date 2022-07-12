@@ -8,11 +8,12 @@ import axios from 'axios'
 
 const AlunoPage = () =>{
 
-    const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6IlByb2Z0ZXN0ZUBlZHVjYWNhby5jb20iLCJpYXQiOjE2NTc1OTgxMDYsImV4cCI6MTY1NzYwMTcwNiwic3ViIjoiNyJ9.OrxKhzC0e9qC8k8BalhGUgZYNqd0S768gwLjT51cVDo'
+    const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6IlByb2Z0ZXN0ZUBlZHVjYWNhby5jb20iLCJpYXQiOjE2NTc2MjgzOTcsImV4cCI6MTY1NzYzMTk5Nywic3ViIjoiOSJ9.Z-L5Y8zrob4OWVzo200iMrI9RpRK_DFSkB2K-qm__IA'
     const [notas,setNotas] = useState([]);
     const [feedbacks,setFeedbacks] = useState([]);
     const [infos,setInfos] = useState([]);
     const [ativs,setAtivs] = useState([]);
+    const userId = 2;
     const [option,setOption] = useState('Notas');
     const [modalAddNotas,setModalAddNotas] = useState(false);
     const [modalAddAtivs,setModalAddAtivs] = useState(false);
@@ -32,6 +33,7 @@ const AlunoPage = () =>{
                 'Authorization': 'Bearer ' + token,
             }
         }).then(res=>{
+            
             setNotas(res.data)
             setFeedbacks(false);
             setAtivs(false);
@@ -99,8 +101,13 @@ const AlunoPage = () =>{
     }
 
     const onSubmitAddNotaFunction = (data) => {
-       
-        axios.post('https://api-web-school.herokuapp.com/notas',data,{
+        const objNota = {
+            materia:data.materia,
+            nota:data.nota,
+            userId:Number(data.idNota)
+        }
+
+        axios.post('https://api-web-school.herokuapp.com/notas',objNota,{
             headers:{
                 'Authorization': 'Bearer ' + token,
             }
@@ -109,7 +116,15 @@ const AlunoPage = () =>{
     }
 
     const onSubmitAddFeedFunction = (data) => {
-        axios.post('https://api-web-school.herokuapp.com/feedback',data,{
+        console.log(data)
+        const objFeed = {
+            feedback:data.feedback,
+            name:data.name,
+            userId:Number(data.idFeed)
+
+        }
+
+        axios.post('https://api-web-school.herokuapp.com/feedback',objFeed,{
             headers:{
                 'Authorization': 'Bearer ' + token,
             }
@@ -119,7 +134,12 @@ const AlunoPage = () =>{
     }
 
     const onSubmitAddAtivFunction = (data) => {
-        axios.post('https://api-web-school.herokuapp.com/atividades',data,{
+        console.log(data)
+        const objAtiv = {
+            url_atividade: data.url_atividade,
+            userId:userId
+        } 
+        axios.post('https://api-web-school.herokuapp.com/atividades',objAtiv,{
             headers:{
                 'Authorization': 'Bearer ' + token,
             }
@@ -130,7 +150,11 @@ const AlunoPage = () =>{
     }
 
     const onSubmitAddInfoFunction = (data) => {
-        axios.post('https://api-web-school.herokuapp.com/infos',data,{
+        const objInfo = {
+            message:data.message
+        }
+        
+        axios.post('https://api-web-school.herokuapp.com/infos',objInfo,{
             headers:{
                 'Authorization': 'Bearer ' + token,
             }
@@ -282,7 +306,7 @@ const AlunoPage = () =>{
                 <form  onSubmit={handleSubmit(onSubmitAddNotaFunction)}>
                     <input type='text' placeholder='materia' {...register('materia')}></input>
                     <input type='text' placeholder='nota'{...register('nota')}></input>
-                    <input type='text' placeholder='userId'{...register('userId')}></input>
+                    <input type='text' placeholder='userId'{...register('idNota')}></input>
                     <button type='submit'>adicionar nota</button>
                 </form>
             </div>
@@ -295,7 +319,8 @@ const AlunoPage = () =>{
                 <p>Feed</p>
                 <form onSubmit={handleSubmit(onSubmitAddFeedFunction)}>
                     <input type='text' placeholder='feedback' {...register('feedback')}></input>
-                    <input type='text' placeholder='userId'{...register('userId')}></input>
+                    <input type='text' placeholder='nome' {...register('name')}></input>
+                    <input type='text' placeholder='userId'{...register('idFeed')}></input>
                     <button type='submit'>adicionar feedback</button>
                 </form>
             </div>
@@ -308,7 +333,7 @@ const AlunoPage = () =>{
                 <p>Atividades</p>
                 <form onSubmit={handleSubmit(onSubmitAddAtivFunction)}>
                     <input placeholder='url atividade' {...register('url_atividade')}></input>
-                    <input placeholder='userId' {...register('userId')}></input>
+                    <input placeholder='userId' {...register('idAtiv')}></input>
                     <button type='submit'>adicionar atividade</button>
                 </form>
             </div>

@@ -7,7 +7,7 @@ import {Link} from 'react-router-dom'
 import { type } from '@testing-library/user-event/dist/type';
 
 const DashboardProfessor = () =>{
-    const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6IkFsZXhAZWR1Y2FjYW8uY29tIiwiaWF0IjoxNjU3NDc2NDg1LCJleHAiOjE2NTc0ODAwODUsInN1YiI6IjQifQ.x8T-Od_wVoJYfgfd-xtIKO6zLtnB2DKJ90QIEJPJIyI'
+    const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6IlByb2Z0ZXN0ZUBlZHVjYWNhby5jb20iLCJpYXQiOjE2NTc2MjgzOTcsImV4cCI6MTY1NzYzMTk5Nywic3ViIjoiOSJ9.Z-L5Y8zrob4OWVzo200iMrI9RpRK_DFSkB2K-qm__IA'
     const [activeTurma, setActiveTurma] = useState('');
     const nomeProf = 'Teste'
     const [turmas, setTurmas] = useState([]);
@@ -21,7 +21,7 @@ const DashboardProfessor = () =>{
           }
     }).then(res=>{  
        
-        setTurmas(res.data[0].gang.slice(1,res.data[0].gang.length - 1).split(','))
+        setTurmas(res.data[1].gang.slice(1,res.data[1].gang.length - 1).split(','))
 
     }).catch(err=>console.log(err))
 
