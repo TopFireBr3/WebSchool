@@ -17,16 +17,21 @@ const Home = () => {
           <ThemeDiv f="column" a="center" w="100%" g="30px" j="center">
             <h2>Quem somos ?</h2>
             <p>
-              It is a long established fact that a reader will be distracted by
-              the readable content of a page when looking at its layout. The
-              point of using Lorem Ipsum is that it has a more-or-less normal
-              distribution of letters, as opposed to using 'Content here,
-              content here', making it look like readable English. Many desktop
-              publishing packages and web page editors now use Lorem Ipsum as
-              their default model text, and a search for 'lorem ipsum' will
-              uncover many web sites still in their infancy. Various versions
-              have evolved over the years, sometimes by accident, sometimes on
-              purpose (injected humour and the like).
+            Somos a busca da informação e educação comum à todos e
+            buscamos a reintegração e a participação ativa da sociedade
+            na realidade escolástica que os contornam, trazendo à essa
+            sociedade o senso de construção e percepção, enquanto às 
+            diversas realidades possíveis, alinhando o desenvolvimento 
+            integral das nossas crianças enquanto seres conscientes 
+            das diversas intersecções culturais que os rodeiam, assim como
+            maior proteção, engajamento e possibilidades.
+            Trazemos também o ensino/aprendizagem numa nova abordagem,
+            sendo possível aos professores disponibilizar tarefas mais interativas,
+            sinestésicas e mais intuitivas, garantindo o aprendizado de forma mais 
+            lúdica e relativo à realidade do aluno. Garantindo assim maior 
+            desenvolvimento não só aos alunos, mas à toda sociedade que os
+            rodeiam.
+
             </p>
           </ThemeDiv>
           <img src={imgHome1} alt="Menina escrevendo no quadro" />
@@ -42,16 +47,16 @@ const Home = () => {
           >
             <h2>Oque oferecemos ?</h2>
             <p>
-              It is a long established fact that a reader will be distracted by
-              the readable content of a page when looking at its layout. The
-              point of using Lorem Ipsum is that it has a more-or-less normal
-              distribution of letters, as opposed to using 'Content here,
-              content here', making it look like readable English. Many desktop
-              publishing packages and web page editors now use Lorem Ipsum as
-              their default model text, and a search for 'lorem ipsum' will
-              uncover many web sites still in their infancy. Various versions
-              have evolved over the years, sometimes by accident, sometimes on
-              purpose (injected humour and the like).
+            Fornecemos um programa de reintegração social, que busca
+            trazer à realidade escolástica das crianças, não só os responsáveis, 
+            como também a sociedade que os contorna, trazendo 
+            consigo maior desenvolvimento e possibilidade aos alunos, maior 
+            engajamento para com a vida da escola (e as ações por ela promovida), 
+            como maior controle, transparência, direcionamento e um gerenciamento
+            por parte dos responsáveis aos alunos, dado a facilidade de acesso à informação, 
+            podendo se tomar ações e medidas mais rápidas para auxiliar de fato o 
+            desenvolvimento cognitivo e intelectual das crianças.
+
             </p>
           </ThemeDiv>
         </ThemeTextDiv>

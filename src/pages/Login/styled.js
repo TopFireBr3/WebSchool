@@ -79,7 +79,6 @@ export const FormLogin = styled.form`
 
   .Input {
     width: 80%;
-    height: 6vh;
     background-color: var(--grey-0);
     border-radius: 1vh;
     text-decoration: none;
@@ -90,7 +89,7 @@ export const FormLogin = styled.form`
     position: relative;
     height: 10vh;
     right: -8.5vw;
-    top: -12vh;
+    top: -13vh;
   }
 
   @media (max-width: 500px) {
@@ -113,7 +112,7 @@ export const FormLogin = styled.form`
 
   .errorMessage {
     position: absolute;
-    top: 51.5vh;
+    top: 54vh;
     color: red;
     font-size: 2.3vh;
     height: 2vh;

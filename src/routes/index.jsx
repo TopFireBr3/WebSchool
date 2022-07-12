@@ -28,6 +28,22 @@ export const Routes = () => {
       <Route path="/notices">
         <Notices />
       </Route>
+
+      <Route path="/dash-instituicao">
+        <h1>Hello World</h1>
+      </Route>
+
+      <Route path="/dash-aluno">
+        <h1>Hello World</h1>
+      </Route>
+
+      <Route path="/dash-professor">
+        <h1>Hello World</h1>
+      </Route>
+
+      <Route path="/dash-responsavel">
+        <h1>Hello World</h1>
+      </Route>
     </Switch>
   );
 };

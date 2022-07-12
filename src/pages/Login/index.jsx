@@ -1,7 +1,7 @@
 import { useState, useContext } from "react";
 import { useHistory } from "react-router-dom";
 
-import { Input, Button, Link } from "@mui/material";
+import { Input, Button, Link, TextField } from "@mui/material";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import learning from "../../assets/Learning-bro.svg";
 
@@ -50,7 +50,8 @@ const Login = () => {
         <FormLogin onSubmit={handleSubmit(onHandleSubmit)} className="form">
           <h2>Login</h2>
 
-          <Input
+          <TextField
+            label="E-mail"
             className="Input"
             placeholder="Digite seu e-mail"
             {...register("email")}
@@ -59,10 +60,11 @@ const Login = () => {
             <span className="errorMessage1">{errors.email.message}</span>
           )}
 
-          <Input
+          <TextField
+            label="Senha"
             className="Input"
             type={showPassword}
-            placeholder="Senha"
+            placeholder="Digite sua senha"
             {...register("password")}
           />
           {errors.password && (

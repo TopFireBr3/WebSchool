@@ -1,26 +1,26 @@
 import { createContext } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
+import { useHistory } from "react-router-dom";
 
 export const LoginContext = createContext({});
 
 export const LoginProvider = ({ children }) => {
-  async function Login(formLogin) {
-    try {
-      const response = await axios.post(
-        "https://api-web-school.herokuapp.com/login",
-        formLogin
-      );
 
-      localStorage.setItem("Token", response.data.accessToken);
+    const history = useHistory()
 
-      toast.success("Entrando na aplicação");
-    } catch (_) {
-      toast.error("E-mail ou Senha incorretos");
+    function Login(formLogin) {
+        axios.post(
+            "https://api-web-school.herokuapp.com/login",
+            formLogin
+        )
+        .then((response) => {
+            localStorage.setItem("Token", response.data.accessToken);
+            toast.success("Entrando na aplicação");
+            setTimeout(() => history.push(`/dash-${response.data.user.type}`) , 3000);
+        })   
+        .catch((err)=>  toast.error(err.response.data))
     }
-  }
 
-  return (
-    <LoginContext.Provider value={{ Login }}>{children}</LoginContext.Provider>
-  );
-};
+    return (<LoginContext.Provider value={{ Login }}>{children}</LoginContext.Provider>);
+}
