@@ -1,4 +1,8 @@
 import { Route, Switch } from "react-router-dom";
+import InfosPai from "../pages/Dashboards/Pai/InfosPai";
+import NotasPai from "../pages/Dashboards/Pai/NotasPai";
+import PagPrincipalPai from "../pages/Dashboards/Pai/PagPrincipalPai";
+import FeedbacksPai from "../pages/Dashboards/Pai/FeedbacksPai";
 
 import Home from "../pages/Home";
 import Login from "../pages/Login";
@@ -9,6 +13,10 @@ import { RegisterComplement } from "../pages/RegisterComplement";
 import Instituicao from "../pages/Dashboards/Instituicao";
 import Aluno from "../pages/Dashboards/Aluno";
 import Routess from "../pages/Dashboards/Aluno/router";
+import Atividades from "../pages/Dashboards/Aluno/SubPages/Atividades";
+import FeedBack from "../pages/Dashboards/Aluno/SubPages/FeedBack";
+import InfoGerais from "../pages/Dashboards/Aluno/SubPages/InformacoesGerais";
+import Notas from "../pages/Dashboards/Aluno/SubPages/notas";
 
 export const Routes = () => {
   return (
@@ -33,6 +41,22 @@ export const Routes = () => {
         <Notices />
       </Route>
 
+      <Route exact path="/pagPrincipalPai">
+        <PagPrincipalPai />
+      </Route>
+      
+      <Route exact path="/notasPai">
+        <NotasPai />
+      </Route>
+
+      <Route exact path="/infosPai">
+        <InfosPai />
+      </Route>
+
+      <Route exact path="/FeedbacksPai">
+        <FeedbacksPai />
+      </Route>
+
       <Route path="/dashboard/instituicao">
         <Instituicao />
       </Route>
@@ -40,7 +64,22 @@ export const Routes = () => {
       <Route exact path="/dashboard/aluno">
         <Aluno />
       </Route>
-        <Routess />
+
+      <Route exact path="/dashboard/aluno/atividades">
+        <Atividades />
+      </Route>
+
+      <Route exact path="/dashboard/aluno/feedBack">
+        <FeedBack />
+      </Route>
+
+      <Route exact path="/dashboard/aluno/infoGerais">
+        <InfoGerais />
+      </Route>
+
+      <Route exact path="/dashboard/aluno/notas">
+        <Notas />
+      </Route>
     </Switch>
   );
 };

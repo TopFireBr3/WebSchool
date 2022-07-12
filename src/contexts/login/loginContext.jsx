@@ -16,6 +16,7 @@ export const LoginProvider = ({ children }) => {
       const response = await api.post("/login", formLogin);
 
       localStorage.setItem("@WebSchool:Token", response.data.accessToken);
+      localStorage.setItem("UserId", (response.data.id));
 
       toast.success("Entrando na aplicação");
 
