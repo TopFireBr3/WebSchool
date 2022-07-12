@@ -7,6 +7,11 @@ import { Register } from "../pages/Register";
 import { RegisterComplement } from "../pages/RegisterComplement";
 
 import Instituicao from "../pages/Dashboards/Instituicao";
+import Aluno from "../pages/Dashboards/Aluno";
+import InfoGerais from "../pages/Dashboards/Aluno/InformacoesGerais";
+import FeedBack from "../pages/Dashboards/Aluno/FeedBack";
+import Atividades from "../pages/Dashboards/Aluno/Atividades";
+import Notas from "../pages/Dashboards/Aluno/notas";
 
 export const Routes = () => {
   return (
@@ -30,9 +35,31 @@ export const Routes = () => {
       <Route path="/notices">
         <Notices />
       </Route>
+
       <Route path="/dashboard/instituicao">
         <Instituicao />
       </Route>
+
+      <Route exact path="/dashboard/aluno">
+        <Aluno />
+      </Route>
+
+      <Route exact path="/dashboard/aluno/atividades">
+        <Atividades />
+      </Route>
+
+      <Route exact path="/dashboard/aluno/feedBack">
+        <FeedBack />
+      </Route>
+
+      <Route exact path="/dashboard/aluno/infoGerais">
+        <InfoGerais />
+      </Route>
+
+      <Route exact path="/dashboard/aluno/notas">
+        <Notas />
+      </Route>
+
     </Switch>
   );
 };
