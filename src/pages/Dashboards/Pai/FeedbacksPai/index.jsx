@@ -16,7 +16,9 @@ const FeedbacksPai = () => {
     api
       .get(`/users?registration=${users.registration_son}`, {
         headers: {
-          authorization: `Bearer ${JSON.parse(localStorage.getItem("@WebSchool:Token"))}`,
+          authorization: `Bearer ${JSON.parse(
+            localStorage.getItem("@WebSchool:Token")
+          )}`,
         },
       })
       .then((res) => res.data)
@@ -29,7 +31,9 @@ const FeedbacksPai = () => {
       api
         .get(`/feedback?userId=${id}`, {
           headers: {
-            authorization: `Bearer ${JSON.parse(localStorage.getItem("@WebSchool:Token"))}`,
+            authorization: `Bearer ${JSON.parse(
+              localStorage.getItem("@WebSchool:Token")
+            )}`,
           },
         })
         .then((res) => res.data)
@@ -46,10 +50,9 @@ const FeedbacksPai = () => {
         setFeedbacks([...feedbacks, res.data]);
       });
     } else {
-      toast.error("Digite um texto")
+      toast.error("Digite um texto");
     }
   }
-
 
   return (
     <>

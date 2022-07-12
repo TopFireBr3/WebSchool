@@ -1,4 +1,4 @@
-import { Route, Switch } from "react-router-dom";
+import {  Route, Switch } from "react-router-dom";
 
 import InfosPai from "../pages/Dashboards/Pai/InfosPai";
 import NotasPai from "../pages/Dashboards/Pai/NotasPai";
@@ -75,7 +75,7 @@ export const Routes = () => {
       <Route exact path="/dashboard/aluno/notas">
         <Notas />
       </Route>
-      
+
       <Route exact path="/notices" component={Notices} />
 
       <Route
