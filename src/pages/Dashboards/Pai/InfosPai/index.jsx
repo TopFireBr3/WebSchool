@@ -2,7 +2,7 @@ import { useEffect, useContext, useState } from "react";
 import Footer from "../../../../components/Footer";
 import { DashboardPaiContext } from "../../../../contexts/dashboardPai/dashboardPai";
 import { api } from "../../../../services/api";
-import HeaderInstitucional from "../../Instituicao/HeaderIntitucional";
+import Header from "../Header";
 import { Container } from "../styles";
 
 const InfosPai = () => {
@@ -22,8 +22,7 @@ const InfosPai = () => {
 
   return (
     <>
-      {/* Mudar esse header para voltar */}
-      <HeaderInstitucional />
+      <Header rota="/pagPrincipalPai" texto="Voltar"/>
       <Container mw="1000px">
         <h2>Olá {users?.name}</h2>
         <div className="infosPai">

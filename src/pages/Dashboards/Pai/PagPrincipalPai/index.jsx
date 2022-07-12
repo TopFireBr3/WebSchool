@@ -3,7 +3,7 @@ import { useHistory } from "react-router-dom";
 import Footer from "../../../../components/Footer";
 import { DashboardPaiContext } from "../../../../contexts/dashboardPai/dashboardPai";
 import { api } from "../../../../services/api";
-import HeaderInstitucional from "../../Instituicao/HeaderIntitucional";
+import Header from "../Header";
 import { Container } from "../styles";
 
 const PagPrincipalPai = () => {
@@ -28,8 +28,7 @@ const PagPrincipalPai = () => {
 
   return (
     <>
-      {/* Mudar esse header para voltar */}
-      <HeaderInstitucional />
+      <Header rota="/" texto="Sair"/>
 
       <Container mw="800px">
         <h2>Olá {users?.name}</h2>
