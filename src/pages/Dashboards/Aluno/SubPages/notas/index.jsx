@@ -13,7 +13,7 @@ const Notas = () => {
   console.log(user.id)
   useEffect(() => {
     api
-    .get(`/notas?userId=${JSON.parse(localStorage.getItem("UserId"))}`, {
+    .get(`/notas?userId=${JSON.parse(localStorage.getItem("@WebSchool:UserId"))}`, {
       headers: {
         authorization: `Bearer ${JSON.parse(localStorage.getItem("@WebSchool:Token"))}`,
       },
