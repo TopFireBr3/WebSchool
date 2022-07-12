@@ -3,11 +3,12 @@ import InfosPai from "../pages/Dashboards/Pai/InfosPai";
 import NotasPai from "../pages/Dashboards/Pai/NotasPai";
 import PagPrincipalPai from "../pages/Dashboards/Pai/PagPrincipalPai";
 import FeedbacksPai from "../pages/Dashboards/Pai/FeedbacksPai";
-import { Switch } from "react-router-dom";
+import { Switch} from "react-router-dom";
 import Route from "./routes";
 
 import Home from "../pages/Home";
-import Login from "../pages/Login";
+import Login from "../pages/Login"
+import DashboardProfessor from "../pages/DashboardProfessor";
 import Notices from "../pages/Notices";
 import { Register } from "../pages/Register";
 import { RegisterComplement } from "../pages/RegisterComplement";
@@ -19,8 +20,11 @@ import Atividades from "../pages/Dashboards/Aluno/SubPages/Atividades";
 import FeedBackAluno from "../pages/Dashboards/Aluno/SubPages/FeedBack";
 import InfoGerais from "../pages/Dashboards/Aluno/SubPages/InformacoesGerais";
 import Notas from "../pages/Dashboards/Aluno/SubPages/notas";
+import AlunoPage from '../pages/AlunoPage'
 
 export const Routes = () => {
+
+
   return (
     <Switch>
       <Route exact path="/" component={Home} />
@@ -75,6 +79,15 @@ export const Routes = () => {
         user="instituicao"
         component={Instituicao}
       />
+
+      <Route path='/dashboard/professor'>
+        <DashboardProfessor/>
+        </Route>
+         <Route path='/aluno'>
+            <AlunoPage/>
+         </Route>
+       
+   
     </Switch>
   );
 };
