@@ -15,42 +15,42 @@ import Instituicao from "../pages/Dashboards/Instituicao";
 export const Routes = () => {
   return (
     <Switch>
-      <Route exact path="/">
-        <Home />
-      </Route>
+      <Route exact path="/" component={Home} />
 
-      <Route path="/login">
-        <Login />
-      </Route>
+      <Route path="/login" component={Login} />
 
-      <Route path="/register">
-        <Register />
-      </Route>
+      <Route path="/register" component={Register} />
 
-      <Route exact path="/registerComplement">
-        <RegisterComplement />
-      </Route>
+      <Route path="/registerComplement" component={RegisterComplement} />
 
       <Route path="/notices">
         <Notices />
       </Route>
 
-      <Route exact path="/pagPrincipalPai">
+      <Route exact path="/dashboard/responsavel">
         <PagPrincipalPai />
       </Route>
-      <Route exact path="/notasPai">
+      <Route exact path="/dashboard/responsavel/notas">
         <NotasPai />
       </Route>
-      <Route exact path="/infosPai">
+      <Route exact path="/dashboard/responsavel/infos">
         <InfosPai />
       </Route>
-      <Route exact path="/FeedbacksPai">
+      <Route exact path="/dashboard/responsavel/feedbacks">
         <FeedbacksPai />
       </Route>
 
       <Route path="/dashboard/instituicao">
         <Instituicao />
       </Route>
+      <Route path="/notices" component={Notices} />
+
+      <Route
+        path="/dashboard/instituicao"
+        isPrivate
+        user="instituicao"
+        component={Instituicao}
+      />
     </Switch>
   );
 };

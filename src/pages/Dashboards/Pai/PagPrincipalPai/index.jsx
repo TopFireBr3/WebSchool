@@ -14,7 +14,7 @@ const PagPrincipalPai = () => {
 
   useEffect(() => {
     api
-      .get("/users/5", {
+      .get(`/users/${JSON.parse(localStorage.getItem("@WebSchool:UserId"))}`, {
         headers: {
           authorization: `Bearer ${localStorage.getItem("@WebSchool:Token")}`,
         },

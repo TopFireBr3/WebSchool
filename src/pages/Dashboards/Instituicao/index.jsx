@@ -9,10 +9,12 @@ import ModalAluno from "./Modal/Aluno";
 import ModalProfessor from "./Modal/Professor";
 import Footer from "../../../components/Footer";
 import HeaderInstitucional from "./HeaderIntitucional";
+import ModalResponsavel from "./Modal/Responsavel";
 
 const Instituicao = () => {
   const [aluno, setAluno] = useState(false);
   const [professor, setProfessor] = useState(false);
+  const [responsavel, setResponsavel] = useState(false);
   const [vitrine, setVitrine] = useState([]);
   const [type, setType] = useState("professor");
 
@@ -31,6 +33,9 @@ const Instituicao = () => {
 
   function openProfessor() {
     setProfessor(!professor);
+  }
+  function openResponsavel() {
+    setResponsavel(!responsavel);
   }
 
   return (
@@ -52,6 +57,13 @@ const Instituicao = () => {
           >
             Adicionar aluno
           </button>
+          <button
+            onClick={() => {
+              openResponsavel();
+            }}
+          >
+            Adicionar responsável
+          </button>
         </ThemeDiv>
 
         <ThemeNav g="10px" j="center">
@@ -66,6 +78,12 @@ const Instituicao = () => {
             style={{ background: type === "aluno" && "var(--blue-1)" }}
           >
             Alunos
+          </button>
+          <button
+            onClick={() => setType("responsavel")}
+            style={{ background: type === "responsavel" && "var(--blue-1)" }}
+          >
+            Responsável
           </button>
         </ThemeNav>
         <Container f="column" a="center">
@@ -85,7 +103,7 @@ const Instituicao = () => {
               <>
                 {vitrine.map((e, index) => (
                   <Card
-                    key={index}
+                    key={index * 3.14}
                     cadastro={e}
                     vitrine={vitrine}
                     setVitrine={setVitrine}
@@ -110,6 +128,14 @@ const Instituicao = () => {
         setVitrine={setVitrine}
         setType={setType}
       />
+
+      <ModalResponsavel
+        dp={responsavel ? "flex" : "none"}
+        setResponsavel={openResponsavel}
+        setVitrine={setVitrine}
+        setType={setType}
+      />
+
       <Footer />
     </>
   );
