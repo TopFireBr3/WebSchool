@@ -17,7 +17,7 @@ const Instituicao = () => {
   const [responsavel, setResponsavel] = useState(false);
   const [vitrine, setVitrine] = useState([]);
   const [type, setType] = useState("professor");
-  console.log(type)
+
   useEffect(() => {
     apiPrivate
       .get(`/users?type=${type}`)
@@ -103,7 +103,7 @@ const Instituicao = () => {
               <>
                 {vitrine.map((e, index) => (
                   <Card
-                    key={index*3.14}
+                    key={index * 3.14}
                     cadastro={e}
                     vitrine={vitrine}
                     setVitrine={setVitrine}

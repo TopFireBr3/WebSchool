@@ -1,4 +1,5 @@
-import { Route, Switch } from "react-router-dom";
+import { Switch } from "react-router-dom";
+import Route from "./routes";
 
 import Home from "../pages/Home";
 import Login from "../pages/Login";
@@ -11,28 +12,22 @@ import Instituicao from "../pages/Dashboards/Instituicao";
 export const Routes = () => {
   return (
     <Switch>
-      <Route exact path="/">
-        <Home />
-      </Route>
+      <Route exact path="/" component={Home} />
 
-      <Route path="/login">
-        <Login />
-      </Route>
+      <Route path="/login" component={Login} />
 
-      <Route path="/register">
-        <Register />
-      </Route>
+      <Route path="/register" component={Register} />
 
-      <Route exact path="/registerComplement">
-        <RegisterComplement />
-      </Route>
+      <Route path="/registerComplement" component={RegisterComplement} />
 
-      <Route path="/notices">
-        <Notices />
-      </Route>
-      <Route path="/dashboard/instituicao">
-        <Instituicao />
-      </Route>
+      <Route path="/notices" component={Notices} />
+
+      <Route
+        path="/dashboard/instituicao"
+        isPrivate
+        user="instituicao"
+        component={Instituicao}
+      />
     </Switch>
   );
 };
