@@ -1,13 +1,15 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
 import Footer from "../../../components/Footer";
-import Header from "./components/Header";
+import Header from "./Header";
+import Routes from "./router";
 import { ThemeMain, ThemeDiv, Container } from "./style.js";
 
 const Aluno = () => {
   const history = useHistory();
   return (
     <>
+    <Routes/>
       <Header rota={"/"} texto={"Sair"} />
       <ThemeMain
         f="column"

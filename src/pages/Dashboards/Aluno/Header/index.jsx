@@ -2,7 +2,7 @@ import { ThemeHeader, ThemeTitle } from "./style";
 
 import { useHistory } from "react-router-dom";
 
-import Logo2 from "../../../../../assets/img2.png";
+import Logo2 from "../../../../assets/img2.png";
 
 const Header = ({rota, texto}) => {
   const history = useHistory();
