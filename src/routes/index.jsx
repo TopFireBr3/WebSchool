@@ -1,8 +1,10 @@
-import { Route, Switch } from "react-router-dom";
+import { Route as RouterDom } from "react-router-dom";
 import InfosPai from "../pages/Dashboards/Pai/InfosPai";
 import NotasPai from "../pages/Dashboards/Pai/NotasPai";
 import PagPrincipalPai from "../pages/Dashboards/Pai/PagPrincipalPai";
 import FeedbacksPai from "../pages/Dashboards/Pai/FeedbacksPai";
+import { Switch } from "react-router-dom";
+import Route from "./routes";
 
 import Home from "../pages/Home";
 import Login from "../pages/Login";
@@ -12,74 +14,67 @@ import { RegisterComplement } from "../pages/RegisterComplement";
 
 import Instituicao from "../pages/Dashboards/Instituicao";
 import Aluno from "../pages/Dashboards/Aluno";
-import Routess from "../pages/Dashboards/Aluno/router";
+
 import Atividades from "../pages/Dashboards/Aluno/SubPages/Atividades";
-import FeedBack from "../pages/Dashboards/Aluno/SubPages/FeedBack";
+import FeedBackAluno from "../pages/Dashboards/Aluno/SubPages/FeedBack";
 import InfoGerais from "../pages/Dashboards/Aluno/SubPages/InformacoesGerais";
 import Notas from "../pages/Dashboards/Aluno/SubPages/notas";
 
 export const Routes = () => {
   return (
     <Switch>
-      <Route exact path="/">
-        <Home />
-      </Route>
+      <Route exact path="/" component={Home} />
 
-      <Route path="/login">
-        <Login />
-      </Route>
+      <Route path="/login" component={Login} />
 
-      <Route path="/register">
-        <Register />
-      </Route>
+      <Route path="/register" component={Register} />
 
-      <Route exact path="/registerComplement">
-        <RegisterComplement />
-      </Route>
+      <Route path="/registerComplement" component={RegisterComplement} />
 
-      <Route path="/notices">
-        <Notices />
-      </Route>
 
-      <Route exact path="/pagPrincipalPai">
+      <RouterDom exact path="/pagPrincipalPai">
         <PagPrincipalPai />
-      </Route>
+      </RouterDom>
       
-      <Route exact path="/notasPai">
+      <RouterDom exact path="/notasPai">
         <NotasPai />
-      </Route>
+      </RouterDom>
 
-      <Route exact path="/infosPai">
+      <RouterDom exact path="/infosPai">
         <InfosPai />
-      </Route>
+      </RouterDom>
 
-      <Route exact path="/FeedbacksPai">
+      <RouterDom exact path="/FeedbacksPai">
         <FeedbacksPai />
-      </Route>
+      </RouterDom>
 
-      <Route path="/dashboard/instituicao">
-        <Instituicao />
-      </Route>
-
-      <Route exact path="/dashboard/aluno">
+      <RouterDom exact path="/dashboard/aluno">
         <Aluno />
-      </Route>
+      </RouterDom>
 
-      <Route exact path="/dashboard/aluno/atividades">
+      <RouterDom exact path="/dashboard/aluno/atividades">
         <Atividades />
-      </Route>
+      </RouterDom>
 
-      <Route exact path="/dashboard/aluno/feedBack">
-        <FeedBack />
-      </Route>
+      <RouterDom exact path="/dashboard/aluno/feedBack">
+        <FeedBackAluno />
+      </RouterDom>
 
-      <Route exact path="/dashboard/aluno/infoGerais">
+      <RouterDom exact path="/dashboard/aluno/infoGerais">
         <InfoGerais />
-      </Route>
+      </RouterDom>
 
-      <Route exact path="/dashboard/aluno/notas">
+      <RouterDom exact path="/dashboard/aluno/notas">
         <Notas />
-      </Route>
+      </RouterDom>
+      <Route path="/notices" component={Notices} />
+
+      <Route
+        path="/dashboard/instituicao"
+        isPrivate
+        user="instituicao"
+        component={Instituicao}
+      />
     </Switch>
   );
 };

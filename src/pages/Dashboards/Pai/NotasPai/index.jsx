@@ -25,7 +25,7 @@ const NotasPai = () => {
   useEffect(() => {
     if (id) {
       api
-        .get(`/notas?userId=${id}`, {
+        .get(`/notas?UserId=${id}`, {
           headers: {
             authorization: `Bearer ${localStorage.getItem("@WebSchool:Token")}`,
           },
