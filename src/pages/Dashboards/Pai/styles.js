@@ -1,5 +1,7 @@
 import styled from "styled-components";
 
+import book from "../../../assets/img2 4.svg"
+
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
@@ -7,6 +9,7 @@ export const Container = styled.div`
   padding: 15px 10vw;
   gap: 15px;
   height: 80vh;
+  /* background-image: url(${book}); */
 
   h2 {
     align-self: flex-start;
@@ -55,17 +58,60 @@ export const Container = styled.div`
     font-weight: 700;
   }
 
+  div > ul > li > span {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    font-weight: 700;
+    color: var(--pink-2);
+    text-decoration: underline;
+  }
+
   button {
     border: none;
     padding: 10px;
-    font-weight: 700;   
+    font-weight: 700;
   }
-
-
 
   @media (min-width: 800px) {
     h2 {
       align-self: center;
     }
+  }
+`;
+
+export const DivFeedback = styled.div`
+  div {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  div > p {
+    display: flex;
+    width: fit-content;
+    background-color: var(--blue-0);
+    margin: 5px 10px;
+    border-radius: 5px;
+    padding: 10px;
+    font-weight: 700;
+  }
+
+  div > button {
+    display: flex;
+    width: fit-content;
+    background-color: var(--blue-0);
+    margin: 5px 10px;
+    border-radius: 5px;
+    padding: 10px;
+  }
+
+  textarea {
+    margin: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    min-height: 70px;
   }
 `;

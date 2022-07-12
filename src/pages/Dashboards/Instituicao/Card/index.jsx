@@ -1,8 +1,20 @@
+import { Container, ThemeDiv } from "./style";
 
-import { Container, ThemeDiv} from "./style";
+import { BiTrash } from "react-icons/bi";
 
-const Card = () => {
+import { apiPrivate } from "../../../../services/api";
+import { toast } from "react-toastify";
 
+const Card = ({ cadastro, vitrine, setVitrine, setType }) => {
+  function remove() {
+    apiPrivate.delete(`/users/${cadastro.id}`).then((_) => {
+      const filter = vitrine.filter((user) => user.id !== cadastro.id);
+
+      setVitrine(filter);
+      setType("professor");
+      toast.success("Usuário deletado");
+    });
+  }
 
   return (
     <Container
@@ -14,12 +26,29 @@ const Card = () => {
       j="space-between"
       p="0px 0px 0px 20px"
     >
-      adasds-asdasddfvgth
-      <ThemeDiv j="space-between" w="30%" p="0px 20px 0px 0px">
-        <p>dadasdef</p> <p>ooo</p>
-      </ThemeDiv>
+      {cadastro.type === "aluno" && (
+        <>
+          <p>
+            {cadastro.registration} - {cadastro.name}
+          </p>
+          <ThemeDiv j="space-between" w="36%" p="0px 10px 0px 0px">
+            <p>Aluno</p> <BiTrash onClick={remove} />
+          </ThemeDiv>
+        </>
+      )}
+
+      {cadastro.type === "professor" && (
+        <>
+          <p>
+            {cadastro.matter} - {cadastro.name}
+          </p>
+          <ThemeDiv j="space-between" w="36%" p="0px 10px 0px 0px">
+            <p>Professor</p> <BiTrash onClick={remove} />
+          </ThemeDiv>
+        </>
+      )}
     </Container>
-    
-    )}
+  );
+};
 
 export default Card;

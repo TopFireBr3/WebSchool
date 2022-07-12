@@ -1,13 +1,13 @@
 import { useContext } from "react";
 
-import { LeftDiv, RightDiv, StyledForm, StyledMain } from "../Register/styles";
+import { RightDiv, StyledForm, StyledMain } from "../Register/styles";
 import { FormDiv } from "./styles";
 
 import * as yup from "yup";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 
-import { Link, TextField } from "@mui/material";
+import { Button, Link, TextField } from "@mui/material";
 
 import { toast } from "react-toastify";
 
@@ -60,13 +60,13 @@ export const RegisterComplement = () => {
           history.push("/login");
         }, 2500);
       })
-      .catch((_) => toast.error("Ops! algo deu errado."));
+      .catch((error) => toast.error(error.response.data));
   }
 
   return (
     <>
       <StyledMain>
-        <LeftDiv>
+        <div style={{ width: "100%", flex: "1" }}>
           <FormDiv>
             <h1>Informações complementares</h1>
 
@@ -127,14 +127,14 @@ export const RegisterComplement = () => {
                 sx={{ width: "90%" }}
               />
 
-              <button type="submit" className="buttonRegister">
+              <Button type="submit" className="buttonRegister">
                 Enviar
-              </button>
+              </Button>
 
               <Link onClick={() => history.push("/register")}>Voltar</Link>
             </StyledForm>
           </FormDiv>
-        </LeftDiv>
+        </div>
 
         <RightDiv>
           <img src={earth} alt="education"></img>

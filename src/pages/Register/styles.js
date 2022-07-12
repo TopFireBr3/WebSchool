@@ -1,4 +1,16 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
+
+const slideForm = keyframes`
+  0%{
+    transform: translateX(-50px);
+    opacity: 0;
+  }
+
+  100%{
+    transform: translateX(0px);
+    opacity: 1;
+  }
+`;
 
 export const StyledMain = styled.main`
   display: flex;
@@ -12,6 +24,7 @@ export const LeftDiv = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  flex: 1;
 
   @media (max-width: 768px) {
     width: 100%;
@@ -36,8 +49,15 @@ export const FormDiv = styled.div`
     margin-bottom: 20px;
   }
 
+  animation: ${slideForm} 0.5s linear;
+  transition: 0.3s;
+
   @media (max-width: 768px) {
     width: 80%;
+
+    h1 {
+      margin-bottom: 20px;
+    }
   }
 `;
 
@@ -47,7 +67,7 @@ export const StyledForm = styled.form`
   align-items: center;
 
   gap: 25px;
-  width: 80%;
+  width: 90%;
 
   box-sizing: border-box;
 
@@ -59,9 +79,18 @@ export const StyledForm = styled.form`
     border-radius: 8px;
 
     width: 100%;
-    height: 40px;
+    background-color: var(--pink-0);
+    color: var(--body);
+    margin-top: 15px;
 
-    font-size: 20px;
+    &:hover {
+      background-color: var(--pink-1);
+      transition: 0.3s;
+    }
+
+    span {
+      position: inherit;
+    }
   }
 
   input {
@@ -97,6 +126,7 @@ export const RightDiv = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  flex: 1;
 
   img {
     width: 80%;

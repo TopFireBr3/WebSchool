@@ -16,13 +16,15 @@ const PagPrincipalPai = () => {
     api
       .get("/users/5", {
         headers: {
-          authorization: `Bearer ${localStorage.getItem("Token")}`,
+          authorization: `Bearer ${localStorage.getItem("@WebSchool:Token")}`,
         },
       })
       .then((res) => res.data)
       .then((res) => setUsers(res))
       .catch((err) => console.log(err));
   });
+
+ 
 
   return (
     <>
@@ -33,7 +35,7 @@ const PagPrincipalPai = () => {
         <h2>Olá {users?.name}</h2>
         <div className="dashboardPai">
           <button onClick={() => history.push("/notasPai")}>NOTAS</button>
-          <button>FEEDBACKS</button>
+          <button onClick={() => history.push("/FeedbacksPai")}>FEEDBACKS</button>
           <button onClick={() => history.push("/infosPai")}>
             INFORMAÇÕES GERAIS
           </button>

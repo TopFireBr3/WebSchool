@@ -2,12 +2,15 @@ import { Route, Switch } from "react-router-dom";
 import InfosPai from "../pages/Dashboards/Pai/InfosPai";
 import NotasPai from "../pages/Dashboards/Pai/NotasPai";
 import PagPrincipalPai from "../pages/Dashboards/Pai/PagPrincipalPai";
+import FeedbacksPai from "../pages/Dashboards/Pai/FeedbacksPai";
 
 import Home from "../pages/Home";
 import Login from "../pages/Login";
 import Notices from "../pages/Notices";
 import { Register } from "../pages/Register";
 import { RegisterComplement } from "../pages/RegisterComplement";
+
+import Instituicao from "../pages/Dashboards/Instituicao";
 
 export const Routes = () => {
   return (
@@ -40,6 +43,13 @@ export const Routes = () => {
       </Route>
       <Route exact path="/infosPai">
         <InfosPai />
+      </Route>
+      <Route exact path="/FeedbacksPai">
+        <FeedbacksPai />
+      </Route>
+
+      <Route path="/dashboard/instituicao">
+        <Instituicao />
       </Route>
     </Switch>
   );

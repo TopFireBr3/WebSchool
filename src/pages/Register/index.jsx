@@ -4,7 +4,7 @@ import * as yup from "yup";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 
-import { Link, TextField } from "@mui/material";
+import { Button, Link, TextField } from "@mui/material";
 
 import { useHistory } from "react-router-dom";
 
@@ -20,6 +20,7 @@ import education from "../../assets/Education-rafiki.svg";
 
 export const Register = () => {
   const [schools, setSchools] = useState({});
+  const [emails, setEmails] = useState({});
 
   const { setInfoPartOne } = useContext(RegisterInfoContext);
 
@@ -50,16 +51,19 @@ export const Register = () => {
 
   function registerSchool(data) {
     const { password, nome_escola, email, codigo_acesso } = data;
+    const checkEmail = emails?.some((users) => users.email === data.email);
     const check = schools?.some(
       (school) => school.codigo_acesso === +data.codigo_acesso
     );
 
-    if (check) {
+    if (check === true && checkEmail === false) {
       setInfoPartOne({ password, nome_escola, email, codigo_acesso });
 
       history.push(`/registerComplement`);
-    } else {
+    } else if (check === false) {
       toast.error("codigo inválido");
+    } else if (checkEmail === true) {
+      toast.error("Email já cadastrado");
     }
   }
 
@@ -69,8 +73,17 @@ export const Register = () => {
       .then((res) => {
         setSchools(res.data);
       })
-      .catch((_) => toast.error("Ops! algo deu errado."));
+      .catch((_) => toast.error("Ops! estamos com problema no servidor."));
   }, []);
+
+  useEffect(() => {
+    api
+      .get("/users")
+      .then((res) => {
+        setEmails(res.data);
+      })
+      .catch((error) => toast.error("Ops! estamos com problema no servidor."));
+  }, [schools]);
 
   return (
     <>
@@ -123,9 +136,13 @@ export const Register = () => {
                 sx={{ width: "100%" }}
               />
 
-              <button className="buttonRegister" type="submit">
+              <Button
+                variant="contained"
+                className="buttonRegister"
+                type="submit"
+              >
                 Cadastrar
-              </button>
+              </Button>
 
               <Link onClick={() => history.push("/")}>
                 voltar para a página inicial

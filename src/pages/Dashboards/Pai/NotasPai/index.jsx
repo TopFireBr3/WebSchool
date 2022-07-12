@@ -8,13 +8,13 @@ import { Container } from "../styles";
 const NotasPai = () => {
   const { users } = useContext(DashboardPaiContext);
   const [id, setId] = useState("");
-  const [notas, setNotas] = useState("");
+  const [notas, setNotas] = useState(null);
 
   useEffect(() => {
     api
       .get(`/users?registration=${users.registration_son}`, {
         headers: {
-          authorization: `Bearer ${localStorage.getItem("Token")}`,
+          authorization: `Bearer ${localStorage.getItem("@WebSchool:Token")}`,
         },
       })
       .then((res) => res.data)
@@ -22,17 +22,19 @@ const NotasPai = () => {
       .catch((err) => console.log(err));
   });
 
-  if (id) {
-    api
-      .get(`/notas/${id}`, {
-        headers: {
-          authorization: `Bearer ${localStorage.getItem("Token")}`,
-        },
-      })
-      .then((res) => res.data)
-      .then((res) => setNotas(res.notas))
-      .catch((err) => console.log(err));
-  }
+  useEffect(() => {
+    if (id) {
+      api
+        .get(`/notas?userId=${id}`, {
+          headers: {
+            authorization: `Bearer ${localStorage.getItem("@WebSchool:Token")}`,
+          },
+        })
+        .then((res) => res.data)
+        .then((res) => setNotas(res))
+        .catch((err) => console.log(err));
+    }
+  }, [id]);
 
   return (
     <>
@@ -40,15 +42,14 @@ const NotasPai = () => {
       <HeaderInstitucional />
       <Container mw="500px">
         <h2>Olá {users?.name}</h2>
-        <div className="notasPai">
+        <div>
           <h3>Notas</h3>
           <ul>
-            {Object.entries(notas)?.map((key) => (
-              <li key={key[0]}>
+            {notas?.map((nota) => (
+              <li key={nota.id}>
                 <p>
-                  {key[0]} <span>{key[1]} PONTOS</span>
+                  {nota.materia} <span>{nota.nota} PONTOS</span>
                 </p>
-                
               </li>
             ))}
           </ul>
