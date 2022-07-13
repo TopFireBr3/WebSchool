@@ -17,20 +17,28 @@ export const Container = styled.div`
 
 export const SliderContainer = styled.div`
   margin-top: 50px;
-
-  width: 80%;
-
-  img {
-    width: 300px;
-    background: var(--black);
+  .img-gallery-slides{
+    img{
+    width: 500px;
+    height: 500px;
+    }
   }
+  width: 80%;
 `;
 
 export const InfosContainer = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 0.8rem;
+  gap: 2rem;
   width: 730px;
+  h1{
+    text-decoration: underline;
+  }
+  p{
+    text-align: center;
+    line-height: 1.5rem;
+
+  }
 
   @media (max-width: 768px) {
     width: 305px;
