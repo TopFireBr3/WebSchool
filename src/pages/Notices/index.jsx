@@ -2,7 +2,7 @@ import { Container, SliderContainer, InfosContainer } from "./styles";
 
 import ImageGallery from "react-image-gallery";
 
-import axios from "axios";
+import { api } from "../../services/api";
 
 import { useState, useEffect } from "react";
 
@@ -15,11 +15,16 @@ const Notices = () => {
   const [indexNoticia, setIndexNoticia] = useState(0);
 
   useEffect(() => {
-    axios.get("https://api-web-school.herokuapp.com/eventos").then((res) => {
+    api.get("/eventos").then((res) => {
       setDataNoticias(res.data);
       setDataImg(
         res.data.map((item) => {
-          return { original: item.img, thumbnail: item.img, originalWidth:'300px' , originalHeight:'400px' };
+          return {
+            original: item.img,
+            thumbnail: item.img,
+            originalWidth: "300px",
+            originalHeight: "400px",
+          };
         })
       );
     });
@@ -37,7 +42,7 @@ const Notices = () => {
     <>
       <Header />
 
-       <Container>
+      <Container>
         <SliderContainer>
           <ImageGallery
             items={dataImg}
@@ -52,11 +57,8 @@ const Notices = () => {
           <h1>{dataNoticias[indexNoticia]?.titulo}</h1>
           <p>{dataNoticias[indexNoticia]?.descricao}</p>
         </InfosContainer>
-        <Footer/>
-        
-      </Container> 
-
-      
+        <Footer />
+      </Container>
     </>
   );
 };

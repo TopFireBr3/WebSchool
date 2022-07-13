@@ -7,6 +7,8 @@ export const api = axios.create({
 export const apiPrivate = axios.create({
   baseURL: "https://api-web-school.herokuapp.com",
   headers: {
-    Authorization: `Bearer ${localStorage.getItem("@WebSchool:Token")}`,
+    Authorization: `Bearer ${JSON.parse(
+      localStorage.getItem("@WebSchool:Token")
+    )}`,
   },
 });
