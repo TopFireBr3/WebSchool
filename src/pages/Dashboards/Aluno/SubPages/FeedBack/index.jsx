@@ -1,39 +1,33 @@
 import React, { useContext, useEffect, useState } from "react";
 import Footer from "../../../../../components/Footer";
-import { DashboardPaiContext } from "../../../../../contexts/dashboardPai/dashboardPai";
-import { api, apiPrivate } from "../../../../../services/api";
+import { UserContext } from "../../../../../contexts/User/UserContext";
+import { apiPrivate } from "../../../../../services/api";
 import Header from "../../Header";
 import { Container, DivFeedback } from "./style";
 
 const FeedBackAluno = () => {
-  const { users } = useContext(DashboardPaiContext);
+  const { userContext } = useContext(UserContext);
+
   const [id, setId] = useState("");
   const [feedbacks, setFeedbacks] = useState([]);
 
   useEffect(() => {
-    api
-      .get(`/users?registration=${users.registration_son}`, {
-        headers: {
-          authorization: `Bearer ${localStorage.getItem("@WebSchool:Token")}`,
-        },
+    apiPrivate
+      .get(`/users?registration=${userContext.registration_son}`)
+      .then((res) => {
+        setId(res.data[0]?.id || []);
       })
-      .then((res) => res.data)
-      .then((res) => setId(res[0].id))
-      .catch((err) => console.log(err));
+      .catch((err) => console.error(err));
   });
 
   useEffect(() => {
-    if (id) {
+    if (!!id) {
       apiPrivate
-        .get(
-          `/feedback?userId=${JSON.parse(
-            localStorage.getItem("@WebSchool:UserId")
-          )}`
-        )
+        .get(`/feedback?userId=${id}`)
         .then((res) => {
           setFeedbacks(res.data);
         })
-        .catch((err) => console.log(err));
+        .catch((err) => console.error(err));
     }
   }, [id]);
 
@@ -41,7 +35,7 @@ const FeedBackAluno = () => {
     <>
       <Header rota={"/dashboard/aluno"} texto={"Voltar"} />
       <Container mw="1000px">
-        <h2>Olá {users?.name}</h2>
+        <h2>Olá, {userContext.name}</h2>
         <div>
           <h3>Feedbacks</h3>
           <ul>

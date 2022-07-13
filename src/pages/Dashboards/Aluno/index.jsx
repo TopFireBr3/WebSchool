@@ -1,7 +1,8 @@
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import Footer from "../../../components/Footer";
 import { UserContext } from "../../../contexts/User/UserContext";
+import { api } from "../../../services/api";
 
 import Header from "./Header";
 
@@ -10,11 +11,24 @@ import { ThemeMain, ThemeDiv, Container } from "./style.js";
 const Aluno = () => {
   const history = useHistory();
 
-  const { user } = useContext(UserContext);
+  const { setUserContext } = useContext(UserContext);
+
+  const [user, setUser] = useState({});
+
+  useEffect(() => {
+    api
+      .get(`/users/${JSON.parse(localStorage.getItem("@WebSchool:UserId"))}`)
+      .then((res) => {
+        setUser(res.data);
+        setUserContext(res.data);
+      })
+      .catch((err) => console.error(err));
+  }, []);
 
   return (
     <>
-      <Header rota={"/"} texto={"Sair"} />
+      <Header rota="/" texto="Sair" />
+
       <ThemeMain f="column" m="0px 0px 200px 10%">
         <h1>Olá, {user.name} </h1>
         <Container

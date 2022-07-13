@@ -8,21 +8,20 @@ import { Container } from "./style";
 
 const Notas = () => {
   const [notas, setNotas] = useState([]);
-  const { user } = useContext(UserContext);
+  const { userContext } = useContext(UserContext);
 
   useEffect(() => {
     apiPrivate
-      .get(`/notas?userId=${JSON.parse(localStorage.getItem("UserId"))}`)
-
+      .get(`/notas?userId=${userContext.id}`)
       .then((res) => setNotas(res.data))
-      .catch((err) => console.log(err));
+      .catch((err) => console.error(err));
   }, []);
 
   return (
     <>
       <Header rota={"/dashboard/aluno"} texto={"Voltar"} />
       <Container mw="700px">
-        <h2>Olá, {user.name}</h2>
+        <h2>Olá, {userContext.name}</h2>
         <div>
           <h3>Notas</h3>
           <ul>

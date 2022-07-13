@@ -1,4 +1,4 @@
-import { Switch, Route } from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
 
 import Home from "../pages/Home";
 import Login from "../pages/Login";
@@ -7,7 +7,6 @@ import { Register } from "../pages/Register";
 import { RegisterComplement } from "../pages/RegisterComplement";
 
 import DashboardProfessor from "../pages/DashboardProfessor";
-
 import Instituicao from "../pages/Dashboards/Instituicao";
 import Aluno from "../pages/Dashboards/Aluno";
 
@@ -16,6 +15,11 @@ import Atividades from "../pages/Dashboards/Aluno/SubPages/Atividades";
 import FeedBackAluno from "../pages/Dashboards/Aluno/SubPages/FeedBack";
 import InfoGerais from "../pages/Dashboards/Aluno/SubPages/InformacoesGerais";
 
+import PagPrincipalPai from "../pages/Dashboards/Responsavel";
+import NotasPai from "../pages/Dashboards/Responsavel/SubPages/Notas";
+import InfosPai from "../pages/Dashboards/Responsavel/SubPages/InformacoesGerais";
+import FeedbacksPai from "../pages/Dashboards/Responsavel/SubPages/Feedbacks";
+
 export const Routes = () => {
   return (
     <Switch>
@@ -23,8 +27,8 @@ export const Routes = () => {
         <Home />
       </Route>
 
-      <Route path="/login" component={Login}>
-        <Home />
+      <Route path="/login">
+        <Login />
       </Route>
 
       <Route path="/register">
@@ -37,6 +41,26 @@ export const Routes = () => {
 
       <Route path="/notices">
         <Notices />
+      </Route>
+
+      <Route exact path="/dashboard/responsavel">
+        <PagPrincipalPai />
+      </Route>
+
+      <Route path="/dashboard/responsavel/notas">
+        <NotasPai />
+      </Route>
+
+      <Route path="/dashboard/responsavel/infos">
+        <InfosPai />
+      </Route>
+
+      <Route path="/dashboard/responsavel/feedbacks">
+        <FeedbacksPai />
+      </Route>
+
+      <Route exact path="/dashboard/instituicao">
+        <Instituicao />
       </Route>
 
       <Route exact path="/dashboard/aluno">

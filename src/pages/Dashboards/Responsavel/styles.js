@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-import book from "../../../assets/img2 4.svg"
+import book from "../../../assets/book.png";
 
 export const Container = styled.div`
   display: flex;
@@ -9,13 +9,11 @@ export const Container = styled.div`
   padding: 15px 10vw;
   gap: 15px;
   height: 80vh;
-  /* background-image: url(${book}); */
 
   h2 {
     align-self: flex-start;
     width: 80vw;
     min-width: 300px;
-    /* max-width: 1000px; */
     max-width: ${(props) => props.mw};
   }
 
@@ -28,7 +26,6 @@ export const Container = styled.div`
     padding: 10px 0;
     width: 80vw;
     min-width: 300px;
-    /* max-width: 1000px; */
     max-width: ${(props) => props.mw};
     max-height: 65vh;
   }
@@ -73,7 +70,7 @@ export const Container = styled.div`
     font-weight: 700;
   }
 
-  @media (min-width: 800px) {
+  @media (min-width: 600px) {
     h2 {
       align-self: center;
     }
@@ -81,14 +78,20 @@ export const Container = styled.div`
 `;
 
 export const DivFeedback = styled.div`
-  div {
+  form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  form > div {
     width: 100%;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
   }
 
-  div > p {
+  form > div > p {
     display: flex;
     width: fit-content;
     background-color: var(--blue-0);
@@ -98,16 +101,25 @@ export const DivFeedback = styled.div`
     font-weight: 700;
   }
 
-  div > button {
+  form > div > button {
     display: flex;
-    width: fit-content;
+    width: 40px;
+    background-image: url(${book});
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
     background-color: var(--blue-0);
     margin: 5px 10px;
     border-radius: 5px;
     padding: 10px;
   }
 
-  textarea {
+  img {
+    width: 100px;
+    height: 100px;
+  }
+
+  form > textarea {
     margin: 5px 10px;
     border: none;
     border-radius: 5px;

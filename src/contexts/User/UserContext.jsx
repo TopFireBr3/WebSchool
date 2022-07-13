@@ -1,22 +1,13 @@
-import { createContext, useEffect, useState } from "react";
-
-import { api } from "../../services/api";
+import { createContext, useState } from "react";
 
 export const UserContext = createContext({});
 
 export const UserProvider = ({ children }) => {
-  const [user, setUser] = useState({});
-
-  useEffect(() => {
-      setTimeout(() => {
-      api
-        .get(`/users/${JSON.parse(localStorage.getItem("@WebSchool:UserId"))}`)
-        .then((res) => setUser(res.data))
-        .catch((e) => console.log(e));
-      }, 2000);
-    }, []);
+  const [userContext, setUserContext] = useState({});
 
   return (
-    <UserContext.Provider value={{ user }}>{children}</UserContext.Provider>
+    <UserContext.Provider value={{ userContext, setUserContext }}>
+      {children}
+    </UserContext.Provider>
   );
 };
