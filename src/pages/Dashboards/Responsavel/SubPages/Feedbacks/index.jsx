@@ -1,10 +1,15 @@
 import { useEffect, useContext, useState } from "react";
-import Footer from "../../../../../components/Footer";
-import { apiPrivate } from "../../../../../services/api";
-import Header from "../../Header";
+
 import { Container, DivFeedback } from "../../styles";
-import { toast } from "react-toastify";
+
+import Header from "../../Header";
+import Footer from "../../../../../components/Footer";
+
+import { apiPrivate } from "../../../../../services/api";
+
 import { UserContext } from "../../../../../contexts/User/UserContext";
+
+import { toast } from "react-toastify";
 
 const FeedbacksPai = () => {
   const { userContext } = useContext(UserContext);

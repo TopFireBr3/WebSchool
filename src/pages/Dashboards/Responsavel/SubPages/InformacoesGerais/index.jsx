@@ -1,9 +1,13 @@
 import { useEffect, useContext, useState } from "react";
-import Footer from "../../../../../components/Footer";
-import { UserContext } from "../../../../../contexts/User/UserContext";
-import { apiPrivate } from "../../../../../services/api";
-import Header from "../../Header";
+
 import { Container } from "../../styles";
+
+import Footer from "../../../../../components/Footer";
+import Header from "../../Header";
+
+import { UserContext } from "../../../../../contexts/User/UserContext";
+
+import { apiPrivate } from "../../../../../services/api";
 
 const InfosPai = () => {
   const { userContext } = useContext(UserContext);

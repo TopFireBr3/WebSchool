@@ -2,24 +2,11 @@ import styled from "styled-components";
 
 export const ThemeBackGround = styled.div`
   display: ${(props) => props.d};
-  flex-direction: ${(props) => props.f};
   align-items: ${(props) => props.a};
   justify-content: ${(props) => props.j};
-  gap: ${(props) => props.g};
-  text-align: ${(props) => props.t};
-
-  overflow-x: ${(props) => props.ox};
-  overflow-y: ${(props) => props.oy};
 
   width: ${(props) => props.w};
   height: ${(props) => props.h};
-
-  padding: ${(props) => props.p};
-  border: ${(props) => props.b};
-  border-radius: ${(props) => props.br};
-
-  margin-bottom: ${(props) => props.mb};
-  margin: ${(props) => props.m};
 
   background-color: ${(props) => props.bc};
 
@@ -34,73 +21,20 @@ export const ThemeBackGround = styled.div`
 export const ThemeMain = styled.div`
   display: flex;
   flex-direction: ${(props) => props.f};
-  align-items: ${(props) => props.a};
-  justify-content: ${(props) => props.j};
-  gap: ${(props) => props.g};
-  text-align: ${(props) => props.t};
-
-  overflow-x: ${(props) => props.ox};
-  overflow-y: ${(props) => props.oy};
 
   width: ${(props) => props.w};
-  height: ${(props) => props.h};
 
-  padding: ${(props) => props.p};
-  border: ${(props) => props.b};
   border-radius: ${(props) => props.br};
-
-  margin-bottom: ${(props) => props.mb};
-  margin: ${(props) => props.m};
-
-  background-color: ${(props) => props.bc};
 
   @media (min-width: 768px) {
     width: 450px;
   }
 `;
 
-export const Container = styled.div`
-  display: flex;
-
-  flex-direction: ${(props) => props.f};
-  align-items: ${(props) => props.a};
-  justify-content: ${(props) => props.j};
-  gap: ${(props) => props.g};
-  text-align: ${(props) => props.t};
-
-  height: ${(props) => props.h};
-
-  padding: ${(props) => props.p};
-  border: ${(props) => props.b};
-
-  margin: ${(props) => props.m};
-
-  border-radius: ${(props) => props.br};
-  background-color: ${(props) => props.bc};
-`;
-
 export const ThemeDiv = styled.div`
   display: flex;
-  flex-direction: ${(props) => props.f};
-  align-items: ${(props) => props.a};
   justify-content: ${(props) => props.j};
-  gap: ${(props) => props.g};
-  text-align: ${(props) => props.t};
 
-  overflow-x: ${(props) => props.ox};
-  overflow-y: ${(props) => props.oy};
-
-  width: ${(props) => props.w};
-  height: ${(props) => props.h};
-
-  padding: ${(props) => props.p};
-  border: ${(props) => props.b};
-  border-radius: ${(props) => props.br};
-
-  margin-bottom: ${(props) => props.mb};
-  margin: ${(props) => props.m};
-
-  background-color: ${(props) => props.bc};
   color: var(--pink-1);
   width: 82%;
 `;
@@ -111,20 +45,9 @@ export const ThemeForm = styled.form`
   align-items: ${(props) => props.a};
   justify-content: ${(props) => props.j};
   gap: ${(props) => props.g};
-  text-align: ${(props) => props.t};
-
-  overflow-x: ${(props) => props.ox};
-  overflow-y: ${(props) => props.oy};
-
-  width: ${(props) => props.w};
-  height: ${(props) => props.h};
 
   padding: ${(props) => props.p};
-  border: ${(props) => props.b};
   border-radius: ${(props) => props.br};
-
-  margin-bottom: ${(props) => props.mb};
-  margin: ${(props) => props.m};
 
   background-color: ${(props) => props.bc};
   color: var(--pink-1);
@@ -160,24 +83,12 @@ export const ThemeForm = styled.form`
 
 export const ThemeNav = styled.div`
   display: flex;
-  flex-direction: ${(props) => props.f};
   align-items: ${(props) => props.a};
   justify-content: ${(props) => props.j};
-  gap: ${(props) => props.g};
-  text-align: ${(props) => props.t};
 
-  overflow-x: ${(props) => props.ox};
-  overflow-y: ${(props) => props.oy};
-
-  width: ${(props) => props.w};
   height: ${(props) => props.h};
 
-  padding: ${(props) => props.p};
-  border: ${(props) => props.b};
   border-radius: ${(props) => props.br};
-
-  margin-bottom: ${(props) => props.mb};
-  margin: ${(props) => props.m};
 
   background-color: ${(props) => props.bc};
   color: var(--pink-1);

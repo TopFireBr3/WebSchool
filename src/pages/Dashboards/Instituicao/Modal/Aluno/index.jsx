@@ -68,8 +68,8 @@ const ModalAluno = (prop) => {
 
   return (
     <ThemeBackGround
-      d={prop.dp}
       className="aluno"
+      d={prop.dp}
       bc="var(--bg-modal)"
       w="100vw"
       h="100vh"

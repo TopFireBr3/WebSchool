@@ -3,6 +3,7 @@ import { Container, ThemeDiv } from "./style";
 import { BiTrash } from "react-icons/bi";
 
 import { apiPrivate } from "../../../../services/api";
+
 import { toast } from "react-toastify";
 
 const Card = ({ cadastro, vitrine, setVitrine, setType }) => {

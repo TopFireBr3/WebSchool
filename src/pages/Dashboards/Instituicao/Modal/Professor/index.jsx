@@ -52,8 +52,8 @@ const ModalProfessor = (prop) => {
 
   return (
     <ThemeBackGround
-      d={prop.dp}
       className="professor"
+      d={prop.dp}
       bc="var(--bg-modal)"
       w="100vw"
       h="100vh"

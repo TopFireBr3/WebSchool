@@ -15,8 +15,9 @@ import { RegisterInfoContext } from "../../contexts/register/RegisterInfoContext
 
 import { api } from "../../services/api";
 
-import earth from "../../assets/Globalization-pana.svg";
 import { useHistory } from "react-router-dom";
+
+import earth from "../../assets/Globalization-pana.svg";
 
 export const RegisterComplement = () => {
   const { infoPartOne, infoPartTwo, setInfoPartTwo } =

@@ -1,17 +1,18 @@
 import { useState, useContext } from "react";
 import { useHistory } from "react-router-dom";
 
-import { Input, Button, Link } from "@mui/material";
-import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
+import { FormLogin, MainLogin, MainLoginDiv } from "./styled";
+
+import { Button, Link, Input } from "@mui/material";
+
 import learning from "../../assets/Learning-bro.svg";
+import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
 
 import { LoginContext } from "../../contexts/login/loginContext";
-
-import { FormLogin, MainLogin, MainLoginDiv } from "./styled";
 
 const Login = () => {
   const history = useHistory();
@@ -49,6 +50,7 @@ const Login = () => {
           <h2>Login</h2>
 
           <Input
+            label="E-mail"
             className="Input"
             placeholder="Digite seu e-mail"
             {...register("email")}
@@ -58,9 +60,10 @@ const Login = () => {
           )}
 
           <Input
+            label="Senha"
             className="Input"
             type={showPassword}
-            placeholder="Senha"
+            placeholder="Digite sua senha"
             {...register("password")}
           />
           {errors.password && (

@@ -49,8 +49,8 @@ const ModalResponsavel = (prop) => {
 
   return (
     <ThemeBackGround
-      d={prop.dp}
       className="responsavel"
+      d={prop.dp}
       bc="var(--bg-modal)"
       w="100vw"
       h="100vh"
