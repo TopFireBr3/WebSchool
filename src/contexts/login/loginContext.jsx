@@ -23,7 +23,7 @@ export const LoginProvider = ({ children }) => {
         localStorage.setItem("@WebSchool:UserId", JSON.stringify(response.data.user.id));
         toast.success("Entrando na aplicação");
 
-        setInterval(() => {
+        setTimeout(() => {
           history.push(`/dashboard/${response.data.user.type}`);
         }, 2500);
       })

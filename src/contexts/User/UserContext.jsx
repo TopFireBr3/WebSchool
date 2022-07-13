@@ -8,13 +8,17 @@ export const UserProvider = ({ children }) => {
   const [user, setUser] = useState({});
 
   useEffect(() => {
-      setTimeout(() => {
+
+      console.log(localStorage.getItem("@WebSchool:UserId"));
       api
         .get(`/users/${JSON.parse(localStorage.getItem("@WebSchool:UserId"))}`)
-        .then((res) => setUser(res.data))
+        .then((res) => {
+          setUser(res.data);
+          console.log(res);
+        })
         .catch((e) => console.log(e));
-      }, 2000);
-    }, []);
+
+  }, []);
 
   return (
     <UserContext.Provider value={{ user }}>{children}</UserContext.Provider>
