@@ -3,10 +3,10 @@ import { useHistory } from "react-router-dom";
 import Footer from "../../../components/Footer";
 import { UserContext } from "../../../contexts/User/UserContext";
 import { api } from "../../../services/api";
-import {GoGraph} from "react-icons/go"
-import {GiTalk} from "react-icons/gi"
-import {BsInfoCircle} from "react-icons/bs"
-import {BsJournalBookmark} from "react-icons/bs"
+import { GoGraph } from "react-icons/go";
+import { GiTalk } from "react-icons/gi";
+import { BsInfoCircle } from "react-icons/bs";
+import { BsJournalBookmark } from "react-icons/bs";
 import Header from "./Header";
 import { ThemeMain, ThemeDiv, Container } from "./style.js";
 const Aluno = () => {
@@ -26,7 +26,7 @@ const Aluno = () => {
   return (
     <>
       <Header rota="/" texto="Sair" />
-      <ThemeMain f="column"  a="center" h="71vh" j="center">
+      <ThemeMain f="column" a="center" h="71vh" j="center">
         <h1>Olá, {user.name} </h1>
         <Container
           w="90%"
@@ -37,24 +37,24 @@ const Aluno = () => {
           bc="var(--pink-0)"
         >
           <ThemeDiv onClick={() => history.push("/dashboard/aluno/notas")}>
-          <GoGraph/>
+            <GoGraph />
             <h2>Notas</h2>
           </ThemeDiv>
           <ThemeDiv onClick={() => history.push("/dashboard/aluno/feedBack")}>
-            <GiTalk/>
+            <GiTalk />
             <h2>FeedBacks</h2>
           </ThemeDiv>
           <ThemeDiv onClick={() => history.push("/dashboard/aluno/infoGerais")}>
-          <BsInfoCircle/>
+            <BsInfoCircle />
             <h2>Informações Gerais</h2>
           </ThemeDiv>
           <ThemeDiv onClick={() => history.push("/dashboard/aluno/atividades")}>
-          <BsJournalBookmark/>
+            <BsJournalBookmark />
             <h2>Atividades</h2>
           </ThemeDiv>
         </Container>
+        <Footer />
       </ThemeMain>
-      <Footer />
     </>
   );
 };

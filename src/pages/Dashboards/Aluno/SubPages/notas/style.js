@@ -4,9 +4,7 @@ export const Container = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  height: 50vh;
-  margin: 0px 1vw;
-  height: 74vh;
+  min-height: 80vh;
 
   h4 {
     text-align: center;
@@ -38,7 +36,7 @@ export const Container = styled.div`
   div > ul {
     overflow: auto;
     width: 100%;
-    }
+  }
 
   div > h3 {
     display: flex;

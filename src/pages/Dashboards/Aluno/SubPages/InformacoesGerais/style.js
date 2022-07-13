@@ -6,13 +6,14 @@ export const Container = styled.div`
   align-items: center;
   padding: 15px 10vw;
   gap: 15px;
-  height: 74vh;
+  min-height: 80vh;
 
   h2 {
     align-self: flex-start;
     width: 80vw;
     min-width: 300px;
     max-width: ${(props) => props.mw};
+    margin-top: 50px;
   }
 
   div {

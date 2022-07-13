@@ -3,35 +3,23 @@ import Footer from "../../../../../components/Footer";
 import { UserContext } from "../../../../../contexts/User/UserContext";
 import { apiPrivate } from "../../../../../services/api";
 import Header from "../../Header";
-import { Container, DivFeedback } from "./style";
+import { Container } from "./style";
 
 const FeedBackAluno = () => {
   const { userContext } = useContext(UserContext);
 
-  const [id, setId] = useState("");
   const [feedbacks, setFeedbacks] = useState([]);
 
   useEffect(() => {
     apiPrivate
-      .get(`/users?registration=${userContext.registration_son}`)
+      .get(`/feedback?userId=${userContext.id}`)
       .then((res) => {
-        setId(res.data[0]?.id || []);
+        setFeedbacks(res.data);
       })
       .catch((err) => console.error(err));
-  });
-
-  useEffect(() => {
-    
-      apiPrivate
-        .get(`/feedback?userId=${userContext.id}`)
-        .then((res) => {
-          setFeedbacks(res.data);
-        })
-        .catch((err) => console.error(err));
-  
   }, []);
 
-  console.log(feedbacks)
+  console.log(feedbacks);
 
   return (
     <>
