@@ -31,7 +31,7 @@ const InfosPai = () => {
     <>
       <Header rota="/dashboard/responsavel" texto="Voltar" />
       <Container mw="80vw">
-        <h2>Olá, {userContext.name}</h2>
+        <h2 style={{ marginTop: "30px" }}>Olá, {userContext.name}</h2>
         <div className="infosPai">
           <h3>INFORMAÇÕES GERAIS</h3>
           <ul>

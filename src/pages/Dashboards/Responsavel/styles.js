@@ -15,6 +15,8 @@ export const Container = styled.div`
     width: 80vw;
     min-width: 300px;
     max-width: ${(props) => props.mw};
+
+    margin-top: 100px;
   }
 
   div {
@@ -40,8 +42,6 @@ export const Container = styled.div`
       border-radius: 20px;
     }
   }
-
-  
 
   div > h3 {
     display: flex;
@@ -88,7 +88,6 @@ export const Container = styled.div`
   svg {
     width: 4vh;
     height: 4vh;
-
   }
 
   @media (min-width: 600px) {

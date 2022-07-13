@@ -17,9 +17,8 @@ const FeedBackAluno = () => {
         setFeedbacks(res.data);
       })
       .catch((err) => console.error(err));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-
-  console.log(feedbacks);
 
   return (
     <>
