@@ -19,6 +19,7 @@ import PagPrincipalPai from "../pages/Dashboards/Responsavel";
 import NotasPai from "../pages/Dashboards/Responsavel/SubPages/Notas";
 import InfosPai from "../pages/Dashboards/Responsavel/SubPages/InformacoesGerais";
 import FeedbacksPai from "../pages/Dashboards/Responsavel/SubPages/Feedbacks";
+import AlunoPage from "../pages/AlunoPage";
 
 export const Routes = () => {
   return (
@@ -89,6 +90,9 @@ export const Routes = () => {
 
       <Route path="/dashboard/professor">
         <DashboardProfessor />
+      </Route>
+      <Route path="/aluno">
+        <AlunoPage />
       </Route>
     </Switch>
   );
