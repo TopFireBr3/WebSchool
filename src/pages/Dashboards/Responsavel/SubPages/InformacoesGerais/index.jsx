@@ -30,7 +30,7 @@ const InfosPai = () => {
   return (
     <>
       <Header rota="/dashboard/responsavel" texto="Voltar" />
-      <Container mw="1000px">
+      <Container mw="80vw">
         <h2>Olá, {userContext.name}</h2>
         <div className="infosPai">
           <h3>INFORMAÇÕES GERAIS</h3>

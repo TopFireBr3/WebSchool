@@ -7,6 +7,11 @@ import { useHistory } from "react-router-dom";
 import Header from "./Header";
 import Footer from "../../../components/Footer";
 
+import {GoGraph} from "react-icons/go"
+import {GiTalk} from "react-icons/gi"
+import {BsInfoCircle} from "react-icons/bs"
+import {BsJournalBookmark} from "react-icons/bs"
+
 import { api } from "../../../services/api";
 import { UserContext } from "../../../contexts/User/UserContext";
 
@@ -32,19 +37,22 @@ const PagPrincipalPai = () => {
     <>
       <Header rota="/" texto="Sair" />
 
-      <Container mw="800px">
+      <Container mw="500px">
         <h2>Olá, {user.name}</h2>
         <div className="dashboardPai">
           <button onClick={() => history.push("/dashboard/responsavel/notas")}>
-            NOTAS
-          </button>
+          <GoGraph/>
+          Notas 
+          </button>        
           <button
             onClick={() => history.push("/dashboard/responsavel/feedbacks")}
           >
-            FEEDBACKS
+            <GiTalk/>
+            Feedbacks
           </button>
           <button onClick={() => history.push("/dashboard/responsavel/infos")}>
-            INFORMAÇÕES GERAIS
+            <BsInfoCircle/>
+            Informações Gerais
           </button>
         </div>
       </Container>

@@ -2,6 +2,10 @@ import { ThemeHeader, ThemeTitle } from "./style";
 
 import { useHistory } from "react-router-dom";
 
+import {GoGraph} from "react-icons/go"
+import {GiTalk} from "react-icons/gi"
+import {BsInfoCircle, BsJournalBookmark} from "react-icons/bs"
+
 import Logo2 from "../../../../assets/img2.png";
 
 const Header = ({ rota, texto }) => {
