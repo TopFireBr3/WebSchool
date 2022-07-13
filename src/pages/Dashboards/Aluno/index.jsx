@@ -38,7 +38,7 @@ const Aluno = () => {
           br="10px"
           p="20px 20px 20px 20px"
           g="15px"
-          bc="var(--pink-1)"
+          bc="var(--pink-0)"
         >
           <ThemeDiv onClick={() => history.push("/dashboard/aluno/notas")}>
             <h2>Notas</h2>

@@ -6,7 +6,6 @@ import Notices from "../pages/Notices";
 import { Register } from "../pages/Register";
 import { RegisterComplement } from "../pages/RegisterComplement";
 
-import DashboardProfessor from "../pages/DashboardProfessor";
 import Instituicao from "../pages/Dashboards/Instituicao";
 import Aluno from "../pages/Dashboards/Aluno";
 
@@ -85,10 +84,6 @@ export const Routes = () => {
 
       <Route path="/dashboard/instituicao">
         <Instituicao />
-      </Route>
-
-      <Route path="/dashboard/professor">
-        <DashboardProfessor />
       </Route>
     </Switch>
   );
