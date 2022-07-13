@@ -3,7 +3,7 @@ import { useState, useContext } from "react";
 
 import { FormLogin, MainLogin, MainLoginDiv } from "./styled";
 
-import { Button, Link, Input } from "@mui/material";
+import { Button, Link, Input, TextField } from "@mui/material";
 
 import learning from "../../assets/Learning-bro.svg";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
@@ -51,7 +51,7 @@ const Login = () => {
         <FormLogin onSubmit={handleSubmit(onHandleSubmit)} className="form">
           <h2>Login</h2>
 
-          <Input
+          <TextField
             label="E-mail"
             className="Input"
             placeholder="Digite seu e-mail"
@@ -61,7 +61,7 @@ const Login = () => {
             <span className="error">{errors.email.message}</span>
           )}
 
-          <Input
+          <TextField
             label="Senha"
             className="Input"
             type={showPassword}

@@ -6,13 +6,7 @@ export const Container = styled.div`
   align-items: center;
   padding: 15px 10vw;
   gap: 15px;
-<<<<<<< HEAD
   height: 68vh;
-=======
-  min-height: 80vh;
-
-  padding-top: 50px;
->>>>>>> 10e1ac9d98eac13cda25fbe8bdf0e871adf8072e
 
   h2 {
     align-self: flex-start;

@@ -2,21 +2,11 @@ import styled from "styled-components";
 
 export const Container = styled.div`
   display: flex;
-<<<<<<< HEAD
   flex-wrap: wrap;
   justify-content: center;
   height: 50vh;
   margin: 0px 1vw;
   height: 70vh;
-=======
-  flex-direction: column;
-  align-items: center;
-  gap: 50px;
-  height: 500px;
-  margin: 0px 10vw;
-  min-height: 80vh;
-  padding-top: 50px;
->>>>>>> 10e1ac9d98eac13cda25fbe8bdf0e871adf8072e
 
   h4 {
     text-align: center;

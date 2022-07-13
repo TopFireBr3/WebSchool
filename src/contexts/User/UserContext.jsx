@@ -13,9 +13,8 @@ export const UserProvider = ({ children }) => {
         .get(`/users/${JSON.parse(localStorage.getItem("@WebSchool:UserId"))}`)
         .then((res) => {
           setUser(res.data);
-          console.log(res);
         })
-        .catch((e) => console.log(e));
+        .catch((e) => console.error(e));
 
   }, []);
 

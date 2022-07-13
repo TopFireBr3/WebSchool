@@ -18,10 +18,7 @@ const Notas = () => {
       .get(`/notas?userId=${userContext.id}`)
       .then((res) => setNotas(res.data))
       .catch((err) => console.error(err));
-<<<<<<< HEAD
-=======
     // eslint-disable-next-line react-hooks/exhaustive-deps
->>>>>>> 10e1ac9d98eac13cda25fbe8bdf0e871adf8072e
   }, []);
 
   return (
