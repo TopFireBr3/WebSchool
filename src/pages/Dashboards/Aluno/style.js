@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 export const ThemeMain = styled.main`
   display: flex;
+  flex-wrap: wrap;
   flex-direction: ${(props) => props.f};
   align-items: ${(props) => props.a};
   justify-content: ${(props) => props.j};
@@ -24,7 +25,8 @@ export const ThemeMain = styled.main`
   background-color: ${(props) => props.bc};
 
   h1{
-    margin: 100px 0px;
+    width: 100%;
+    margin: 25px 0px;
   }
 
 

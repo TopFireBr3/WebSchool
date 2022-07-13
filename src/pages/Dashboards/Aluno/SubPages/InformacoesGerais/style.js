@@ -35,7 +35,7 @@ export const Container = styled.div`
   align-items: center;
   padding: 15px 10vw;
   gap: 15px;
-  height: 80vh;
+  height: 68vh;
 
   h2 {
     align-self: flex-start;

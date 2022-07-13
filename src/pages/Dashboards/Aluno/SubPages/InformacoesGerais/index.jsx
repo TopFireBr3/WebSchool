@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import Footer from "../../../../../components/Footer";
-import { DashboardPaiContext } from "../../../../../contexts/dashboardPai/dashboardPai";
+//import { DashboardPaiContext } from "../../../../../contexts/dashboardPai/dashboardPai";
 import { UserContext } from "../../../../../contexts/User/UserContext";
 import { api } from "../../../../../services/api";
 import Header from "../../Header";
@@ -19,12 +19,13 @@ const InfoGerais = () => {
       })
       .then((res) => setInfos(res.data));
   });
+
   return (
     <>
       <Header rota={"/dashboard/aluno"} texto={"Voltar"} />
       {/* Mudar esse header para voltar */}
 
-      <Container mw="1000px">
+      <Container mw="100%">
         <h2>Olá, {user.name}</h2>
         <div className="infosPai">
           <h3>INFORMAÇÕES GERAIS</h3>

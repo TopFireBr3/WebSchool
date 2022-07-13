@@ -1,7 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import Footer from "../../../../../components/Footer";
 import { UserContext } from "../../../../../contexts/User/UserContext";
-<<<<<<< HEAD
 import { apiPrivate } from "../../../../../services/api";
 import Header from "../../Header";
 import { Container, DivFeedback } from "./style";
@@ -31,48 +30,12 @@ const FeedBackAluno = () => {
         .catch((err) => console.error(err));
     }
   }, [id]);
-=======
-import { api } from "../../../../../services/api";
-import Header from "../../Header";
-import { Container } from "./style";
-
-const FeedBackAluno = () => {
-
-  const [feedbacks, setFeedbacks] = useState([]);
-
-  const {user}= useContext(UserContext)
-
-  useEffect(() => {
-    api
-      .get(
-        `/feedback?userId=${JSON.parse(
-          localStorage.getItem("@WebSchool:UserId")
-        )}`,
-        {
-          headers: {
-            authorization: `Bearer ${JSON.parse(
-              localStorage.getItem("@WebSchool:Token")
-            )}`,
-          },
-        }
-      )
-      .then((res) => {
-        setFeedbacks(res.data);
-        console.log(res.data);
-      })
-      .catch((err) => console.log(err));
-  }, []);
->>>>>>> 88b767b43c0b1a1847a6fbc03cafd53857a9e593
 
   return (
     <>
       <Header rota={"/dashboard/aluno"} texto={"Voltar"} />
-      <Container mw="1000px">
-<<<<<<< HEAD
+      <Container mw="100%">
         <h2>Olá, {userContext.name}</h2>
-=======
-        <h2>Olá {user.name}</h2>
->>>>>>> 88b767b43c0b1a1847a6fbc03cafd53857a9e593
         <div>
           <h3>Feedbacks</h3>
           <ul>
@@ -83,12 +46,9 @@ const FeedBackAluno = () => {
               </li>
             ))}
           </ul>
-<<<<<<< HEAD
           <DivFeedback>
             <div></div>
           </DivFeedback>
-=======
->>>>>>> 88b767b43c0b1a1847a6fbc03cafd53857a9e593
         </div>
       </Container>
       <Footer />
