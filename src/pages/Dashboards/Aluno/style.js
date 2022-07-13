@@ -6,8 +6,17 @@ export const ThemeMain = styled.main`
 
   margin: ${(props) => props.m};
 
+  background-color: ${(props) => props.bc};
+
   h1 {
     margin: 100px 0px;
+    width: 90%;
+  }
+
+  @media (min-width: 768px) {
+    h1 {
+      width: 500px;
+    }
   }
 `;
 
@@ -33,4 +42,9 @@ export const Container = styled.div`
 
   border-radius: ${(props) => props.br};
   background-color: ${(props) => props.bc};
+
+  text-align: start;
+  @media (min-width: 768px) {
+    max-width: 500px;
+  }
 `;
