@@ -17,13 +17,35 @@ export const Container = styled.div`
 
 export const SliderContainer = styled.div`
   margin-top: 50px;
-  .img-gallery-slides{
-    img{
-    width: 500px;
-    height: 500px;
+  .img-gallery-slides {
+    img {
+      width: 500px;
+      height: 500px;
     }
   }
-  width: 80%;
+
+  .image-gallery-swipe {
+    background: var(--black);
+  }
+
+  .image-gallery-image {
+    width: 50vh;
+  }
+  width: 50%;
+
+  @media (max-width: 768px) {
+    .image-gallery-image {
+      width: 50vh;
+    }
+    width: 60%;
+  }
+
+  @media (max-width: 425px) {
+    .image-gallery-image {
+      width: 40vh;
+    }
+    width: 80%;
+  }
 `;
 
 export const InfosContainer = styled.div`
@@ -31,13 +53,12 @@ export const InfosContainer = styled.div`
   flex-direction: column;
   gap: 2rem;
   width: 730px;
-  h1{
+  h1 {
     text-decoration: underline;
   }
-  p{
+  p {
     text-align: center;
     line-height: 1.5rem;
-
   }
 
   @media (max-width: 768px) {
