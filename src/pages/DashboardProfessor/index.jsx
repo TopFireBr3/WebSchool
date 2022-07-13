@@ -7,10 +7,13 @@ import {
   FooterContainer,
 } from "./style";
 import logoImg from "../../assets/img2.png";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import { type } from "@testing-library/user-event/dist/type";
+import Header from "../Dashboards/Professor/Header";
+import { api } from "../../services/api";
+import { UserContext } from "../../contexts/User/UserContext";
 
 const DashboardProfessor = () => {
   const token = JSON.parse(localStorage.getItem("@WebSchool:Token"));
@@ -18,6 +21,17 @@ const DashboardProfessor = () => {
   const nomeProf = "Teste";
   const [turmas, setTurmas] = useState([]);
   const [alunos, setAlunos] = useState([]);
+
+  const { setUserContext } = useContext(UserContext);
+
+  useEffect(() => {
+    api
+      .get(`/users/${JSON.parse(localStorage.getItem("@WebSchool:UserId"))}`)
+      .then((res) => {
+        setUserContext(res.data);
+      })
+      .catch((err) => console.error(err));
+  }, []);
 
   useEffect(() => {
     axios
@@ -27,14 +41,12 @@ const DashboardProfessor = () => {
         },
       })
       .then((res) => {
-        console.log(res.data);
         setTurmas(res.data[1].gang);
       })
       .catch((err) => console.log(err));
   }, []);
 
-  const getAlunosTurma = (gang) => {
-    console.log(gang);
+  function getAlunosTurma(gang) {
     axios
       .get("https://api-web-school.herokuapp.com/users?type=aluno", {
         headers: {
@@ -42,36 +54,47 @@ const DashboardProfessor = () => {
         },
       })
       .then((res) => {
-        console.log(res);
         setAlunos(res.data.filter((aluno) => +aluno.gang === gang));
       })
       .catch((err) => console.log(err));
-  };
+  }
 
-  const redirectPage = (id) => {
-    return;
-  };
+  function setAlunoIDLocalStorage(id) {
+    localStorage.setItem("@WebSchool:AlunoId", id);
+  }
+
+  function setAlunoNameLocalStorage(name) {
+    localStorage.setItem("@WebSchool:AlunoName", name);
+  }
+
+  function setTurmaNumberLocalStorage(item) {
+    localStorage.setItem("@WebSchool:Turma", item);
+  }
 
   return (
     <>
+      <Header rota={"/"} texto={"Sair"} />
       <Container>
-        <header>
-          <img src={logoImg} />
-          <button>Sair</button>
-        </header>
         <Content>
-          <h1>{activeTurma ? "" : `Olá Professor ${nomeProf}`}</h1>
+          <h1>{activeTurma ? "" : `Olá, Professor ${nomeProf}`}</h1>
           <TurmasContainer>
             <TurmasHeaderContainer buttonDisplay={!activeTurma}>
-              <h2>{activeTurma || "Turmas"}</h2>
+              <h2>{`Turma ${activeTurma}` || "Turmas"}</h2>
               <button onClick={() => setActiveTurma("")}>X</button>
             </TurmasHeaderContainer>
             {activeTurma ? (
               <ul>
                 {alunos.map((aluno) => (
                   <li key={aluno.id}>
-                    <button onClick={() => redirectPage(aluno.id)}>
-                      <Link to={`/aluno`}>{aluno.name}</Link>
+                    <button
+                      onClick={() => {
+                        setAlunoNameLocalStorage(aluno.name);
+                        setAlunoIDLocalStorage(aluno.id);
+                      }}
+                    >
+                      <Link to={`/dashboard/professor/aluno`}>
+                        {aluno.name}
+                      </Link>
                     </button>
                   </li>
                 ))}
@@ -82,6 +105,7 @@ const DashboardProfessor = () => {
                   <li key={item}>
                     <button
                       onClick={() => {
+                        setTurmaNumberLocalStorage(item);
                         setActiveTurma(item);
                         getAlunosTurma(item);
                       }}
@@ -94,8 +118,6 @@ const DashboardProfessor = () => {
             ) : (
               ""
             )}
-
-            <h3>{activeTurma ? "" : "Informações gerais"}</h3>
           </TurmasContainer>
         </Content>
       </Container>

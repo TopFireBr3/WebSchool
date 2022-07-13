@@ -1,3 +1,6 @@
+import { useState } from "react";
+import { useForm } from "react-hook-form";
+
 import Footer from "../../components/Footer";
 import {
   Container,
@@ -8,30 +11,41 @@ import {
   FooterContainer,
   ModalContainer,
 } from "./style";
-import logoImg from "../../assets/img2.png";
-import { useEffect, useState } from "react";
-import { useForm } from "react-hook-form";
 
 import axios from "axios";
-import { EditNotifications } from "@mui/icons-material";
 import { api } from "../../services/api";
 
+import { toast } from "react-toastify";
+import Header from "../Dashboards/Professor/Header";
+
+import imagemAluno from "../../assets/imagemAluno.jpg";
+import { useContext } from "react";
+import { UserContext } from "../../contexts/User/UserContext";
+
 const AlunoPage = () => {
-  const token =
-    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6IlByb2Z0ZXN0ZUBlZHVjYWNhby5jb20iLCJpYXQiOjE2NTc2MjgzOTcsImV4cCI6MTY1NzYzMTk5Nywic3ViIjoiOSJ9.Z-L5Y8zrob4OWVzo200iMrI9RpRK_DFSkB2K-qm__IA";
+  const [FeedId, setFeedId] = useState();
+  const [notaId, setNotaId] = useState();
+
   const [notas, setNotas] = useState([]);
   const [feedbacks, setFeedbacks] = useState([]);
   const [infos, setInfos] = useState([]);
   const [ativs, setAtivs] = useState([]);
-  const userId = 2;
+
   const [option, setOption] = useState("Notas");
+
   const [modalAddNotas, setModalAddNotas] = useState(false);
   const [modalAddAtivs, setModalAddAtivs] = useState(false);
   const [modalAddInfos, setModalAddInfos] = useState(false);
   const [modalAddFeed, setModalAddFeed] = useState(false);
   const [modalEditNotas, setModalEditNotas] = useState(false);
+  const [modalEditFeed, setModalEditFeed] = useState(false);
 
   const { register, handleSubmit } = useForm();
+
+  const alunoName = localStorage.getItem("@WebSchool:AlunoName");
+  const turma = localStorage.getItem("@WebSchool:Turma");
+
+  const { userContext } = useContext(UserContext);
 
   const onSubmitFunction = (data) => {
     switch (data.option) {
@@ -117,7 +131,7 @@ const AlunoPage = () => {
     const objNota = {
       materia: data.materia,
       nota: data.nota,
-      userId: Number(data.idNota),
+      userId: localStorage.getItem("@WebSchool:AlunoId"),
     };
 
     axios
@@ -127,16 +141,15 @@ const AlunoPage = () => {
             "Bearer " + JSON.parse(localStorage.getItem("@WebSchool:Token")),
         },
       })
-      .then((res) => console.log(res))
+      .then((res) => toast.success("Nota adicionada!"))
       .catch((err) => console.log(err));
   };
 
   const onSubmitAddFeedFunction = (data) => {
-    console.log(data);
     const objFeed = {
       feedback: data.feedback,
       name: data.name,
-      userId: Number(data.idFeed),
+      userId: localStorage.getItem("@WebSchool:AlunoId"),
     };
 
     axios
@@ -146,16 +159,19 @@ const AlunoPage = () => {
             "Bearer " + JSON.parse(localStorage.getItem("@WebSchool:Token")),
         },
       })
-      .then((res) => console.log(res))
+      .then((res) => toast.success("Feedback adicionado!"))
       .catch((err) => console.log(err));
   };
 
   const onSubmitAddAtivFunction = (data) => {
-    console.log(data);
     const objAtiv = {
+      name: userContext.name,
+      type: userContext.type,
+      title: data.nome_atividade,
       url_atividade: data.url_atividade,
-      userId: userId,
+      userId: localStorage.getItem("@WebSchool:AlunoId"),
     };
+
     axios
       .post("https://api-web-school.herokuapp.com/atividades", objAtiv, {
         headers: {
@@ -163,7 +179,7 @@ const AlunoPage = () => {
             "Bearer " + JSON.parse(localStorage.getItem("@WebSchool:Token")),
         },
       })
-      .then((res) => console.log(res))
+      .then((res) => toast.success("Atividade adicionada!"))
       .catch((err) => console.log(err));
   };
 
@@ -179,7 +195,7 @@ const AlunoPage = () => {
             "Bearer " + JSON.parse(localStorage.getItem("@WebSchool:Token")),
         },
       })
-      .then((res) => console.log(res))
+      .then((res) => toast.success("Info adicionada!"))
       .catch((err) => console.log(err));
   };
 
@@ -192,7 +208,7 @@ const AlunoPage = () => {
         },
       })
       .then((res) => {
-        console.log(res);
+        toast.success("Nota deletada!");
       })
       .catch((err) => console.log(err));
   };
@@ -206,7 +222,7 @@ const AlunoPage = () => {
         },
       })
       .then((res) => {
-        console.log(res);
+        toast.success("Feedback deletado!");
       })
       .catch((err) => console.log(err));
   };
@@ -220,7 +236,7 @@ const AlunoPage = () => {
         },
       })
       .then((res) => {
-        console.log(res);
+        toast.success("Atividade deletada!");
       })
       .catch((err) => console.log(err));
   };
@@ -234,7 +250,7 @@ const AlunoPage = () => {
         },
       })
       .then((res) => {
-        console.log(res);
+        toast.success("Info deletada!");
       })
       .catch((err) => console.log(err));
   };
@@ -258,69 +274,80 @@ const AlunoPage = () => {
     }
   };
 
-  function editNota(id, data) {
+  function editNota(data) {
     const editedNota = {
-      materia: data.materia,
-      nota: data.nota,
-      userId: Number(data.idNota),
+      materia: data.materiaEditada,
+      nota: data.notaEditada,
+      userId: localStorage.getItem("@WebSchool:AlunoId"),
     };
 
     api
-      .put(`/eventos/${id}`, editedNota, {
+      .put(`/notas/${notaId}`, editedNota, {
         headers: {
           Authorization:
             "Bearer " + JSON.parse(localStorage.getItem("@WebSchool:Token")),
         },
       })
-      .then((res) => console.log(res))
+      .then((res) => toast.success("Nota editada com sucesso"))
       .catch((error) => console.log(error));
   }
 
-  function editFeedback(id, data) {
+  function editFeedback(data) {
     const editedFeed = {
-      feedback: data.feedback,
-      name: data.name,
-      userId: Number(data.idFeed),
+      feedback: data.feedbackEditado,
+      name: data.nomeEditado,
+      userId: localStorage.getItem("@WebSchool:AlunoId"),
     };
 
     api
-      .put(`/feedback/${id}`, editedFeed, {
+      .put(`/feedback/${FeedId}`, editedFeed, {
         headers: {
           Authorization:
             "Bearer " + JSON.parse(localStorage.getItem("@WebSchool:Token")),
         },
       })
-      .then((res) => console.log(res))
+      .then((res) => toast.success("Feed editado com sucesso"))
       .catch((error) => console.log(error));
   }
 
   return (
     <>
+      <Header rota={"/dashboard/professor"} texto={"Voltar"} />
       <Container>
-        <header>
-          <img src={logoImg} />
-          <button>Sair</button>
-        </header>
-
         <Content>
-          <ImgContainer>imgteste</ImgContainer>
           <InfosContainer>
-            <h3>Nome</h3>
-            <h3>Turma</h3>
-            <form onSubmit={handleSubmit(onSubmitFunction)}>
-              <select
-                {...register("option")}
-                onChange={(e) => setOption(e.target.value)}
-              >
-                <option>Notas</option>
-                <option>Feed</option>
-                <option>Atividades</option>
-                <option>Infos Gerais</option>
-              </select>
+            <img className="imageAluno" src={imagemAluno} alt="" />
+            <div className="infosAtividadeProfessor">
+              <div className="infosAluno">
+                <div>
+                  <h3>Nome</h3>
+                  <p>{alunoName}</p>
+                </div>
+                <div>
+                  <h3>Turma</h3>
+                  <p>{turma}</p>
+                </div>
+              </div>
+              <div className="optionsProfessor">
+                <form
+                  className="selectDiv"
+                  onSubmit={handleSubmit(onSubmitFunction)}
+                >
+                  <select
+                    {...register("option")}
+                    onChange={(e) => setOption(e.target.value)}
+                  >
+                    <option>Notas</option>
+                    <option>Feed</option>
+                    <option>Atividades</option>
+                    <option>Infos Gerais</option>
+                  </select>
 
-              <button type="submit">search</button>
-            </form>
-            <button onClick={() => addToAluno(option)}>add</button>
+                  <button type="submit">Pesquisar</button>
+                  <button onClick={() => addToAluno(option)}>Adicionar</button>
+                </form>
+              </div>
+            </div>
           </InfosContainer>
 
           <QuadroContainer>
@@ -329,7 +356,14 @@ const AlunoPage = () => {
                 notas.map((nota) => (
                   <li key={nota.id}>
                     <h1>{nota.materia}</h1> <p>{nota.nota}</p>{" "}
-                    <button>edit</button>{" "}
+                    <button
+                      onClick={() => {
+                        setNotaId(nota.id);
+                        setModalEditNotas(true);
+                      }}
+                    >
+                      Editar
+                    </button>{" "}
                     <button onClick={() => deleteNota(nota.id)}>delete</button>
                   </li>
                 ))}
@@ -340,8 +374,13 @@ const AlunoPage = () => {
                   <li key={feed.id}>
                     {" "}
                     <h1>{feed.feedback}</h1>
-                    <button onClick={() => editFeedback(feed.id, feed)}>
-                      edit
+                    <button
+                      onClick={() => {
+                        setFeedId(feed.id);
+                        setModalEditFeed(true);
+                      }}
+                    >
+                      Editar
                     </button>{" "}
                     <button onClick={() => deleteFeed(feed.id)}>delete</button>
                   </li>
@@ -360,7 +399,8 @@ const AlunoPage = () => {
               {ativs &&
                 ativs.map((ativ) => (
                   <li key={ativ.id}>
-                    <h1>Link da atividade:{ativ.url_atividade}</h1>
+                    <h2>{ativ.title}</h2>
+                    <h2>Link da atividade:{ativ.url_atividade}</h2>
                     <button onClick={() => deleteAtiv(ativ.id)}>delete</button>
                   </li>
                 ))}
@@ -369,15 +409,15 @@ const AlunoPage = () => {
         </Content>
       </Container>
 
-      <FooterContainer>
-        <Footer />
-      </FooterContainer>
+      <Footer />
 
       <ModalContainer
         modalAddNotas={modalAddNotas}
         modalAddAtivs={modalAddAtivs}
         modalAddFeed={modalAddFeed}
         modalAddInfos={modalAddInfos}
+        modalEditNotas={modalEditNotas}
+        modalEditFeed={modalEditFeed}
       >
         <div className="modal-add-notas">
           <div className="modal-add-notas-content">
@@ -394,12 +434,7 @@ const AlunoPage = () => {
                 placeholder="nota"
                 {...register("nota")}
               ></input>
-              <input
-                type="text"
-                placeholder="userId"
-                {...register("idNota")}
-              ></input>
-              <button type="submit">adicionar nota</button>
+              <button type="submit">Adicionar nota</button>
             </form>
           </div>
         </div>
@@ -419,11 +454,6 @@ const AlunoPage = () => {
                 placeholder="nome"
                 {...register("name")}
               ></input>
-              <input
-                type="text"
-                placeholder="userId"
-                {...register("idFeed")}
-              ></input>
               <button type="submit">adicionar feedback</button>
             </form>
           </div>
@@ -435,10 +465,13 @@ const AlunoPage = () => {
             <p>Atividades</p>
             <form onSubmit={handleSubmit(onSubmitAddAtivFunction)}>
               <input
-                placeholder="url atividade"
+                placeholder="Nome da atividade"
+                {...register("nome_atividade")}
+              ></input>
+              <input
+                placeholder="Link da atividade"
                 {...register("url_atividade")}
               ></input>
-              <input placeholder="userId" {...register("idAtiv")}></input>
               <button type="submit">adicionar atividade</button>
             </form>
           </div>
@@ -455,6 +488,38 @@ const AlunoPage = () => {
                 {...register("message")}
               ></input>
               <button type="submit">adicionar info</button>
+            </form>
+          </div>
+        </div>
+
+        <div className="modal-edit-notas">
+          <div className="modal-edit-notas-content">
+            <button onClick={() => setModalEditNotas(false)}>
+              close modal
+            </button>
+            <p>Nota</p>
+            <form onSubmit={handleSubmit(editNota)}>
+              <input
+                placeholder="Matéria"
+                {...register("materiaEditada")}
+              ></input>
+              <input placeholder="Nota" {...register("notaEditada")}></input>
+              <button type="submit">Editar nota</button>
+            </form>
+          </div>
+        </div>
+
+        <div className="modal-edit-feed">
+          <div className="modal-edit-feed-content">
+            <button onClick={() => setModalEditFeed(false)}>close modal</button>
+            <p>Nota</p>
+            <form onSubmit={handleSubmit(editFeedback)}>
+              <input
+                placeholder="Feedback"
+                {...register("feedbackEditado")}
+              ></input>
+              <input placeholder="Nome" {...register("nomeEditado")}></input>
+              <button type="submit">Editar nota</button>
             </form>
           </div>
         </div>

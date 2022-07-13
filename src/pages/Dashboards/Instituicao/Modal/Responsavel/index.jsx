@@ -10,7 +10,7 @@ import {
   ThemeForm,
 } from "./style";
 
-import { api, apiPrivate } from "../../../../../services/api";
+import { api } from "../../../../../services/api";
 import { toast } from "react-toastify";
 
 const ModalResponsavel = (prop) => {
@@ -45,7 +45,6 @@ const ModalResponsavel = (prop) => {
         prop.setResponsavel();
       })
       .catch((_) => toast.error("Ops, algo deu errado"));
-
   };
 
   return (

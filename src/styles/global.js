@@ -33,4 +33,21 @@ export default createGlobalStyle`
         overflow: ${(props) => props.o};
         max-height: ${(props) => props.mh} ;
     }
+
+    html::-webkit-scrollbar {
+        width: 10px;
+    }
+
+    html::-webkit-scrollbar-thumb {
+        border-radius: 20px;
+        background: var(--pink-1);
+    }
+
+    html::-webkit-scrollbar-thumb:hover {
+        background: var(--pink-2);
+    }
+
+    html {
+        scroll-behavior: smooth;
+    }
 `;

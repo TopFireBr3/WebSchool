@@ -20,6 +20,11 @@ export const LoginProvider = ({ children }) => {
           JSON.stringify(response.data.accessToken)
         );
 
+        localStorage.setItem(
+          "@WebSchool:UserId",
+          JSON.stringify(response.data.user.id)
+        );
+
         toast.success("Entrando na aplicação");
 
         setTimeout(() => {
