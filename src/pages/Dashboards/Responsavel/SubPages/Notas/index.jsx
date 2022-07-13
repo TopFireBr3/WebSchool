@@ -41,13 +41,19 @@ const NotasPai = () => {
         <div>
           <h3>Notas</h3>
           <ul>
-            {notas?.map((nota) => (
-              <li key={nota.id}>
-                <p>
-                  {nota.materia} <span>{nota.nota} PONTOS</span>
-                </p>
+            {notas.length === 0 ? (
+              <li>
+                <p>Nenhuma nota cadastrada</p>
               </li>
-            ))}
+            ) : (
+              notas?.map((nota) => (
+                <li key={nota.id}>
+                  <p>
+                    {nota.materia} <span>{nota.nota} PONTOS</span>
+                  </p>
+                </li>
+              ))
+            )}
           </ul>
         </div>
       </Container>

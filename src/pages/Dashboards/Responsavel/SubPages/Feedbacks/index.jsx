@@ -49,12 +49,18 @@ const FeedbacksPai = () => {
         <div>
           <h3>Feedbacks</h3>
           <ul>
-            {feedbacks?.map((feedback) => (
-              <li key={feedback.id}>
-                <span>- {feedback.name || "Professor"}</span>
-                <p>{feedback.feedback}</p>
+            {feedbacks.length === 0 ? (
+              <li>
+                <p>Nenhum feedback cadastrado</p>
               </li>
-            ))}
+            ) : (
+              feedbacks?.map((feedback) => (
+                <li key={feedback.id}>
+                  <span>- {feedback.name || "Professor"}</span>
+                  <p>{feedback.feedback}</p>
+                </li>
+              ))
+            )}
           </ul>
           <DivFeedback>
             <form

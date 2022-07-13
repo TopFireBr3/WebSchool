@@ -1,7 +1,7 @@
 import { useEffect, useContext, useState } from "react";
 import Footer from "../../../../../components/Footer";
 import { UserContext } from "../../../../../contexts/User/UserContext";
-import { apiPrivate } from "../../../../../services/api";
+import { api } from "../../../../../services/api";
 import Header from "../../Header";
 import { Container } from "../../styles";
 
@@ -11,22 +11,37 @@ const InfosPai = () => {
   const [infos, setInfos] = useState([]);
 
   useEffect(() => {
-    apiPrivate.get("/infos").then((res) => setInfos(res.data));
+    api
+      .get("/infos", {
+        headers: {
+          Authorization: `Bearer ${JSON.parse(
+            localStorage.getItem("@WebSchool:Token")
+          )}`,
+        },
+      })
+      .then((res) => setInfos(res.data))
+      .catch((err) => console.log(err));
   });
 
   return (
     <>
       <Header rota="/dashboard/responsavel" texto="Voltar" />
       <Container mw="1000px">
-        <h2>Olá {userContext.name}</h2>
+        <h2>Olá, {userContext.name}</h2>
         <div className="infosPai">
           <h3>INFORMAÇÕES GERAIS</h3>
           <ul>
-            {infos?.map((info, index) => (
-              <li key={index}>
-                <p>{info.message}</p>
+            {infos.length === 0 ? (
+              <li>
+                <p>Nenhuma informação cadastrada</p>
               </li>
-            ))}
+            ) : (
+              infos?.map((info, index) => (
+                <li key={index}>
+                  <p>{info.message}</p>
+                </li>
+              ))
+            )}
           </ul>
         </div>
       </Container>
