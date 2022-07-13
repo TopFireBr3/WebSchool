@@ -22,8 +22,6 @@ const Notices = () => {
           return {
             original: item.img,
             thumbnail: item.img,
-            originalWidth: "300px",
-            originalHeight: "400px",
           };
         })
       );
@@ -48,7 +46,6 @@ const Notices = () => {
             items={dataImg}
             showFullscreenButton={false}
             showPlayButton={false}
-            originalWidth={"200px"}
             onSlide={slide}
             infinite={false}
           />
