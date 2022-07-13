@@ -1,35 +1,36 @@
 import React, { useContext, useEffect, useState } from "react";
-import Footer from "../../../../../components/Footer";
-import { UserContext } from "../../../../../contexts/User/UserContext";
-import { apiPrivate } from "../../../../../services/api";
+
+import { Container } from "./style";
+
 import Header from "../../Header";
-import { Container, DivFeedback } from "./style";
+import Footer from "../../../../../components/Footer";
+
+import { api } from "../../../../../services/api";
+
+import { UserContext } from "../../../../../contexts/User/UserContext";
 
 const FeedBackAluno = () => {
-  const { userContext } = useContext(UserContext);
-
-  const [id, setId] = useState("");
   const [feedbacks, setFeedbacks] = useState([]);
 
-  useEffect(() => {
-    apiPrivate
-      .get(`/users?registration=${userContext.registration_son}`)
-      .then((res) => {
-        setId(res.data[0]?.id || []);
-      })
-      .catch((err) => console.error(err));
-  });
+  const { userContext } = useContext(UserContext);
 
   useEffect(() => {
-    if (!!id) {
-      apiPrivate
-        .get(`/feedback?userId=${id}`)
-        .then((res) => {
-          setFeedbacks(res.data);
-        })
-        .catch((err) => console.error(err));
-    }
-  }, [id]);
+    api
+      .get(
+        `/feedback?userId=${JSON.parse(
+          localStorage.getItem("@WebSchool:UserId")
+        )}`,
+        {
+          headers: {
+            authorization: `Bearer ${JSON.parse(
+              localStorage.getItem("@WebSchool:Token")
+            )}`,
+          },
+        }
+      )
+      .then((res) => setFeedbacks(res.data))
+      .catch((err) => console.error(err));
+  }, []);
 
   return (
     <>
@@ -46,9 +47,6 @@ const FeedBackAluno = () => {
               </li>
             ))}
           </ul>
-          <DivFeedback>
-            <div></div>
-          </DivFeedback>
         </div>
       </Container>
       <Footer />

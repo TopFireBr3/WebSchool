@@ -7,8 +7,8 @@ import Logo2 from "../../../../assets/img2.png";
 const HeaderInstitucional = () => {
   const history = useHistory();
   function callBack() {
-    localStorage.clear();
     history.push("/");
+    localStorage.clear();
   }
 
   return (

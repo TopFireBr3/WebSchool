@@ -4,12 +4,11 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
   gap: 50px;
   height: 500px;
   margin: 0px 10vw;
-
-  height: 80vh;
+  min-height: 80vh;
+  padding-top: 50px;
 
   h4 {
     text-align: center;
@@ -23,7 +22,6 @@ export const Container = styled.div`
     align-self: flex-start;
     width: 80vw;
     min-width: 300px;
-    /* max-width: 1000px; */
     max-width: ${(props) => props.mw};
   }
 
@@ -36,7 +34,6 @@ export const Container = styled.div`
     padding: 10px 0;
     width: 80vw;
     min-width: 300px;
-    /* max-width: 1000px; */
     max-width: ${(props) => props.mw};
     max-height: 65vh;
   }
