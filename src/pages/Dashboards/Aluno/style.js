@@ -23,13 +23,15 @@ export const ThemeMain = styled.main`
 
   background-color: ${(props) => props.bc};
 
-  h1{
+  h1 {
     margin: 100px 0px;
+    width:90%;
   }
 
-
   @media (min-width: 768px) {
-
+    h1 {
+      width: 500px;
+    }
   }
 `;
 
@@ -56,10 +58,9 @@ export const ThemeDiv = styled.div`
 
   background-color: var(--white);
 
-  padding:15px;
-  border-radius:10px;
+  padding: 15px;
+  border-radius: 10px;
   @media (min-width: 768px) {
-
   }
 `;
 export const Container = styled.div`
@@ -82,7 +83,8 @@ export const Container = styled.div`
   border-radius: ${(props) => props.br};
   background-color: ${(props) => props.bc};
 
+  text-align: start;
   @media (min-width: 768px) {
-
+    max-width: 500px;
   }
 `;

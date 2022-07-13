@@ -13,7 +13,7 @@ const Header = ({rota, texto}) => {
 
   return (
     <ThemeHeader w="100%" h="100px" bc="var(--blue-1)" j="center" a="center">
-      <ThemeTitle j="space-between" a="center" w="80%">
+      <ThemeTitle j="space-evenly" a="center" w="100%">
         <img src={Logo2} alt="Logo" />
         <button onClick={callBack}>{texto}</button>
       </ThemeTitle>

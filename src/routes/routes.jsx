@@ -1,6 +1,6 @@
 import { Redirect, Route as RouterDOM } from "react-router-dom";
 
-const Route = ({ isPrivate = false,user,  Component,  ...rest }) => {
+const Route = ({ isPrivate = false, user,  Component,  ...rest }) => {
   const token = JSON.parse(localStorage.getItem("@WebSchool:Token"));
   console.log(user)
 
