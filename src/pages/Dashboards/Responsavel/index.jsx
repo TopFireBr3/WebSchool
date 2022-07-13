@@ -13,7 +13,7 @@ import { UserContext } from "../../../contexts/User/UserContext";
 const PagPrincipalPai = () => {
   const history = useHistory();
 
-  const { setUserContext, setToken } = useContext(UserContext);
+  const { setUserContext } = useContext(UserContext);
 
   const [user, setUser] = useState({});
 
@@ -23,9 +23,9 @@ const PagPrincipalPai = () => {
       .then((res) => {
         setUser(res.data);
         setUserContext(res.data);
-        setToken(JSON.parse(localStorage.getItem("@WebSchool:Token")));
       })
       .catch((err) => console.error(err));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
