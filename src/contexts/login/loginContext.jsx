@@ -22,7 +22,7 @@ export const LoginProvider = ({ children }) => {
 
         toast.success("Entrando na aplicação");
 
-        setInterval(() => {
+        setTimeout(() => {
           history.push(`/dashboard/${response.data.user.type}`);
         }, 2500);
       })

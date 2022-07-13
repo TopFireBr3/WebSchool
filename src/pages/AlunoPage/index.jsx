@@ -13,10 +13,12 @@ import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 
 import axios from "axios";
+import { EditNotifications } from "@mui/icons-material";
+import { api } from "../../services/api";
 
 const AlunoPage = () => {
   const token =
-    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImtlbnppbmhvQGVkdWNhY2FvLmNvbSIsImlhdCI6MTY1NzMwMjg1OCwiZXhwIjoxNjU3MzA2NDU4LCJzdWIiOiIyIn0.-nMSof1VEjRlb3USrjEKd7YWmAhQyL85VRhAeH17LjA";
+    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6IlByb2Z0ZXN0ZUBlZHVjYWNhby5jb20iLCJpYXQiOjE2NTc2MjgzOTcsImV4cCI6MTY1NzYzMTk5Nywic3ViIjoiOSJ9.Z-L5Y8zrob4OWVzo200iMrI9RpRK_DFSkB2K-qm__IA";
   const [notas, setNotas] = useState([]);
   const [feedbacks, setFeedbacks] = useState([]);
   const [infos, setInfos] = useState([]);
@@ -27,6 +29,7 @@ const AlunoPage = () => {
   const [modalAddAtivs, setModalAddAtivs] = useState(false);
   const [modalAddInfos, setModalAddInfos] = useState(false);
   const [modalAddFeed, setModalAddFeed] = useState(false);
+  const [modalEditNotas, setModalEditNotas] = useState(false);
 
   const { register, handleSubmit } = useForm();
 
@@ -36,7 +39,9 @@ const AlunoPage = () => {
         axios
           .get("https://api-web-school.herokuapp.com/notas?userId=2", {
             headers: {
-              Authorization: "Bearer " + token,
+              Authorization:
+                "Bearer " +
+                JSON.parse(localStorage.getItem("@WebSchool:Token")),
             },
           })
           .then((res) => {
@@ -52,7 +57,9 @@ const AlunoPage = () => {
         axios
           .get("https://api-web-school.herokuapp.com/feedback?userId=2", {
             headers: {
-              Authorization: "Bearer " + token,
+              Authorization:
+                "Bearer " +
+                JSON.parse(localStorage.getItem("@WebSchool:Token")),
             },
           })
           .then((res) => {
@@ -68,7 +75,9 @@ const AlunoPage = () => {
         axios
           .get("https://api-web-school.herokuapp.com/atividades?userId=2", {
             headers: {
-              Authorization: "Bearer " + token,
+              Authorization:
+                "Bearer " +
+                JSON.parse(localStorage.getItem("@WebSchool:Token")),
             },
           })
           .then((res) => {
@@ -85,7 +94,9 @@ const AlunoPage = () => {
         axios
           .get("https://api-web-school.herokuapp.com/infos", {
             headers: {
-              Authorization: "Bearer " + token,
+              Authorization:
+                "Bearer " +
+                JSON.parse(localStorage.getItem("@WebSchool:Token")),
             },
           })
           .then((res) => {
@@ -112,7 +123,8 @@ const AlunoPage = () => {
     axios
       .post("https://api-web-school.herokuapp.com/notas", objNota, {
         headers: {
-          Authorization: "Bearer " + token,
+          Authorization:
+            "Bearer " + JSON.parse(localStorage.getItem("@WebSchool:Token")),
         },
       })
       .then((res) => console.log(res))
@@ -130,7 +142,8 @@ const AlunoPage = () => {
     axios
       .post("https://api-web-school.herokuapp.com/feedback", objFeed, {
         headers: {
-          Authorization: "Bearer " + token,
+          Authorization:
+            "Bearer " + JSON.parse(localStorage.getItem("@WebSchool:Token")),
         },
       })
       .then((res) => console.log(res))
@@ -146,7 +159,8 @@ const AlunoPage = () => {
     axios
       .post("https://api-web-school.herokuapp.com/atividades", objAtiv, {
         headers: {
-          Authorization: "Bearer " + token,
+          Authorization:
+            "Bearer " + JSON.parse(localStorage.getItem("@WebSchool:Token")),
         },
       })
       .then((res) => console.log(res))
@@ -161,7 +175,8 @@ const AlunoPage = () => {
     axios
       .post("https://api-web-school.herokuapp.com/infos", objInfo, {
         headers: {
-          Authorization: "Bearer " + token,
+          Authorization:
+            "Bearer " + JSON.parse(localStorage.getItem("@WebSchool:Token")),
         },
       })
       .then((res) => console.log(res))
@@ -172,7 +187,8 @@ const AlunoPage = () => {
     axios
       .delete(`https://api-web-school.herokuapp.com/notas/${id}`, {
         headers: {
-          Authorization: "Bearer " + token,
+          Authorization:
+            "Bearer " + JSON.parse(localStorage.getItem("@WebSchool:Token")),
         },
       })
       .then((res) => {
@@ -185,7 +201,8 @@ const AlunoPage = () => {
     axios
       .delete(`https://api-web-school.herokuapp.com/feedback/${id}`, {
         headers: {
-          Authorization: "Bearer " + token,
+          Authorization:
+            "Bearer " + JSON.parse(localStorage.getItem("@WebSchool:Token")),
         },
       })
       .then((res) => {
@@ -198,7 +215,8 @@ const AlunoPage = () => {
     axios
       .delete(`https://api-web-school.herokuapp.com/atividades/${id}`, {
         headers: {
-          Authorization: "Bearer " + token,
+          Authorization:
+            "Bearer " + JSON.parse(localStorage.getItem("@WebSchool:Token")),
         },
       })
       .then((res) => {
@@ -211,7 +229,8 @@ const AlunoPage = () => {
     axios
       .delete(`https://api-web-school.herokuapp.com/infos/${id}`, {
         headers: {
-          Authorization: "Bearer " + token,
+          Authorization:
+            "Bearer " + JSON.parse(localStorage.getItem("@WebSchool:Token")),
         },
       })
       .then((res) => {
@@ -238,6 +257,42 @@ const AlunoPage = () => {
         break;
     }
   };
+
+  function editNota(id, data) {
+    const editedNota = {
+      materia: data.materia,
+      nota: data.nota,
+      userId: Number(data.idNota),
+    };
+
+    api
+      .put(`/eventos/${id}`, editedNota, {
+        headers: {
+          Authorization:
+            "Bearer " + JSON.parse(localStorage.getItem("@WebSchool:Token")),
+        },
+      })
+      .then((res) => console.log(res))
+      .catch((error) => console.log(error));
+  }
+
+  function editFeedback(id, data) {
+    const editedFeed = {
+      feedback: data.feedback,
+      name: data.name,
+      userId: Number(data.idFeed),
+    };
+
+    api
+      .put(`/feedback/${id}`, editedFeed, {
+        headers: {
+          Authorization:
+            "Bearer " + JSON.parse(localStorage.getItem("@WebSchool:Token")),
+        },
+      })
+      .then((res) => console.log(res))
+      .catch((error) => console.log(error));
+  }
 
   return (
     <>
@@ -285,7 +340,9 @@ const AlunoPage = () => {
                   <li key={feed.id}>
                     {" "}
                     <h1>{feed.feedback}</h1>
-                    <button>edit</button>{" "}
+                    <button onClick={() => editFeedback(feed.id, feed)}>
+                      edit
+                    </button>{" "}
                     <button onClick={() => deleteFeed(feed.id)}>delete</button>
                   </li>
                 ))}
