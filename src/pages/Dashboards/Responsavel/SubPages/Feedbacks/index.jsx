@@ -1,10 +1,15 @@
 import { useEffect, useContext, useState } from "react";
-import Footer from "../../../../../components/Footer";
-import { apiPrivate } from "../../../../../services/api";
-import Header from "../../Header";
+
 import { Container, DivFeedback } from "../../styles";
-import { toast } from "react-toastify";
+
+import Header from "../../Header";
+import Footer from "../../../../../components/Footer";
+
+import { api } from "../../../../../services/api";
+
 import { UserContext } from "../../../../../contexts/User/UserContext";
+
+import { toast } from "react-toastify";
 
 const FeedbacksPai = () => {
   const { userContext } = useContext(UserContext);
@@ -14,16 +19,28 @@ const FeedbacksPai = () => {
   const [valueFeedback, setValueFeedback] = useState([]);
 
   useEffect(() => {
-    apiPrivate
-      .get(`/users?registration=${userContext.registration_son}`)
+    api
+      .get(`/users?registration=${userContext.registration_son}`, {
+        headers: {
+          Authorization: `Bearer ${JSON.parse(
+            localStorage.getItem("@WebSchool:Token")
+          )}`,
+        },
+      })
       .then((res) => setId(res.data[0]?.id || []))
       .catch((err) => console.error(err));
   });
 
   useEffect(() => {
     if (!!id) {
-      apiPrivate
-        .get(`/feedback?userId=${id}`)
+      api
+        .get(`/feedback?userId=${id}`, {
+          headers: {
+            Authorization: `Bearer ${JSON.parse(
+              localStorage.getItem("@WebSchool:Token")
+            )}`,
+          },
+        })
         .then((res) => setFeedbacks(res.data))
         .catch((err) => console.error(err));
     }
@@ -32,10 +49,18 @@ const FeedbacksPai = () => {
   function postFeedback(value) {
     const newFeedback = { name: userContext.name, feedback: value, userId: id };
     if (value !== "") {
-      apiPrivate.post("/feedback", newFeedback).then((res) => {
-        setValueFeedback("");
-        setFeedbacks([...feedbacks, res.data]);
-      });
+      api
+        .post("/feedback", newFeedback, {
+          headers: {
+            Authorization: `Bearer ${JSON.parse(
+              localStorage.getItem("@WebSchool:Token")
+            )}`,
+          },
+        })
+        .then((res) => {
+          setValueFeedback("");
+          setFeedbacks([...feedbacks, res.data]);
+        });
     } else {
       toast.error("Digite um texto");
     }
@@ -49,12 +74,18 @@ const FeedbacksPai = () => {
         <div>
           <h3>Feedbacks</h3>
           <ul>
-            {feedbacks?.map((feedback) => (
-              <li key={feedback.id}>
-                <span>- {feedback.name || "Professor"}</span>
-                <p>{feedback.feedback}</p>
+            {feedbacks.length === 0 ? (
+              <li>
+                <p>Nenhum feedback cadastrado</p>
               </li>
-            ))}
+            ) : (
+              feedbacks?.map((feedback) => (
+                <li key={feedback.id}>
+                  <span>- {feedback.name || "Professor"}</span>
+                  <p>{feedback.feedback}</p>
+                </li>
+              ))
+            )}
           </ul>
           <DivFeedback>
             <form

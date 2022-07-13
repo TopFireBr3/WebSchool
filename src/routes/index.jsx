@@ -6,8 +6,8 @@ import Notices from "../pages/Notices";
 import { Register } from "../pages/Register";
 import { RegisterComplement } from "../pages/RegisterComplement";
 
-import DashboardProfessor from "../pages/DashboardProfessor";
 import Instituicao from "../pages/Dashboards/Instituicao";
+import PagPrincipalPai from "../pages/Dashboards/Responsavel";
 import Aluno from "../pages/Dashboards/Aluno";
 
 import Notas from "../pages/Dashboards/Aluno/SubPages/notas";
@@ -15,13 +15,14 @@ import Atividades from "../pages/Dashboards/Aluno/SubPages/Atividades";
 import FeedBackAluno from "../pages/Dashboards/Aluno/SubPages/FeedBack";
 import InfoGerais from "../pages/Dashboards/Aluno/SubPages/InformacoesGerais";
 
-import PagPrincipalPai from "../pages/Dashboards/Responsavel";
 import NotasPai from "../pages/Dashboards/Responsavel/SubPages/Notas";
 import InfosPai from "../pages/Dashboards/Responsavel/SubPages/InformacoesGerais";
 import FeedbacksPai from "../pages/Dashboards/Responsavel/SubPages/Feedbacks";
 import AlunoPage from "../pages/AlunoPage";
 
 export const Routes = () => {
+
+
   return (
     <Switch>
       <Route exact path="/">
@@ -89,7 +90,7 @@ export const Routes = () => {
       </Route>
 
       <Route path="/dashboard/professor">
-        <DashboardProfessor />
+        <PagPrincipalPai/> 
       </Route>
       <Route path="/aluno">
         <AlunoPage />

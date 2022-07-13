@@ -28,7 +28,6 @@ const Header = () => {
 
         <ThemeDiv
           className="nav"
-          f="row"
           w="340px"
           a="center"
           g="20px"
@@ -81,7 +80,6 @@ const Header = () => {
             g="20px"
             p="20px 0px  20px 20px"
             b="1px solid var(--blue-1)"
-            bt="2px solid var(--blue-1)"
             bch="var(--blue-0)"
             style={{
               color: currentPage === "/" && "var(--pink-1)",
@@ -96,7 +94,7 @@ const Header = () => {
               style={{
                 color: currentPage === "/" && "var(--pink-1)",
               }}
-            />{" "}
+            />
             <h2>Home</h2>
           </ThemeDiv>
 
@@ -156,12 +154,11 @@ const Header = () => {
             g="20px"
             p="20px 0px 20px 20px"
             b="1px solid var(--blue-1)"
-            bb="2px solid var(--blue-1)"
             bch="var(--blue-0)"
           >
             <FiMail className="icon" /> <h2>Email para contato</h2>
           </ThemeDiv>
-        </Container>{" "}
+        </Container>
       </div>
     </ThemeHeader>
   );

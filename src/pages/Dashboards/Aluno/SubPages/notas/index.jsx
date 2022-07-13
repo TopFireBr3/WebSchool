@@ -1,10 +1,13 @@
 import React, { useContext, useEffect, useState } from "react";
+
+import { Container } from "./style";
+
 import { UserContext } from "../../../../../contexts/User/UserContext";
+
 import { apiPrivate } from "../../../../../services/api";
 
 import Footer from "../../../../../components/Footer";
 import Header from "../../Header";
-import { Container } from "./style";
 
 const Notas = () => {
   const [notas, setNotas] = useState([]);
@@ -15,6 +18,10 @@ const Notas = () => {
       .get(`/notas?userId=${userContext.id}`)
       .then((res) => setNotas(res.data))
       .catch((err) => console.error(err));
+<<<<<<< HEAD
+=======
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+>>>>>>> 10e1ac9d98eac13cda25fbe8bdf0e871adf8072e
   }, []);
 
   return (

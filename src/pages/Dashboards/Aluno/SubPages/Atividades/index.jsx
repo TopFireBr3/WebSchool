@@ -1,4 +1,3 @@
-
 import Footer from "../../../../../components/Footer";
 import Header from "../../Header";
 
@@ -7,7 +6,6 @@ const Atividades = () => {
     <>
       <Header rota={"/dashboard/aluno"} texto={"Voltar"} />
       <Footer />
-
     </>
   );
 };

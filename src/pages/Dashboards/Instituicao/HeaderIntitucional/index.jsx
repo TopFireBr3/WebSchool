@@ -8,9 +8,7 @@ const HeaderInstitucional = () => {
   const history = useHistory();
   function callBack() {
     history.push("/");
-    setTimeout(() => {
-      localStorage.clear();
-    }, 1000);
+    localStorage.clear();
   }
 
   return (

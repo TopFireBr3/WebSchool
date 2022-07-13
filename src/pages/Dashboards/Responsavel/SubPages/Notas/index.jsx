@@ -5,7 +5,7 @@ import Footer from "../../../../../components/Footer";
 
 import { Container } from "../../styles";
 
-import { apiPrivate } from "../../../../../services/api";
+import { api } from "../../../../../services/api";
 import { UserContext } from "../../../../../contexts/User/UserContext";
 
 const NotasPai = () => {
@@ -15,8 +15,14 @@ const NotasPai = () => {
   const [notas, setNotas] = useState([]);
 
   useEffect(() => {
-    apiPrivate
-      .get(`/users?registration=${userContext.registration_son}`)
+    api
+      .get(`/users?registration=${userContext.registration_son}`, {
+        headers: {
+          Authorization: `Bearer ${JSON.parse(
+            localStorage.getItem("@WebSchool:Token")
+          )}`,
+        },
+      })
       .then((res) => {
         setId(res.data[0].id);
       })
@@ -25,8 +31,14 @@ const NotasPai = () => {
 
   useEffect(() => {
     if (!!id) {
-      apiPrivate
-        .get(`/notas?UserId=${id}`)
+      api
+        .get(`/notas?UserId=${id}`, {
+          headers: {
+            Authorization: `Bearer ${JSON.parse(
+              localStorage.getItem("@WebSchool:Token")
+            )}`,
+          },
+        })
         .then((res) => setNotas(res.data))
         .catch((err) => console.error(err));
     }
@@ -41,13 +53,19 @@ const NotasPai = () => {
         <div>
           <h3>Notas</h3>
           <ul>
-            {notas?.map((nota) => (
-              <li key={nota.id}>
-                <p>
-                  {nota.materia} <span>{nota.nota} PONTOS</span>
-                </p>
+            {notas.length === 0 ? (
+              <li>
+                <p>Nenhuma nota cadastrada</p>
               </li>
-            ))}
+            ) : (
+              notas?.map((nota) => (
+                <li key={nota.id}>
+                  <p>
+                    {nota.materia} <span>{nota.nota} PONTOS</span>
+                  </p>
+                </li>
+              ))
+            )}
           </ul>
         </div>
       </Container>

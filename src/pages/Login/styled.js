@@ -13,7 +13,7 @@ const slideForm = keyframes`
 `;
 
 export const MainLogin = styled.main`
-  width: 100vw;
+  width: 100%;
   height: 100vh;
   background-color: var(--body);
   align-items: center;
@@ -26,7 +26,7 @@ export const MainLogin = styled.main`
     }
 
     .MainLoginForm {
-      width: 100vw;
+      width: 100%;
     }
 
     .form {
@@ -40,7 +40,7 @@ export const MainLogin = styled.main`
     }
 
     .MainLoginForm {
-      width: 100vw;
+      width: 100%;
     }
 
     .form {
@@ -54,7 +54,7 @@ export const MainLogin = styled.main`
     }
 
     .MainLoginForm {
-      width: 100vw;
+      width: 100%;
     }
 
     .form {
@@ -64,7 +64,7 @@ export const MainLogin = styled.main`
 `;
 
 export const MainLoginDiv = styled.div`
-  width: 50vw;
+  width: 50%;
   height: 100vh;
   background-color: ${(props) => props.bc};
   display: flex;
@@ -79,7 +79,7 @@ export const MainLoginDiv = styled.div`
 `;
 
 export const FormLogin = styled.form`
-  width: 25vw;
+  width: 50%;
   height: 60vh;
   background-color: var(--blue-0);
   border-radius: 1vh;
@@ -94,6 +94,7 @@ export const FormLogin = styled.form`
 
   .Input {
     width: 80%;
+    height: 50px;
     background-color: var(--grey-0);
     border-radius: 1vh;
     text-decoration: none;
@@ -103,9 +104,9 @@ export const FormLogin = styled.form`
 
   .showPassword {
     position: relative;
-    height: 10vh;
+    height: 4vh;
     right: -8.5vw;
-    top: -13vh;
+    top: -9vh;
   }
 
   @media (max-width: 500px) {
@@ -140,7 +141,7 @@ export const FormLogin = styled.form`
   }
 
   .error:nth-child(3) {
-    top: 41.5vh;
+    top: 45vh;
     color: var(--error);
     font-size: 2.3vh;
     height: 2vh;

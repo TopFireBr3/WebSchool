@@ -7,9 +7,9 @@ import { apiPrivate } from "../../../services/api";
 import Card from "./Card/index";
 import ModalAluno from "./Modal/Aluno";
 import ModalProfessor from "./Modal/Professor";
-import Footer from "../../../components/Footer";
-import HeaderInstitucional from "./HeaderIntitucional";
 import ModalResponsavel from "./Modal/Responsavel";
+import HeaderInstitucional from "./HeaderIntitucional";
+import Footer from "../../../components/Footer";
 
 const Instituicao = () => {
   const [aluno, setAluno] = useState(false);
