@@ -69,7 +69,7 @@ const FeedbacksPai = () => {
   return (
     <>
       <Header rota="/dashboard/responsavel" texto="Voltar" />
-      <Container mw="1000px">
+      <Container mw="80vw">
         <h2>Olá, {userContext.name}</h2>
         <div>
           <h3>Feedbacks</h3>

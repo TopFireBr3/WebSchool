@@ -32,7 +32,16 @@ export const Container = styled.div`
 
   div > ul {
     overflow: auto;
+    &::-webkit-scrollbar {
+      width: 8px;
+    }
+    &::-webkit-scrollbar-thumb {
+      background-color: var(--blue-1);
+      border-radius: 20px;
+    }
   }
+
+  
 
   div > h3 {
     display: flex;
@@ -65,9 +74,21 @@ export const Container = styled.div`
   }
 
   button {
+    display: flex;
+    justify-content: left;
+    align-items: center;
     border: none;
     padding: 10px;
     font-weight: 700;
+    font-size: 3.5vh;
+    height: 8vh;
+    gap: 10px;
+  }
+
+  svg {
+    width: 4vh;
+    height: 4vh;
+
   }
 
   @media (min-width: 600px) {
