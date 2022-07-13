@@ -3,15 +3,16 @@ import styled from "styled-components";
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
   padding: 15px 10vw;
   gap: 15px;
-  min-height: 80vh;
+  height: 74vh;
   padding-top: 50px;
 
   h2 {
     align-self: flex-start;
     width: 80vw;
+    margin-top: -6vh;
     min-width: 300px;
     max-width: ${(props) => props.mw};
   }
@@ -26,11 +27,22 @@ export const Container = styled.div`
     width: 80vw;
     min-width: 300px;
     max-width: ${(props) => props.mw};
-    max-height: 65vh;
+    height: 60vh;
   }
 
   div > ul {
     overflow: auto;
+    &::-webkit-scrollbar {
+      width: 8px;
+    }
+    &::-webkit-scrollbar-thumb {
+      background-color: var(--blue-1);
+      border-radius: 20px;
+    }
+  }
+
+  div > li {
+    display: flex;
   }
 
   div > h3 {
@@ -48,19 +60,18 @@ export const Container = styled.div`
   }
 
   div > ul > li > p {
-    width: 100%;
+    width: 65%;
     display: flex;
     justify-content: space-between;
-    font-weight: 700;
+    font-weight: 300;
   }
 
   div > ul > li > span {
-    width: 100%;
+    width: 30%;
     display: flex;
     justify-content: space-between;
     font-weight: 700;
-    color: var(--pink-2);
-    text-decoration: underline;
+    color: var(--black);
   }
 
   button {

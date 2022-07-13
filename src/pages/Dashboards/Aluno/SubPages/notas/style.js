@@ -6,7 +6,7 @@ export const Container = styled.div`
   justify-content: center;
   height: 50vh;
   margin: 0px 1vw;
-  height: 70vh;
+  height: 74vh;
 
   h4 {
     text-align: center;
@@ -28,9 +28,6 @@ export const Container = styled.div`
     border-radius: 5px;
     display: flex;
     flex-wrap: wrap;
-    align-items: flex-start;
-    gap: 10px;
-
     width: 80vw;
     min-width: 300px;
     max-width: ${(props) => props.mw};
@@ -41,7 +38,6 @@ export const Container = styled.div`
   div > ul {
     overflow: auto;
     width: 100%;
-    margin-top: 29vh ;
     }
 
   div > h3 {

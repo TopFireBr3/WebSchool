@@ -21,15 +21,17 @@ const FeedBackAluno = () => {
   });
 
   useEffect(() => {
-    if (!!id) {
+    
       apiPrivate
-        .get(`/feedback?userId=${id}`)
+        .get(`/feedback?userId=${userContext.id}`)
         .then((res) => {
           setFeedbacks(res.data);
         })
         .catch((err) => console.error(err));
-    }
-  }, [id]);
+  
+  }, []);
+
+  console.log(feedbacks)
 
   return (
     <>
@@ -41,14 +43,13 @@ const FeedBackAluno = () => {
           <ul>
             {feedbacks?.map((feedback) => (
               <li key={feedback.id}>
-                <span>- {feedback.name || "Professor"}</span>
+                <span>{feedback.name}</span>
                 <p>{feedback.feedback}</p>
               </li>
             ))}
           </ul>
         </div>
       </Container>
-      <Footer />
       <Footer />
     </>
   );

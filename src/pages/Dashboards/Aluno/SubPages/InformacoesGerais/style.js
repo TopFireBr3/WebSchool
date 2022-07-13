@@ -6,7 +6,7 @@ export const Container = styled.div`
   align-items: center;
   padding: 15px 10vw;
   gap: 15px;
-  height: 68vh;
+  height: 74vh;
 
   h2 {
     align-self: flex-start;
@@ -58,7 +58,7 @@ export const Container = styled.div`
     display: flex;
     justify-content: space-between;
     font-weight: 700;
-    color: var(--pink-2);
+    color: var(--black);
     text-decoration: underline;
   }
 

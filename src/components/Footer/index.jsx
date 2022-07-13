@@ -3,7 +3,7 @@ const Footer = () => {
   return (
     <ThemeFooter
       w="100%"
-      h="100px"
+      h="10vh"
       bc="var(--blue-1)"
       j="space-around"
       a="center"

@@ -44,7 +44,7 @@ const Atividades = () => {
   return (
     <>
       <Header rota={"/dashboard/aluno"} texto={"Voltar"} />
-      <Container mw="1000px">
+      <Container mw="100%">
         <h2>Olá, {userContext.name}</h2>
         <div>
           <h3>atividades</h3>
@@ -53,34 +53,46 @@ const Atividades = () => {
               <p>Nenhuma ativivade no momento</p>
             ) : (
               atividades?.map((feed) => (
+
+                feed.type === 'professor' ? (
+
                 <li key={feed.id}>
                   <p>
-                    {feed.type}-{feed.name}
+                    PROFESSOR - {feed.name}
                   </p>
 
                   <h4>{feed.title}</h4>
                   <a href={feed.url_atividade} target="_blank">
                     atividade
                   </a>
-                </li>
+                </li>) : (
+                <li key={feed.id}>
+                  <p>
+                    ALUNO - {feed.name}
+                  </p>
+
+                  <h4>{feed.feedback}</h4>
+                  
+                </li>)
               ))
             )}
           </ul>
           <DivFeedback>
-            <div></div>
             <form
               onSubmit={(event) => {
                 event.preventDefault();
                 postFeedback(valueFeedback);
               }}
             >
-              <p>Enviar resposta</p>
-              <button type="submit">Env</button>
+              <div>
+                <p>Enviar resposta</p>
+              </div>
               <textarea
                 placeholder="Responda aos feedbacks"
                 onChange={(event) => setValueFeedback(event.target.value)}
                 value={valueFeedback}
               />
+              <button type="submit">Enviar</button>
             </form>
           </DivFeedback>
         </div>
