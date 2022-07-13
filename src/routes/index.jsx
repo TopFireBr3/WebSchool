@@ -19,6 +19,8 @@ import NotasPai from "../pages/Dashboards/Responsavel/SubPages/Notas";
 import InfosPai from "../pages/Dashboards/Responsavel/SubPages/InformacoesGerais";
 import FeedbacksPai from "../pages/Dashboards/Responsavel/SubPages/Feedbacks";
 
+import { InProduction } from "../pages/InProduction";
+
 export const Routes = () => {
   return (
     <Switch>
@@ -82,12 +84,8 @@ export const Routes = () => {
         <Notas />
       </Route>
 
-      <Route path="/dashboard/instituicao">
-        <Instituicao />
-      </Route>
-
       <Route path="/dashboard/professor">
-        <PagPrincipalPai />
+        <InProduction />
       </Route>
     </Switch>
   );
