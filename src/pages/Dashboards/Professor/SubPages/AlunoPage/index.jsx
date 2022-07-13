@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 
-import Footer from "../../components/Footer";
 import {
   Container,
   Content,
@@ -13,14 +12,18 @@ import {
 } from "./style";
 
 import axios from "axios";
-import { api } from "../../services/api";
+import { api } from "../../../../../services/api";
 
 import { toast } from "react-toastify";
-import Header from "../Dashboards/Professor/Header";
+import Header from "../../Header";
 
-import imagemAluno from "../../assets/imagemAluno.jpg";
+import imagemAluno from "../../../../../assets/imagemAluno.jpg";
 import { useContext } from "react";
-import { UserContext } from "../../contexts/User/UserContext";
+import { UserContext } from "../../../../../contexts/User/UserContext";
+
+import { FiTrash } from "react-icons/fi";
+import { CgClose } from "react-icons/cg";
+import Footer from "../../../../../components/Footer";
 
 const AlunoPage = () => {
   const [FeedId, setFeedId] = useState();
@@ -39,6 +42,7 @@ const AlunoPage = () => {
   const [modalAddFeed, setModalAddFeed] = useState(false);
   const [modalEditNotas, setModalEditNotas] = useState(false);
   const [modalEditFeed, setModalEditFeed] = useState(false);
+  const [array, setArray] = useState([]);
 
   const { register, handleSubmit } = useForm();
 
@@ -141,7 +145,11 @@ const AlunoPage = () => {
             "Bearer " + JSON.parse(localStorage.getItem("@WebSchool:Token")),
         },
       })
-      .then((res) => toast.success("Nota adicionada!"))
+      .then((res) => {
+        setNotas([...notas, res.data]);
+        setModalAddNotas(false);
+        toast.success("Nota adicionada!");
+      })
       .catch((err) => console.log(err));
   };
 
@@ -159,7 +167,11 @@ const AlunoPage = () => {
             "Bearer " + JSON.parse(localStorage.getItem("@WebSchool:Token")),
         },
       })
-      .then((res) => toast.success("Feedback adicionado!"))
+      .then((res) => {
+        setFeedbacks([...feedbacks, res.data]);
+        setModalAddFeed(false);
+        toast.success("Feedback adicionado!");
+      })
       .catch((err) => console.log(err));
   };
 
@@ -179,7 +191,11 @@ const AlunoPage = () => {
             "Bearer " + JSON.parse(localStorage.getItem("@WebSchool:Token")),
         },
       })
-      .then((res) => toast.success("Atividade adicionada!"))
+      .then((res) => {
+        setAtivs([...ativs, res.data]);
+        setModalAddNotas(false);
+        toast.success("Atividade adicionada!");
+      })
       .catch((err) => console.log(err));
   };
 
@@ -195,7 +211,11 @@ const AlunoPage = () => {
             "Bearer " + JSON.parse(localStorage.getItem("@WebSchool:Token")),
         },
       })
-      .then((res) => toast.success("Info adicionada!"))
+      .then((res) => {
+        setInfos([...infos, res.data]);
+        setModalAddInfos(false);
+        toast.success("Info adicionada!");
+      })
       .catch((err) => console.log(err));
   };
 
@@ -208,6 +228,7 @@ const AlunoPage = () => {
         },
       })
       .then((res) => {
+        setNotas(notas.filter((nota) => nota.id !== id));
         toast.success("Nota deletada!");
       })
       .catch((err) => console.log(err));
@@ -222,6 +243,7 @@ const AlunoPage = () => {
         },
       })
       .then((res) => {
+        setFeedbacks(feedbacks.filter((feedback) => feedback.id !== id));
         toast.success("Feedback deletado!");
       })
       .catch((err) => console.log(err));
@@ -236,6 +258,7 @@ const AlunoPage = () => {
         },
       })
       .then((res) => {
+        setAtivs(ativs.filter((ativs) => ativs.id !== id));
         toast.success("Atividade deletada!");
       })
       .catch((err) => console.log(err));
@@ -250,6 +273,7 @@ const AlunoPage = () => {
         },
       })
       .then((res) => {
+        setInfos(infos.filter((infos) => infos.id !== id));
         toast.success("Info deletada!");
       })
       .catch((err) => console.log(err));
@@ -258,17 +282,17 @@ const AlunoPage = () => {
   const addToAluno = (option) => {
     switch (option) {
       case "Notas":
-        setModalAddNotas(true);
-        break;
+        return setModalAddNotas(true);
+
       case "Feed":
-        setModalAddFeed(true);
-        break;
+        return setModalAddFeed(true);
+
       case "Atividades":
-        setModalAddAtivs(true);
-        break;
+        return setModalAddAtivs(true);
+
       case "Infos Gerais":
-        setModalAddInfos(true);
-        break;
+        return setModalAddInfos(true);
+
       default:
         break;
     }
@@ -355,16 +379,26 @@ const AlunoPage = () => {
               {notas &&
                 notas.map((nota) => (
                   <li key={nota.id}>
-                    <h1>{nota.materia}</h1> <p>{nota.nota}</p>{" "}
-                    <button
-                      onClick={() => {
-                        setNotaId(nota.id);
-                        setModalEditNotas(true);
-                      }}
-                    >
-                      Editar
-                    </button>{" "}
-                    <button onClick={() => deleteNota(nota.id)}>delete</button>
+                    <div>
+                      <h1>{nota.materia}:</h1> <p>{nota.nota} pontos.</p>
+                    </div>
+                    <div>
+                      <button
+                        className="editButton"
+                        onClick={() => {
+                          setNotaId(nota.id);
+                          setModalEditNotas(true);
+                        }}
+                      >
+                        Editar
+                      </button>{" "}
+                      <button
+                        className="buttonDelete"
+                        onClick={() => deleteNota(nota.id)}
+                      >
+                        <FiTrash></FiTrash>
+                      </button>
+                    </div>
                   </li>
                 ))}
             </ul>
@@ -375,6 +409,7 @@ const AlunoPage = () => {
                     {" "}
                     <h1>{feed.feedback}</h1>
                     <button
+                      className="editButton"
                       onClick={() => {
                         setFeedId(feed.id);
                         setModalEditFeed(true);
@@ -382,7 +417,12 @@ const AlunoPage = () => {
                     >
                       Editar
                     </button>{" "}
-                    <button onClick={() => deleteFeed(feed.id)}>delete</button>
+                    <button
+                      className="buttonDelete"
+                      onClick={() => deleteFeed(feed.id)}
+                    >
+                      <FiTrash></FiTrash>
+                    </button>
                   </li>
                 ))}
             </ul>
@@ -391,7 +431,12 @@ const AlunoPage = () => {
                 infos.map((info) => (
                   <li key={info.id}>
                     <h1>{info.message}</h1>
-                    <button onClick={() => deleteInfo(info.id)}>delete</button>
+                    <button
+                      className="buttonDelete"
+                      onClick={() => deleteInfo(info.id)}
+                    >
+                      <FiTrash></FiTrash>
+                    </button>
                   </li>
                 ))}
             </ul>
@@ -401,7 +446,12 @@ const AlunoPage = () => {
                   <li key={ativ.id}>
                     <h2>{ativ.title}</h2>
                     <h2>Link da atividade:{ativ.url_atividade}</h2>
-                    <button onClick={() => deleteAtiv(ativ.id)}>delete</button>
+                    <button
+                      className="buttonDelete"
+                      onClick={() => deleteAtiv(ativ.id)}
+                    >
+                      <FiTrash></FiTrash>
+                    </button>
                   </li>
                 ))}
             </ul>
@@ -421,106 +471,146 @@ const AlunoPage = () => {
       >
         <div className="modal-add-notas">
           <div className="modal-add-notas-content">
-            <button onClick={() => setModalAddNotas(false)}>close modal</button>
-            <p>Notas</p>
-            <form onSubmit={handleSubmit(onSubmitAddNotaFunction)}>
-              <input
-                type="text"
-                placeholder="materia"
-                {...register("materia")}
-              ></input>
-              <input
-                type="text"
-                placeholder="nota"
-                {...register("nota")}
-              ></input>
-              <button type="submit">Adicionar nota</button>
-            </form>
+            <button
+              className="closeModalButton"
+              onClick={() => setModalAddNotas(false)}
+            >
+              <CgClose />
+            </button>
+            <div className="inputsModal">
+              <h2>Notas</h2>
+              <form onSubmit={handleSubmit(onSubmitAddNotaFunction)}>
+                <input
+                  type="text"
+                  placeholder="materia"
+                  {...register("materia")}
+                ></input>
+                <input
+                  type="text"
+                  placeholder="nota"
+                  {...register("nota")}
+                ></input>
+                <button type="submit">Adicionar</button>
+              </form>
+            </div>
           </div>
         </div>
 
         <div className="modal-add-feed">
           <div className="modal-add-feed-content">
-            <button onClick={() => setModalAddFeed(false)}>close modal</button>
-            <p>Feed</p>
-            <form onSubmit={handleSubmit(onSubmitAddFeedFunction)}>
-              <input
-                type="text"
-                placeholder="feedback"
-                {...register("feedback")}
-              ></input>
-              <input
-                type="text"
-                placeholder="nome"
-                {...register("name")}
-              ></input>
-              <button type="submit">adicionar feedback</button>
-            </form>
+            <button
+              className="closeModalButton"
+              onClick={() => setModalAddFeed(false)}
+            >
+              <CgClose />
+            </button>
+            <div className="inputsModal">
+              <h2>Feed</h2>
+              <form onSubmit={handleSubmit(onSubmitAddFeedFunction)}>
+                <input
+                  type="text"
+                  placeholder="feedback"
+                  {...register("feedback")}
+                ></input>
+                <input
+                  type="text"
+                  placeholder="nome"
+                  {...register("name")}
+                ></input>
+                <button type="submit">Adicionar</button>
+              </form>
+            </div>
           </div>
         </div>
 
         <div className="modal-add-ativs">
           <div className="modal-add-ativs-content">
-            <button onClick={() => setModalAddAtivs(false)}>close modal</button>
-            <p>Atividades</p>
-            <form onSubmit={handleSubmit(onSubmitAddAtivFunction)}>
-              <input
-                placeholder="Nome da atividade"
-                {...register("nome_atividade")}
-              ></input>
-              <input
-                placeholder="Link da atividade"
-                {...register("url_atividade")}
-              ></input>
-              <button type="submit">adicionar atividade</button>
-            </form>
+            <button
+              className="closeModalButton"
+              onClick={() => setModalAddAtivs(false)}
+            >
+              <CgClose />
+            </button>
+            <div className="inputsModal">
+              <h2>Atividades</h2>
+              <form onSubmit={handleSubmit(onSubmitAddAtivFunction)}>
+                <input
+                  placeholder="Nome da atividade"
+                  {...register("nome_atividade")}
+                ></input>
+                <input
+                  placeholder="Link da atividade"
+                  {...register("url_atividade")}
+                ></input>
+                <button type="submit">Adicionar</button>
+              </form>
+            </div>
           </div>
         </div>
 
         <div className="modal-add-infos">
           <div className="modal-add-infos-content">
-            <button onClick={() => setModalAddInfos(false)}>close modal</button>
-            <p>Infos</p>
-            <form onSubmit={handleSubmit(onSubmitAddInfoFunction)}>
-              <input
-                type="text"
-                placeholder="infos"
-                {...register("message")}
-              ></input>
-              <button type="submit">adicionar info</button>
-            </form>
+            <button
+              className="closeModalButton"
+              onClick={() => setModalAddInfos(false)}
+            >
+              <CgClose />
+            </button>
+            <div className="inputsModal">
+              <h2>Infos</h2>
+              <form onSubmit={handleSubmit(onSubmitAddInfoFunction)}>
+                <input
+                  type="text"
+                  placeholder="infos"
+                  {...register("message")}
+                ></input>
+                <button type="submit">Adicionar</button>
+              </form>
+            </div>
           </div>
         </div>
 
         <div className="modal-edit-notas">
           <div className="modal-edit-notas-content">
-            <button onClick={() => setModalEditNotas(false)}>
-              close modal
+            <button
+              className="closeModalButton"
+              onClick={() => setModalEditNotas(false)}
+            >
+              <CgClose />
             </button>
-            <p>Nota</p>
-            <form onSubmit={handleSubmit(editNota)}>
-              <input
-                placeholder="Matéria"
-                {...register("materiaEditada")}
-              ></input>
-              <input placeholder="Nota" {...register("notaEditada")}></input>
-              <button type="submit">Editar nota</button>
-            </form>
+            <div className="inputsModal">
+              <h2>Nota</h2>
+              <form onSubmit={handleSubmit(editNota)}>
+                <input
+                  placeholder="Matéria"
+                  {...register("materiaEditada")}
+                ></input>
+                <input placeholder="Nota" {...register("notaEditada")}></input>
+                <button type="submit">Editar nota</button>
+              </form>
+            </div>
           </div>
         </div>
 
         <div className="modal-edit-feed">
           <div className="modal-edit-feed-content">
-            <button onClick={() => setModalEditFeed(false)}>close modal</button>
-            <p>Nota</p>
-            <form onSubmit={handleSubmit(editFeedback)}>
-              <input
-                placeholder="Feedback"
-                {...register("feedbackEditado")}
-              ></input>
-              <input placeholder="Nome" {...register("nomeEditado")}></input>
-              <button type="submit">Editar nota</button>
-            </form>
+            <button
+              className="closeModalButton"
+              onClick={() => setModalEditFeed(false)}
+            >
+              <CgClose />
+            </button>
+            <div className="inputsModal">
+              <h2>Nota</h2>
+              <form onSubmit={handleSubmit(editFeedback)}>
+                <input
+                  placeholder="Feedback"
+                  {...register("feedbackEditado")}
+                ></input>
+                <input placeholder="Nome" {...register("nomeEditado")}></input>
+                <button type="submit">Editar nota</button>
+              </form>
+            </div>
           </div>
         </div>
       </ModalContainer>

@@ -1,19 +1,18 @@
-import Footer from "../../components/Footer";
 import {
   Container,
   Content,
   TurmasContainer,
   TurmasHeaderContainer,
-  FooterContainer,
 } from "./style";
-import logoImg from "../../assets/img2.png";
+
 import { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
-import { type } from "@testing-library/user-event/dist/type";
-import Header from "../Dashboards/Professor/Header";
-import { api } from "../../services/api";
-import { UserContext } from "../../contexts/User/UserContext";
+
+import Header from "./Header";
+import { api } from "../../../services/api";
+import { UserContext } from "../../../contexts/User/UserContext";
+import Footer from "../../../components/Footer";
 
 const DashboardProfessor = () => {
   const token = JSON.parse(localStorage.getItem("@WebSchool:Token"));
@@ -121,9 +120,8 @@ const DashboardProfessor = () => {
           </TurmasContainer>
         </Content>
       </Container>
-      <FooterContainer>
-        <Footer />
-      </FooterContainer>
+
+      <Footer />
     </>
   );
 };

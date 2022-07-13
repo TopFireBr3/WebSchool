@@ -88,6 +88,8 @@ export const ThemeTitleProfessor = styled.div`
     border-radius: 10px;
     font-size: 22px;
     padding: 10px 20px;
+
+    border: none;
   }
 
   @media (min-width: 768px) {
