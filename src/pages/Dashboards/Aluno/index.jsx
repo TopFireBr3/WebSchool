@@ -30,7 +30,7 @@ const Aluno = () => {
     <>
       <Header rota="/" texto="Sair" />
 
-      <ThemeMain f="column" m="0px 0px 200px 10%">
+      <ThemeMain f="column" m="0px 0px 20px 10%">
         <h1>Olá, {user.name} </h1>
         <Container
           w="90%"

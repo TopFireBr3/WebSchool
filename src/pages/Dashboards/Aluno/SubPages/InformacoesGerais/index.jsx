@@ -1,5 +1,4 @@
 import React, { useContext, useEffect, useState } from "react";
-
 import { Container } from "./style";
 
 import Header from "../../Header";
@@ -10,7 +9,7 @@ import { api } from "../../../../../services/api";
 import { UserContext } from "../../../../../contexts/User/UserContext";
 
 const InfoGerais = () => {
-  const { userContext } = useContext(UserContext);
+  const { user } = useContext(UserContext);
 
   const [infos, setInfos] = useState([]);
 
@@ -30,8 +29,8 @@ const InfoGerais = () => {
     <>
       <Header rota={"/dashboard/aluno"} texto={"Voltar"} />
 
-      <Container mw="1000px">
-        <h2>Olá, {userContext.name}</h2>
+      <Container mw="100%">
+        <h2>Olá, {user.name}</h2>
         <div className="infosPai">
           <h3>INFORMAÇÕES GERAIS</h3>
           <ul>

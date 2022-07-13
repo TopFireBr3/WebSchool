@@ -24,7 +24,7 @@ const Notas = () => {
   return (
     <>
       <Header rota={"/dashboard/aluno"} texto={"Voltar"} />
-      <Container mw="700px">
+      <Container mw="100%">
         <h2>Olá, {userContext.name}</h2>
         <div>
           <h3>Notas</h3>

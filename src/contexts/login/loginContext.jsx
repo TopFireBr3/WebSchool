@@ -1,16 +1,19 @@
 import { createContext } from "react";
 
-import { api } from "../../services/api";
+import axios from 'axios'
 
 import { useHistory } from "react-router-dom";
 
 import { toast } from "react-toastify";
 
+import { api } from '../../services/api.js'
+
 export const LoginContext = createContext({});
 
 export const LoginProvider = ({ children }) => {
-  const history = useHistory();
 
+  const history = useHistory()
+  
   function Login(formLogin) {
     api
       .post("/login", formLogin)

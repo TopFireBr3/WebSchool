@@ -85,6 +85,10 @@ export const Routes = () => {
       <Route path="/dashboard/instituicao">
         <Instituicao />
       </Route>
+
+      <Route path="/dashboard/professor">
+        <PagPrincipalPai />
+      </Route>
     </Switch>
   );
 };

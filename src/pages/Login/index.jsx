@@ -1,9 +1,8 @@
 import { useState, useContext } from "react";
-import { useHistory } from "react-router-dom";
 
 import { FormLogin, MainLogin, MainLoginDiv } from "./styled";
 
-import { Button, Link, Input } from "@mui/material";
+import { Button, Link, TextField } from "@mui/material";
 
 import learning from "../../assets/Learning-bro.svg";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
@@ -13,6 +12,8 @@ import { useForm } from "react-hook-form";
 import * as yup from "yup";
 
 import { LoginContext } from "../../contexts/login/loginContext";
+
+import { useHistory } from "react-router-dom";
 
 const Login = () => {
   const history = useHistory();
@@ -49,7 +50,7 @@ const Login = () => {
         <FormLogin onSubmit={handleSubmit(onHandleSubmit)} className="form">
           <h2>Login</h2>
 
-          <Input
+          <TextField
             label="E-mail"
             className="Input"
             placeholder="Digite seu e-mail"
@@ -59,7 +60,7 @@ const Login = () => {
             <span className="error">{errors.email.message}</span>
           )}
 
-          <Input
+          <TextField
             label="Senha"
             className="Input"
             type={showPassword}

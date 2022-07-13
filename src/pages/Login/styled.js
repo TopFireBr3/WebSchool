@@ -99,7 +99,7 @@ export const FormLogin = styled.form`
     border-radius: 1vh;
     text-decoration: none;
     border: none;
-    padding-left: 14px;
+  
   }
 
   .showPassword {
@@ -137,7 +137,7 @@ export const FormLogin = styled.form`
   }
 
   .error:nth-child(5) {
-    top: 55vh;
+    top: 55.5vh;
   }
 
   .error:nth-child(3) {
