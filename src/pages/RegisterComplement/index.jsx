@@ -47,7 +47,11 @@ export const RegisterComplement = () => {
       infos: { ...data },
     });
 
-    const infoData = { ...infoPartOne, ...infoPartTwo };
+    const infoData = {
+      ...infoPartOne,
+      type: "instituicao",
+      infos: { ...data },
+    };
     criarUsuario(infoData);
   };
 
