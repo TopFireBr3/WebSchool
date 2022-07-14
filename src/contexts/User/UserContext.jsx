@@ -8,14 +8,12 @@ export const UserProvider = ({ children }) => {
   const [user, setUser] = useState({});
 
   useEffect(() => {
-      console.log(localStorage.getItem("@WebSchool:UserId"));
-      api
-        .get(`/users/${JSON.parse(localStorage.getItem("@WebSchool:UserId"))}`)
-        .then((res) => {
-          setUser(res.data);
-        })
-        .catch((e) => console.error(e));
-
+    api
+      .get(`/users/${JSON.parse(localStorage.getItem("@WebSchool:UserId"))}`)
+      .then((res) => {
+        setUser(res.data);
+      })
+      .catch((e) => console.error(e));
   }, []);
 
   return (

@@ -6,8 +6,9 @@ import Notices from "../pages/Notices";
 import { Register } from "../pages/Register";
 import { RegisterComplement } from "../pages/RegisterComplement";
 
+import DashboardProfessor from "../pages/Dashboards/Professor";
 import Instituicao from "../pages/Dashboards/Instituicao";
-import PagPrincipalPai from "../pages/Dashboards/Responsavel";
+import AlunoPage from "../pages/Dashboards/Professor/SubPages/AlunoPage";
 import Aluno from "../pages/Dashboards/Aluno";
 
 import Notas from "../pages/Dashboards/Aluno/SubPages/notas";
@@ -18,8 +19,7 @@ import InfoGerais from "../pages/Dashboards/Aluno/SubPages/InformacoesGerais";
 import NotasPai from "../pages/Dashboards/Responsavel/SubPages/Notas";
 import InfosPai from "../pages/Dashboards/Responsavel/SubPages/InformacoesGerais";
 import FeedbacksPai from "../pages/Dashboards/Responsavel/SubPages/Feedbacks";
-
-import { InProduction } from "../pages/InProduction";
+import PagPrincipalPai from "../pages/Dashboards/Responsavel";
 
 export const Routes = () => {
   return (
@@ -84,8 +84,12 @@ export const Routes = () => {
         <Notas />
       </Route>
 
-      <Route path="/dashboard/professor">
-        <InProduction />
+      <Route exact path="/dashboard/professor">
+        <DashboardProfessor />
+      </Route>
+
+      <Route exact path="/dashboard/professor/aluno">
+        <AlunoPage />
       </Route>
     </Switch>
   );
