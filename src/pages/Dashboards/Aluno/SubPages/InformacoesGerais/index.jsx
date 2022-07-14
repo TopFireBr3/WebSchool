@@ -29,7 +29,7 @@ const InfoGerais = () => {
     <>
       <Header rota={"/dashboard/aluno"} texto={"Voltar"} />
 
-      <Container mw="100%">
+      <Container mw="1000px">
         <h2>Olá, {user.name}</h2>
         <div className="infosPai">
           <h3>INFORMAÇÕES GERAIS</h3>

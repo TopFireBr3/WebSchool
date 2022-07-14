@@ -42,7 +42,7 @@ const ModalAluno = (prop) => {
     api
       .post("/register", data)
       .then((_) => {
-        prop.setType("aluno");
+        prop.setType("professor");
         toast.success("Usuário adicionado");
         prop.setAluno();
       })

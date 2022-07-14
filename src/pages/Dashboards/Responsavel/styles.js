@@ -113,6 +113,7 @@ export const DivFeedback = styled.div`
 
   form > div > p {
     display: flex;
+    align-items: center;
     width: fit-content;
     background-color: var(--blue-0);
     margin: 5px 10px;
@@ -127,11 +128,11 @@ export const DivFeedback = styled.div`
     background-image: url(${book});
     background-position: center;
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: contain;
     background-color: var(--blue-0);
     margin: 5px 10px;
     border-radius: 5px;
-    padding: 10px;
+    padding: 35px;
   }
 
   img {

@@ -148,13 +148,29 @@ export const DivFeedback = styled.div`
     margin: 5px 10px;
     border-radius: 5px;
     padding: 10px;
+    
   }
 
-  textarea {
+  form > button {
+    height: 11vh;
+  }
+
+  form > textarea {
     margin: 5px 10px;
     border: none;
     border-radius: 5px;
     padding: 10px;
     min-height: 70px;
+    height: 11vh;
+  }
+
+  @media (max-width: 764px) {
+    form > textarea {
+      width: 65%;
+    }
+
+    form > button {
+      width: 20%;
+    }
   }
 `;
