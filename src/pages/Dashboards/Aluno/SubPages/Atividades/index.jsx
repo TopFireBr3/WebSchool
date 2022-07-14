@@ -44,7 +44,7 @@ const Atividades = () => {
   return (
     <>
       <Header rota={"/dashboard/aluno"} texto={"Voltar"} />
-      <Container mw="100%">
+      <Container mw="1000px">
         <h2>Olá, {userContext.name}</h2>
         <div>
           <h3>atividades</h3>
@@ -70,7 +70,7 @@ const Atividades = () => {
                   <p>
                     ALUNO - {feed.name}
                   </p>
-
+                  
                   <h4>{feed.feedback}</h4>
                   
                 </li>)
@@ -88,7 +88,7 @@ const Atividades = () => {
                 <p>Enviar resposta</p>
               </div>
               <textarea
-                placeholder="Responda aos feedbacks"
+                placeholder="Responda as atividades"
                 onChange={(event) => setValueFeedback(event.target.value)}
                 value={valueFeedback}
               />

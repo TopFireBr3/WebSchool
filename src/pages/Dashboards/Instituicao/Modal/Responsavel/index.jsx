@@ -40,7 +40,7 @@ const ModalResponsavel = (prop) => {
     api
       .post(`/register`, data)
       .then((_) => {
-        prop.setType("responsavel");
+        prop.setType("professor");
         toast.success("Usuário adicionado");
         prop.setResponsavel();
       })
