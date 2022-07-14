@@ -28,7 +28,7 @@ export const TurmasContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
-
+  min-width: 250px;
   max-width: 50%;
   ul {
     display: flex;

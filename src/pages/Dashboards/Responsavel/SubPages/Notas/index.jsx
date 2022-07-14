@@ -47,7 +47,7 @@ const NotasPai = () => {
   return (
     <>
       <Header rota="/dashboard/responsavel" texto="Voltar" />
-      <Container mw="80vw">
+      <Container mw="800px">
         <h2 style={{ marginTop: "30px" }}>Olá, {userContext.name}</h2>
 
         <div>

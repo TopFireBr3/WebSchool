@@ -66,7 +66,7 @@ const Instituicao = () => {
           </button>
         </ThemeDiv>
 
-        <ThemeNav g="10px" j="center">
+        <ThemeNav g="10px" j="flex-start">
           <button
             onClick={() => setType("professor")}
             style={{ background: type === "professor" && "var(--blue-1)" }}

@@ -15,7 +15,7 @@ import Footer from "../../../components/Footer";
 
 const DashboardProfessor = () => {
   const token = JSON.parse(localStorage.getItem("@WebSchool:Token"));
-  const [activeTurma, setActiveTurma] = useState([]);
+  const [activeTurma, setActiveTurma] = useState("");
 
   const [turmas, setTurmas] = useState([]);
   const [alunos, setAlunos] = useState([]);

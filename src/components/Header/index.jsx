@@ -67,7 +67,7 @@ const Header = () => {
           minHeight: "100vh",
           maxHeight: "100vh",
           position: "absolute",
-          top: "100px",
+          top: "80px",
           left: "0",
           minWidth: "100%",
           backgroundColor: "var(--bg-modal)",

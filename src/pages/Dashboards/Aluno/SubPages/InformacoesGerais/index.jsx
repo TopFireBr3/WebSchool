@@ -9,7 +9,7 @@ import { api } from "../../../../../services/api";
 import { UserContext } from "../../../../../contexts/User/UserContext";
 
 const InfoGerais = () => {
-  const { user } = useContext(UserContext);
+  const { userContext } = useContext(UserContext);
 
   const [infos, setInfos] = useState([]);
 
@@ -30,7 +30,7 @@ const InfoGerais = () => {
       <Header rota={"/dashboard/aluno"} texto={"Voltar"} />
 
       <Container mw="1000px">
-        <h2>Olá, {user.name}</h2>
+        <h2>Olá, {userContext.name}</h2>
         <div className="infosPai">
           <h3>INFORMAÇÕES GERAIS</h3>
           <ul>

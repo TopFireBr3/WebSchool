@@ -28,8 +28,8 @@ export const Content = styled.div`
   padding: 30px;
 
   .imageAluno {
-    width: 50vh;
-    height: 50vh;
+    width: 20%;
+    height: 20%;
 
     box-sizing: border-box;
 
@@ -91,12 +91,12 @@ export const Content = styled.div`
     }
   }
 
-  @media (max-width: 425px) {
+  @media (max-width: 768px) {
     flex-direction: column;
 
     .imageAluno {
-      width: 20vh;
-      height: 20vh;
+      width: 30vw;
+      height: 30vw;
     }
   }
 `;
@@ -219,8 +219,8 @@ export const ModalContainer = styled.div`
       height: 10%;
 
       position: absolute;
-      top: 0;
-      right: 0;
+      top: 15px;
+      right: 15px;
 
       border: none;
       border-radius: 10px;
@@ -321,8 +321,8 @@ export const ModalContainer = styled.div`
       height: 10%;
 
       position: absolute;
-      top: 0;
-      right: 0;
+      top: 15px;
+      right: 15px;
 
       border: none;
       border-radius: 10px;
@@ -423,8 +423,8 @@ export const ModalContainer = styled.div`
       height: 10%;
 
       position: absolute;
-      top: 0;
-      right: 0;
+      top: 15px;
+      right: 15px;
 
       border: none;
       border-radius: 10px;
@@ -525,8 +525,8 @@ export const ModalContainer = styled.div`
       height: 10%;
 
       position: absolute;
-      top: 0;
-      right: 0;
+      top: 15px;
+      right: 15px;
 
       border: none;
       border-radius: 10px;
@@ -626,8 +626,8 @@ export const ModalContainer = styled.div`
       height: 10%;
 
       position: absolute;
-      top: 0;
-      right: 0;
+      top: 15px;
+      right: 15px;
 
       border: none;
       border-radius: 10px;
@@ -727,8 +727,8 @@ export const ModalContainer = styled.div`
       height: 10%;
 
       position: absolute;
-      top: 0;
-      right: 0;
+      top: 15px;
+      right: 15px;
 
       border: none;
       border-radius: 10px;

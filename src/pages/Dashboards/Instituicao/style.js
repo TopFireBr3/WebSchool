@@ -90,7 +90,10 @@ export const ThemeNav = styled.div`
   display: flex;
   justify-content: ${(props) => props.j};
   gap: ${(props) => props.g};
-
+  overflow: auto;
+  @media (min-width: 425px) {
+    justify-content: center;
+  }
   @media (min-width: 768px) {
     justify-content: flex-start;
     gap: 10px;

@@ -51,13 +51,18 @@ const AlunoPage = () => {
     switch (data.option) {
       case "Notas":
         api
-          .get("/notas?userId=2", {
-            headers: {
-              Authorization:
-                "Bearer " +
-                JSON.parse(localStorage.getItem("@WebSchool:Token")),
-            },
-          })
+          .get(
+            `/notas?userId=${JSON.parse(
+              localStorage.getItem("@WebSchool:AlunoId")
+            )}`,
+            {
+              headers: {
+                Authorization:
+                  "Bearer " +
+                  JSON.parse(localStorage.getItem("@WebSchool:Token")),
+              },
+            }
+          )
           .then((res) => {
             setNotas(res.data);
             setFeedbacks(false);
@@ -69,13 +74,18 @@ const AlunoPage = () => {
 
       case "Feed":
         api
-          .get("/feedback?userId=2", {
-            headers: {
-              Authorization:
-                "Bearer " +
-                JSON.parse(localStorage.getItem("@WebSchool:Token")),
-            },
-          })
+          .get(
+            `/feedback?userId=${JSON.parse(
+              localStorage.getItem("@WebSchool:AlunoId")
+            )}`,
+            {
+              headers: {
+                Authorization:
+                  "Bearer " +
+                  JSON.parse(localStorage.getItem("@WebSchool:Token")),
+              },
+            }
+          )
           .then((res) => {
             setNotas(false);
             setFeedbacks(res.data);
@@ -87,13 +97,18 @@ const AlunoPage = () => {
 
       case "Atividades":
         api
-          .get("/atividades?userId=2", {
-            headers: {
-              Authorization:
-                "Bearer " +
-                JSON.parse(localStorage.getItem("@WebSchool:Token")),
-            },
-          })
+          .get(
+            `/atividades?userId=${JSON.parse(
+              localStorage.getItem("@WebSchool:AlunoId")
+            )}`,
+            {
+              headers: {
+                Authorization:
+                  "Bearer " +
+                  JSON.parse(localStorage.getItem("@WebSchool:Token")),
+              },
+            }
+          )
           .then((res) => {
             setAtivs(res.data);
             setNotas(false);
@@ -189,7 +204,7 @@ const AlunoPage = () => {
       })
       .then((res) => {
         setAtivs([...ativs, res.data]);
-        setModalAddNotas(false);
+        setModalAddAtivs(false);
         toast.success("Atividade adicionada!");
       })
       .catch((err) => console.log(err));
@@ -308,7 +323,11 @@ const AlunoPage = () => {
             "Bearer " + JSON.parse(localStorage.getItem("@WebSchool:Token")),
         },
       })
-      .then((res) => toast.success("Nota editada com sucesso"))
+      .then((res) => {
+        setNotas(notas.map((nota) => nota.id === res.data.id ? res.data : nota ))
+        setModalEditNotas(false)
+        toast.success("Nota editada com sucesso")
+      })
       .catch((error) => console.log(error));
   }
 
@@ -326,7 +345,10 @@ const AlunoPage = () => {
             "Bearer " + JSON.parse(localStorage.getItem("@WebSchool:Token")),
         },
       })
-      .then((res) => toast.success("Feed editado com sucesso"))
+      .then((res) => {
+        setFeedbacks(feedbacks.map((feedback) => feedback.id === res.data.id ? res.data : feedback ))
+        setModalEditFeed(false)
+        toast.success("Feed editado com sucesso")})
       .catch((error) => console.log(error));
   }
 
@@ -404,21 +426,23 @@ const AlunoPage = () => {
                   <li key={feed.id}>
                     {" "}
                     <h1>{feed.feedback}</h1>
-                    <button
-                      className="editButton"
-                      onClick={() => {
-                        setFeedId(feed.id);
-                        setModalEditFeed(true);
-                      }}
-                    >
-                      Editar
-                    </button>{" "}
-                    <button
-                      className="buttonDelete"
-                      onClick={() => deleteFeed(feed.id)}
-                    >
-                      <FiTrash></FiTrash>
-                    </button>
+                    <div>
+                      <button
+                        className="editButton"
+                        onClick={() => {
+                          setFeedId(feed.id);
+                          setModalEditFeed(true);
+                        }}
+                      >
+                        Editar
+                      </button>{" "}
+                      <button
+                        className="buttonDelete"
+                        onClick={() => deleteFeed(feed.id)}
+                      >
+                        <FiTrash></FiTrash>
+                      </button>
+                    </div>
                   </li>
                 ))}
             </ul>
@@ -441,15 +465,17 @@ const AlunoPage = () => {
                 ativs.map((ativ) => (
                   <li key={ativ.id}>
                     <h2>{ativ.title}</h2>
-                    <a href={ativ.url_atividade} target="_blank">
-                      Acessar atividade
-                    </a>
-                    <button
-                      className="buttonDelete"
-                      onClick={() => deleteAtiv(ativ.id)}
-                    >
-                      <FiTrash></FiTrash>
-                    </button>
+                    <div>
+                      <a href={ativ.url_atividade} target="_blank">
+                        Acessar atividade
+                      </a>
+                      <button style={{marginLeft: "15px"}}
+                        className="buttonDelete"
+                        onClick={() => deleteAtiv(ativ.id)}
+                      >
+                        <FiTrash></FiTrash>
+                      </button>
+                    </div>
                   </li>
                 ))}
             </ul>
