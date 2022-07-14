@@ -20,7 +20,7 @@ import { useHistory } from "react-router-dom";
 import earth from "../../assets/Globalization-pana.svg";
 
 export const RegisterComplement = () => {
-  const { infoPartOne, infoPartTwo, setInfoPartTwo } =
+  const { infoPartOne } =
     useContext(RegisterInfoContext);
 
   const history = useHistory();
@@ -42,12 +42,13 @@ export const RegisterComplement = () => {
   } = useForm({ resolver: yupResolver(schema) });
 
   const cadastrar = (data) => {
-    setInfoPartTwo({
+
+    const infoData = {
+      ...infoPartOne,
       type: "instituicao",
       infos: { ...data },
-    });
-
-    const infoData = { ...infoPartOne, ...infoPartTwo };
+    };
+    console.log(infoData);
     criarUsuario(infoData);
   };
 
